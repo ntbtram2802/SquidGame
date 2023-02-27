@@ -5,13 +5,13 @@ import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
     // SCREEN SETTINGS
-    final int orignialTileSize = 16;
-    final int scale = 3;
-    final int tilesize = orignialTileSize * scale; // 48 X48 tile
-    final int maxScreenCol = 20;// horizontal, ngang
-    final int maxScreenRow = 16; // vertical,doc
-    final int screenWidth = tilesize * maxScreenRow; //256 ngang
-    final int screenHeight = tilesize * maxScreenCol;//320 doc
+    public final int orignialTileSize = 16;
+    public final int scale = 3;
+    public final int tilesize = orignialTileSize * scale; // 48 X48 tile
+    public final int maxScreenCol = 20;// horizontal, ngang
+    public final int maxScreenRow = 16; // vertical,doc
+    public final int screenWidth = tilesize * maxScreenRow; //256 ngang
+    public final int screenHeight = tilesize * maxScreenCol;//320 doc
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;// to start and stop the game whenever you want to
 // set player default position
