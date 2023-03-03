@@ -42,7 +42,7 @@ public class KeyHandler implements KeyListener {
         }
 
         if(code==KeyEvent.VK_S) {
-            upPressed=false;
+            downPressed=false;
 
         }
         if(code==KeyEvent.VK_A) {
