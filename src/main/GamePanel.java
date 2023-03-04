@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH= new KeyHandler();
     Thread gameThread;// to start and stop the game whenever you want to
     Player player= new Player(this,keyH);
-
+    public Entity npc[] = new Entity[10];// this is npc array
     int FPS=60;
 
   // private Background bg;
@@ -67,8 +67,14 @@ public class GamePanel extends JPanel implements Runnable {
      }
     }
 
-    public void update(){
+    public void update() {
         player.update();
+        //NPC
+        for (int i = 0; i < npc.length; i++) {
+        	if (npc[i] != null) {
+        		npc[i].update();
+        	}
+        }
     }
 
     public void paintComponent(Graphics g){
@@ -80,6 +86,11 @@ public class GamePanel extends JPanel implements Runnable {
 
         g2.dispose();
 
+        // NPC
+        for (int i = 0; i < npc.length; i++) { 
+        	if (npc[i] != null) {
+        		npc[i].draw(g2);
+        	}
 
     }
 }
