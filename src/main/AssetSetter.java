@@ -21,11 +21,5 @@ public class AssetSetter {
 
     }
 
-    public void setNPC_white() {
-        gp.npc[0] = new NPC(gp);
-        gp.npc[0].x = gp.tileSize * 27;
-        gp.npc[0].y = gp.tileSize * 27;
-
-    }
 
 }
