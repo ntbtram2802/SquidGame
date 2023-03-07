@@ -8,12 +8,10 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 
-public class OBJ_linh {
-	public BufferedImage image1, image2, image3;
-	public int worldx, worldy;
-	GamePanel gp;
-	public OBJ_linh(GamePanel gp) {
-		this.gp = gp;
+public class OBJ_linh extends superobject {
+
+	public OBJ_linh() {
+		
 		getPlayerImage();
 
 	}
@@ -27,18 +25,5 @@ public class OBJ_linh {
 		}
 	}
 	
-	public void draw (Graphics2D g2, String action, int worldx, int worldy) {
-		BufferedImage image = null;
-		switch(action) {
-		case "round":
-			image = image1;
-		case "triangle":
-			image = image2;
-		case "square":
-			image = image3;
 	
-		}
-		g2.drawImage(image, worldx, worldy, GamePanel.tilesize,GamePanel.tilesize, null );
-	}
-
 }

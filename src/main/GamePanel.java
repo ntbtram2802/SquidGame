@@ -31,13 +31,8 @@ public class GamePanel extends JPanel implements Runnable {
     //ENTITY &OBJECT
     public Player player= new Player(this,keyH);
     public Boss bo = new Boss(this);
-    public OBJ_linh obj1= new OBJ_linh(this); 
-    public OBJ_linh obj2= new OBJ_linh(this);
-    public OBJ_linh obj3= new OBJ_linh(this);
-    public OBJ_linh obj4= new OBJ_linh(this);
-    public OBJ_linh obj6= new OBJ_linh(this);
-    public OBJ_linh obj5= new OBJ_linh(this);
-   // public superobject obj[]= new superobject [10]; // chuan bi 6 slot for any sum of object
+ 
+   public superobject obj[]= new superobject [10]; // chuan bi 6 slot for any sum of object
     Background bg = new Background("/background/background2.png");
    
     
@@ -57,9 +52,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
-//	public void setupGame() {
-//		aSetter.setObject();
-//	}
+	public void setupGame() {
+		aSetter.setObject();
+	}
     
     public void startGameThread() {
         gameThread = new Thread(this);
@@ -108,19 +103,15 @@ public class GamePanel extends JPanel implements Runnable {
 	        
 	        Graphics2D g2=(Graphics2D)g; // change graphics g-> graphics 2D
 	        bg.draw(g2);
-	        obj1.draw(g2, "round", 1*GamePanel.tilesize, 3*GamePanel.tilesize);
-	        obj2.draw(g2, "triangle", 3*GamePanel.tilesize, 3*GamePanel.tilesize);
-	        obj3.draw(g2, "square", 5*GamePanel.tilesize, 3*GamePanel.tilesize);
-	        obj4.draw(g2, "round", 9*GamePanel.tilesize, 3*GamePanel.tilesize);
-	        obj5.draw(g2, "triangle", 11*GamePanel.tilesize, 3*GamePanel.tilesize);
-	        obj6.draw(g2, "square", 13*GamePanel.tilesize, 3*GamePanel.tilesize);
-	        	
-//	        for(int i= 0; i<=8;i++) {      	
-//	        	if(obj[i] != null) {
-//	        		obj[i].draw(g2);
-//	        	}
-//	        	
-//	        }
+	        int j = 1;
+	        while( j<=5 && obj[j]!= null) {
+	        	obj[j].draw_linh(g2, "round");
+	        	j++;
+	        	obj[j].draw_linh(g2, "triangle");
+	        	j++;
+	        	obj[j].draw_linh(g2, "square");   	
+	        	j++;
+	        }
 	        player.draw(g2);
 	        bo.draw(g2);
 	        

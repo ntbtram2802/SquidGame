@@ -14,7 +14,7 @@ public class Main {
 	        GamePanel gamePanel= new GamePanel();
 	        window.add(gamePanel);
 	        window.pack();
-//	        gamePanel.setupGame();
+	        gamePanel.setupGame();
 	        window.setLocationRelativeTo(null);
 	        window.setVisible(true);
 	        gamePanel.startGameThread();
