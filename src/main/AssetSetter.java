@@ -1,6 +1,7 @@
 package main;
 
 import Object_linh.OBJ_linh;
+import entity.NPC_nau;
 
 public class AssetSetter {
 	GamePanel gp;
@@ -39,6 +40,23 @@ public class AssetSetter {
 		gp.obj[6].worldy = 3*GamePanel.tilesize;
 		
 	}
-
+	public void setNPC() {
+		System.out.println("HHHHHHHHHHHH");
+		gp.NPC[1] = new NPC_nau(gp);
+		gp.NPC[1].x = 2*GamePanel.tilesize;
+		gp.NPC[1].y = 6*GamePanel.tilesize;
+		
+		gp.NPC[2] = new NPC_nau(gp);
+		gp.NPC[2].x = 3*GamePanel.tilesize;
+		gp.NPC[2].y = 6*GamePanel.tilesize;
+		
+		gp.NPC[3] = new NPC_nau(gp);
+		gp.NPC[3].x = 5*GamePanel.tilesize;
+		gp.NPC[3].y = 6*GamePanel.tilesize;
+		
+		gp.NPC[4] = new NPC_nau(gp);
+		gp.NPC[4].x = 6*GamePanel.tilesize;
+		gp.NPC[4].y = 6*GamePanel.tilesize;
+	}
 
 }

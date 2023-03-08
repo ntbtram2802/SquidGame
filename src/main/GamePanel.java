@@ -11,6 +11,7 @@ import Map.Background;
 import Object_linh.OBJ_linh;
 import Object_linh.superobject;
 import entity.Boss;
+import entity.Entity;
 import entity.Player;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -38,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
     
     
     
-//    // public Entity NPC[] = new Entity[10];// this is npc array // sua npc thành NPC
+     public Entity NPC[] = new Entity[10];// this is npc array // sua npc thï¿½nh NPC
     int FPS=60;
     
     // Background bg;
@@ -54,6 +55,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 	public void setupGame() {
 		aSetter.setObject();
+		aSetter.setNPC();
 	}
     
     public void startGameThread() {
@@ -92,17 +94,24 @@ public class GamePanel extends JPanel implements Runnable {
         player.update();
         bo.update();
         //NPC
-//        for (int i = 0; i < npc.length; i++) {
-//        	if (npc[i] != null) {
-//        		npc[i].update();
-//        	}
-//        }
+        for (int z = 0; z< NPC.length; z++) {
+        	if (NPC[z] != null) {
+        		NPC[z].update();
+        	}
+        }
     }
 	 public void paintComponent(Graphics g){
 	        super.paintComponent(g);
 	        
 	        Graphics2D g2=(Graphics2D)g; // change graphics g-> graphics 2D
 	        bg.draw(g2);
+	        
+	        for(int i = 0; i < NPC.length; i++ ) {
+				if (NPC[i]!= null) {
+					NPC[i].draw_NPC(g2);
+				}
+				
+			}
 	        int j = 1;
 	        while( j<=5 && obj[j]!= null) {
 	        	obj[j].draw_linh(g2, "round");
@@ -118,14 +127,9 @@ public class GamePanel extends JPanel implements Runnable {
 
 	        g2.dispose();
 
-	        // NPC
-//	        for (int i = 0; i < npc.length; i++) { 
-//	        	if (NPC[i] != null) { change NPC thanh npc
-//	        		NPC[i].draw(g2); // change NPC thanh npc
-//	        	}
-//	      }
+
+	      }
 
 	    }
 
-
-}
+	

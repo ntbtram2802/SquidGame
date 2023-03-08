@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -32,114 +33,101 @@ public class Entity {
 
     }
 
-    // NPC movement
-//    public void setAction() {
-//
-//    }
-//
-//    public void update() {
-//        setAction();
-//
-//        // collisionOn = false;
-//        // gp.cChecker.checkTile(this);// collision checker created in GamePanel thuộc phần Collision
-//
-//        // if (collisionOn == false) {
-//        switch (direction) {
-//            case "up":
-//                y -= speed;
-//                break;
-//            case "down":
-//                y += speed;
-//                break;
-//            case "left":
-//                x -= speed;
-//                break;
-//            case "right":
-//                x += speed;
-//                break;
-//        }
-//        // }
-//
-//        spriteCounter++;
-//        if (spriteCounter > 12) {
-//            if (spriteNum == 1) {
-//                spriteNum = 2;
-//            } else if (spriteNum == 2) {
-//                spriteNum = 1;
-//            }
-//            spriteCounter = 0;
-//        }
-//
-//    }
-//
-//    public void draw(Graphics2D g2) {
-//
-//        BufferedImage image = null;
-//        int screenX = x - gp.player.x + gp.player.x;
-//        int screenY = y - gp.player.y + gp.player.y;
-//
-//        if (x + gp.tilesize > gp.player.x - gp.player.x &&
-//                x - gp.tilesize < gp.player.x + gp.player.y &&
-//                y - gp.tilesize > gp.player.y + gp.player.y&&
-//                y - gp.tilesize < gp.player.y + gp.player.y) {
-//
-//            switch (direction) {
-//                case "up":
-//                    if (spriteNum == 1) {
-//                        image = up1;
-//                    }
-//                    if (spriteNum == 2) {
-//                        image = up2;
-//                    }
-//                    break;
-//
-//                case "down":
-//                    if (spriteNum == 1) {
-//                        image = down1;
-//                    }
-//                    if (spriteNum == 2) {
-//                        image = down2;
-//                    }
-//                    break;
-//
-//                case "left":
-//                    if (spriteNum == 1) {
-//                        image = left1;
-//                    }
-//                    if (spriteNum == 2) {
-//                        image = left2;
-//                    }
-//                    break;
-//
-//                case "right":
-//                    if (spriteNum == 1) {
-//                        image = right1;
-//                    }
-//                    if (spriteNum == 2) {
-//                        image = right2;
-//                    }
-//                    break;
-//
-//            }
-//
-//            g2.drawImage(image, screenX, screenY, gp.tilesize, gp.tilesize, null);
-//        }
-//
-//    }
-//
-//    public BufferedImage setup(String imagePath) {
-//
-//        UtilityTool uTool = new UtilityTool();
-//        BufferedImage image = null;
-//
-//        try {
-//            image = ImageIO.read(getClass().getResource(imagePath + ".png"));
-//            image = uTool.scaleImage(image, gp.tilesize, gp.tilesize); //
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return image;
-//    }
-//
+    public void draw_NPC(Graphics2D g2) {
+
+        BufferedImage image = null;
+        int screenX = x - gp.player.x + gp.player.x;
+        int screenY = y - gp.player.y + gp.player.y;
+
+        if (x + GamePanel.tilesize > gp.player.x - gp.player.x &&
+                x - GamePanel.tilesize < gp.player.x + gp.player.y &&
+                y + GamePanel.tilesize > gp.player.y - gp.player.y&&
+                y - GamePanel.tilesize < gp.player.y + gp.player.y) {
+
+            switch (direction) {
+                case "up":
+                    if (spriteNum == 1) {
+                        image = up1;
+                    }
+                    if (spriteNum == 2) {
+                        image = up2;
+                    }
+                    break;
+
+                case "down":
+                    if (spriteNum == 1) {
+                        image = down1;
+                    }
+                    if (spriteNum == 2) {
+                        image = down2;
+                    }
+                    break;
+
+                case "left":
+                    if (spriteNum == 1) {
+                        image = left1;
+                    }
+                    if (spriteNum == 2) {
+                        image = left2;
+                    }
+                    break;
+
+                case "right":
+                    if (spriteNum == 1) {
+                        image = right1;
+                    }
+                    if (spriteNum == 2) {
+                        image = right2;
+                    }
+                    break;
+
+            }
+
+            g2.drawImage(image, screenX, screenY, GamePanel.tilesize, GamePanel.tilesize, null);
+        }
+
+    }
+  	
+
+      // NPC movement
+      public void setAction() {
+
+      }
+
+      public void update() {
+          setAction();
+
+          // collisionOn = false;
+          // gp.cChecker.checkTile(this);// collision checker created in GamePanel thuá»™c pháº§n Collision
+
+          // if (collisionOn == false) {
+          switch (direction) {
+              case "up":
+                  y -= speed;
+                  break;
+              case "down":
+                  y += speed;
+                  break;
+              case "left":
+                  x -= speed;
+                  break;
+              case "right":
+                  x += speed;
+                  break;
+          }
+        
+
+          spriteCounter++;
+          if (spriteCounter > 12) {
+              if (spriteNum == 1) {
+                  spriteNum = 2;
+              } else if (spriteNum == 2) {
+                  spriteNum = 1;
+              }
+              spriteCounter = 0;
+          }
+
+      }
+
 
 }
