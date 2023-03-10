@@ -27,19 +27,14 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;// to start and stop the game whenever you want to
     public AssetSetter aSetter = new AssetSetter (this);
     
-    //ENTITY &OBJECT
+    //ENTITY & OBJECT
     public Player player= new Player(this,keyH);
     public Boss bo = new Boss(this);
     public superobject obj[]= new superobject [10]; // chuan bi 6 slot for any sum of object
     Background bg = new Background("/background/background2.png");
-   
     
+	int FPS=60;
     
-    
-//    // public Entity NPC[] = new Entity[10];// this is npc array // sua npc thành NPC
-    int FPS=60;
-    
-    // Background bg;
     
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -89,24 +84,24 @@ public class GamePanel extends JPanel implements Runnable {
 	public void update() {
         player.update();
         bo.update();
-        //NPC
-//        for (int i = 0; i < npc.length; i++) {
-//        	if (npc[i] != null) {
-//        		npc[i].update();
-//        	}
-//        }
+    //     NPC
+    //    for (int i = 0; i < npc.length; i++) {
+    //    	if (npc[i] != null) {
+    //    		npc[i].update();
+    //    	}
+    //    }
     }
 	 public void paintComponent(Graphics g){
 	        super.paintComponent(g);
 	        
 	        Graphics2D g2=(Graphics2D)g; // change graphics g-> graphics 2D
 	        bg.draw(g2);
-	        for(int i= 0; i<=8;i++) {      	
-	        	if(obj[i] != null) {
-	        		obj[i].draw(g2);
-	        	}
+	        // for(int i= 0; i<=8;i++) {      	
+	        // 	if(obj[i] != null) {
+	        // 		obj[i].draw(g2);
+	        // 	}
 	        	
-	        }
+	        // }
 	        player.draw(g2);
 	        bo.draw(g2);
 	        

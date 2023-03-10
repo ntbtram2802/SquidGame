@@ -15,5 +15,4 @@ public class superobject {
 		g2.drawImage(image, worldx, worldy, GamePanel.tilesize, GamePanel.tilesize, null);
 	}
 
-
 }

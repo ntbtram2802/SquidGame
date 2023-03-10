@@ -3,6 +3,7 @@ package entity;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.awt.Graphics2D;
 
 import javax.imageio.ImageIO;
 
@@ -29,7 +30,6 @@ public class Entity {
 
     public Entity(GamePanel gp) {
         this.gp = gp;
-
     }
 
     // NPC movement
@@ -71,75 +71,4 @@ public class Entity {
 //        }
 //
 //    }
-//
-//    public void draw(Graphics2D g2) {
-//
-//        BufferedImage image = null;
-//        int screenX = x - gp.player.x + gp.player.x;
-//        int screenY = y - gp.player.y + gp.player.y;
-//
-//        if (x + gp.tilesize > gp.player.x - gp.player.x &&
-//                x - gp.tilesize < gp.player.x + gp.player.y &&
-//                y - gp.tilesize > gp.player.y + gp.player.y&&
-//                y - gp.tilesize < gp.player.y + gp.player.y) {
-//
-//            switch (direction) {
-//                case "up":
-//                    if (spriteNum == 1) {
-//                        image = up1;
-//                    }
-//                    if (spriteNum == 2) {
-//                        image = up2;
-//                    }
-//                    break;
-//
-//                case "down":
-//                    if (spriteNum == 1) {
-//                        image = down1;
-//                    }
-//                    if (spriteNum == 2) {
-//                        image = down2;
-//                    }
-//                    break;
-//
-//                case "left":
-//                    if (spriteNum == 1) {
-//                        image = left1;
-//                    }
-//                    if (spriteNum == 2) {
-//                        image = left2;
-//                    }
-//                    break;
-//
-//                case "right":
-//                    if (spriteNum == 1) {
-//                        image = right1;
-//                    }
-//                    if (spriteNum == 2) {
-//                        image = right2;
-//                    }
-//                    break;
-//
-//            }
-//
-//            g2.drawImage(image, screenX, screenY, gp.tilesize, gp.tilesize, null);
-//        }
-//
-//    }
-//
-//    public BufferedImage setup(String imagePath) {
-//
-//        UtilityTool uTool = new UtilityTool();
-//        BufferedImage image = null;
-//
-//        try {
-//            image = ImageIO.read(getClass().getResource(imagePath + ".png"));
-//            image = uTool.scaleImage(image, gp.tilesize, gp.tilesize); //
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return image;
-//    }
-//
-
 }
