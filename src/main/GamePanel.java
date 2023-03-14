@@ -99,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable {
 	        
 	        for(int i = 0; i < NPC.length; i++ ) {
 				if (NPC[i]!= null) {
-					NPC[i].draw(g2);
+					NPC[i].draw_NPC(g2);
 				}	
 			}
 

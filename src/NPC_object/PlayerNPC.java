@@ -1,9 +1,10 @@
-package entity;
+package NPC_object;
 
 import java.util.Random;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 import main.GamePanel;
+import entity.Entity;
 
 public class PlayerNPC extends Entity{
 	public PlayerNPC(GamePanel gp) {
@@ -58,6 +59,10 @@ public class PlayerNPC extends Entity{
 			}
 	}
 
+	public void update(){
+		super.update();
+	}
+	
 	public void draw_NPC(Graphics2D g2){
         int screenX = x - gp.player.x + gp.player.x;
         int screenY = y - gp.player.y + gp.player.y;

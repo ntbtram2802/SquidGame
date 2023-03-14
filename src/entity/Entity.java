@@ -94,7 +94,6 @@ public class Entity {
 
       public void update() {
           setAction();
-
           // collisionOn = false;
           // gp.cChecker.checkTile(this);// collision checker created in GamePanel thuá»™c pháº§n Collision
           // if (collisionOn == false) {
