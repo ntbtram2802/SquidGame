@@ -1,9 +1,11 @@
-package entity;
+package NPC_object;
 
 import java.util.Random;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
+
 import main.GamePanel;
+import entity.Entity;
 
 public class PlayerNPC extends Entity{
 	public PlayerNPC(GamePanel gp) {
