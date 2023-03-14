@@ -1,13 +1,14 @@
-package entity;
+package NPC_object;
 
 import java.util.Random;
-
 import javax.imageio.ImageIO;
+import java.awt.Graphics2D;
 
 import main.GamePanel;
+import entity.Entity;
 
-public class NPC_nau extends Entity{
-	public NPC_nau(GamePanel gp) {
+public class PlayerNPC extends Entity{
+	public PlayerNPC(GamePanel gp) {
 		super(gp);
 		getNPCImage();
 		setDefault();
@@ -57,8 +58,19 @@ public class NPC_nau extends Entity{
 				
 			actionLockCounter = 0;
 			}
-		
-		
+	}
+
+	public void draw_NPC(Graphics2D g2){
+        int screenX = x - gp.player.x + gp.player.x;
+        int screenY = y - gp.player.y + gp.player.y;
+
+        if (x + GamePanel.tilesize > gp.player.x - gp.player.x &&
+                x - GamePanel.tilesize < gp.player.x + gp.player.y &&
+                y + GamePanel.tilesize > gp.player.y - gp.player.y&&
+                y - GamePanel.tilesize < gp.player.y + gp.player.y) {
+			super.draw(g2);
 		}
+
+	}
 
 }

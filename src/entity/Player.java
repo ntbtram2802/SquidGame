@@ -21,7 +21,6 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-
     	x = 200;
         y = 500;
         speed = 1;
@@ -50,8 +49,8 @@ public class Player extends Entity {
         if (keyH.upPressed == true || keyH.downPressed == true || 
                     keyH.leftPressed == true || keyH.rightPressed == true){
 
-                if (keyH.upPressed == true) {
-                    direction = "up";
+                if (keyH.upPressed == true && (y-speed)>=150) {
+                    direction = "up";  
                     y -= speed;
                 }
                 else if (keyH.downPressed == true) {
@@ -88,52 +87,7 @@ public class Player extends Entity {
 
 
     public void draw(Graphics2D g2) {
-        BufferedImage image = null;
-
-        switch (direction) {
-            case "stand":
-                image = stand;
-                break;
-            case "up":
-                if (spriteNum == 1){
-                    image = up1;
-                }
-                if (spriteNum == 2) {
-                    image = up2;
-                }
-                if (spriteNum == 3) {
-                    image = up3;
-                }
-                break;
-            case "down":
-                if (spriteNum == 1) {
-                    image = down1;
-                }
-                if (spriteNum == 2) {
-                    image = down2;
-                }
-                break;
-            case "left":
-                if (spriteNum == 1) {
-                    image = left1;
-                }
-                if (spriteNum == 2) {
-                    image = left2;
-                }
-                break;
-            case "right":
-                if (spriteNum == 1) {
-                    image = right1;
-                }
-                if (spriteNum == 2) {
-                    image = right2;
-                }
-                break;
-            /*default:
-                throw new IllegalStateException("Unexpected value: " + direction);*/
-        }
-        g2.drawImage(image, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-
+        super.draw(g2);
     }
-
 }
+

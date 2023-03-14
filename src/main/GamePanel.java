@@ -4,15 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import javax.swing.JPanel;
 
-import Map.Background;
-import Object_linh.OBJ_linh;
-import Object_linh.superobject;
-import entity.Boss;
-import entity.Entity;
-import entity.Player;
+import Map.*;
+import NPC_object.*;
+import entity.*;
 
 public class GamePanel extends JPanel implements Runnable {
 	// SCREEN SETTINGS
@@ -31,18 +27,13 @@ public class GamePanel extends JPanel implements Runnable {
     
     //ENTITY &OBJECT
     public Player player= new Player(this,keyH);
-    public Boss bo = new Boss(this);
- 
-   public superobject obj[]= new superobject [10]; // chuan bi 6 slot for any sum of object
-    Background bg = new Background("/background/background2.png");
-   
-    
-    
-    
-     public Entity NPC[] = new Entity[10];// this is npc array // sua npc th�nh NPC
+    public Boss boss = new Boss(this);
+    public NPC obj[]= new NPC [10];
+	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array // sua npc th�nh NPC
     int FPS=60;
     
     // Background bg;
+	public Background bg = new Background("/background/background2.png");
     
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -92,8 +83,8 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	public void update() {
         player.update();
-        bo.update();
-        //NPC
+        boss.update();
+
         for (int z = 0; z< NPC.length; z++) {
         	if (NPC[z] != null) {
         		NPC[z].update();
@@ -101,33 +92,30 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 	 public void paintComponent(Graphics g){
-	        super.paintComponent(g);
-	        
+
+	        super.paintComponent(g); 
 	        Graphics2D g2=(Graphics2D)g; // change graphics g-> graphics 2D
 	        bg.draw(g2);
 	        
 	        for(int i = 0; i < NPC.length; i++ ) {
 				if (NPC[i]!= null) {
-					NPC[i].draw_NPC(g2);
-				}
-				
+					NPC[i].draw(g2);
+				}	
 			}
+
 	        int j = 1;
 	        while( j<=5 && obj[j]!= null) {
-	        	obj[j].draw_linh(g2, "round");
+	        	obj[j].draw_NPC(g2, "round");
 	        	j++;
-	        	obj[j].draw_linh(g2, "triangle");
+	        	obj[j].draw_NPC(g2, "triangle");
 	        	j++;
-	        	obj[j].draw_linh(g2, "square");   	
+	        	obj[j].draw_NPC(g2, "square");   	
 	        	j++;
 	        }
+
 	        player.draw(g2);
-	        bo.draw(g2);
-	        
-
+	        boss.draw(g2);
 	        g2.dispose();
-
-
 	      }
 
 	    }

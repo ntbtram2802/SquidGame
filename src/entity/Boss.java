@@ -28,6 +28,7 @@ public class Boss extends Entity{
 				e.printStackTrace();
 		}
 	}
+
 	public void update() {
 		count++;
 		if (count < 400 ) {
@@ -40,6 +41,7 @@ public class Boss extends Entity{
 			count=0;
 		}
 	}
+	
 	public void draw (Graphics2D g2) {
 		BufferedImage image = null;
 		switch(directionbo) {
