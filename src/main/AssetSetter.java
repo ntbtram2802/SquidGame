@@ -1,7 +1,7 @@
 package main;
 
-import NPC_object.NPC;
-import NPC_object.PlayerNPC;
+import Object.NPC;
+import entity.PlayerNPC;
 
 public class AssetSetter {
 	GamePanel gp;

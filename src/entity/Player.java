@@ -15,19 +15,12 @@ public class Player extends Entity {
     public Player (GamePanel gp,KeyHandler keyH) {
         super(gp);
         this.keyH = keyH;
-
-        setDefaultValues();
-        getPlayerImage();
+        setDefault();
+        getImage();
     }
 
-    public void setDefaultValues() {
-    	x = 200;
-        y = 500;
-        speed = 1;
-        direction = "down";
-    }
 
-    public void getPlayerImage() {
+    public void getImage() {
     	try {
     		up1 = ImageIO.read(getClass().getResourceAsStream("/player/player_up1.png"));
     		up2 = ImageIO.read(getClass().getResourceAsStream("/player/player_up2.png"));

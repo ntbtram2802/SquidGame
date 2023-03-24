@@ -1,4 +1,4 @@
-package NPC_object;
+package Object;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -38,8 +38,6 @@ public class NPC {
 			break;
 	
 		}
-		g2.drawImage(image, worldx, worldy, GamePanel.tilesize,GamePanel.tilesize, null );
+		g2.drawImage(image, worldx + GamePanel.tilesize, worldy, GamePanel.tilesize,GamePanel.tilesize, null );
 	}
-	
-	
 }

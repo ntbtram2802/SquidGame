@@ -52,7 +52,7 @@ public class Boss extends Entity{
 			image = chinhdien;
 			break;	
 		}
-		g2.drawImage(image, 300, 125, GamePanel.tilesize*2,GamePanel.tilesize*2, null );
+		g2.drawImage(image, 352, 120, GamePanel.tilesize*2,GamePanel.tilesize*2, null );
 	}
 	
 
