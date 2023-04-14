@@ -28,6 +28,7 @@ public class Boss extends Entity{
 				e.printStackTrace();
 		}
 	}
+
 	public void update() {
 		count++;
 		if (count < 400 ) {
@@ -40,6 +41,7 @@ public class Boss extends Entity{
 			count=0;
 		}
 	}
+	
 	public void draw (Graphics2D g2) {
 		BufferedImage image = null;
 		switch(directionbo) {
@@ -50,7 +52,7 @@ public class Boss extends Entity{
 			image = chinhdien;
 			break;	
 		}
-		g2.drawImage(image, 300, 125, GamePanel.tilesize*2,GamePanel.tilesize*2, null );
+		g2.drawImage(image, 352, 120, GamePanel.tilesize*2,GamePanel.tilesize*2, null );
 	}
 	
 

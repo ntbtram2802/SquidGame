@@ -1,22 +1,17 @@
 package entity;
 
 import java.util.Random;
-
 import javax.imageio.ImageIO;
-
+import java.awt.Graphics2D;
 import main.GamePanel;
 
-public class NPC_nau extends Entity{
-	public NPC_nau(GamePanel gp) {
+public class PlayerNPC extends Entity{
+	public PlayerNPC(GamePanel gp) {
 		super(gp);
-		getNPCImage();
 		setDefault();
-		
+		getNPCImage();
 	}
-	public void setDefault() {
-		speed =1;
-		direction = "down";
-	}
+
 	public void getNPCImage() {
 		
 		try {
@@ -30,9 +25,9 @@ public class NPC_nau extends Entity{
 			right2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right2.png"));
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
+
 	public void setAction() {
 		
 		actionLockCounter ++;
@@ -40,25 +35,43 @@ public class NPC_nau extends Entity{
 				
 			Random random = new Random();
 				
-			int i = random.nextInt(100)+1; // pick up a number randomly 1-100 plus 1 bc it random from 0-99 and plus 1 is 1-100
-						
-			if (i <= 25) {
+			int x = random.nextInt(100)+1; // pick up a number randomly 1-100 plus 1 bc it random from 0-99 and plus 1 is 1-100
+			int y = random.nextInt(100);
+			
+			if (x <= 25) {
 					direction = "up";
 				}
-			if (i > 25 && i <= 50) {
+			if (x > 25 && y <= 50) {
 					direction = "down";
 				}
-			if (i > 50 && i <=75) {
+			if (x > 50 && y <=75) {
 					direction = "left";
 				}
-			if (i > 75 && i <= 100) {
+			if (x > 75 && y <= 100) {
 					direction = "right";
 				}
 				
 			actionLockCounter = 0;
 			}
-		
-		
+	}
+
+	public void update(){
+		setAction();
+		super.update();
+	}
+
+	@Override
+	public void draw(Graphics2D g2){
+        int screenX = x - gp.player.x + gp.player.x;
+        int screenY = y - gp.player.y + gp.player.y;
+
+        if (x + GamePanel.tilesize > this.gp.player.x - gp.player.x &&
+                x - GamePanel.tilesize < gp.player.x + gp.player.y &&
+                y + GamePanel.tilesize > gp.player.y - gp.player.y&&
+                y - GamePanel.tilesize < gp.player.y + gp.player.y) {
+			super.draw(g2);
 		}
+
+	}
 
 }

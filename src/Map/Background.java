@@ -48,13 +48,13 @@ public class Background {
         }
         g2.drawImage(bg,(int)x, (int)y,GamePanel.screenWidth, GamePanel.screenHeight, null);
 
-        //movescale
-        if(y < 0){
-            g2.drawImage(bg, (int)x, (int)y + GamePanel.screenHeight / GamePanel.scale, null);
-        } 
-        if(y > 0){
-            g2.drawImage(bg, (int)x, (int)y - GamePanel.screenHeight / GamePanel.scale, null);
-        }
+        // //movescale
+        // if(y < 0){
+        //     g2.drawImage(bg, (int)x, (int)y + GamePanel.screenHeight, null);
+        // } 
+        // if(y > 0){
+        //     g2.drawImage(bg, (int)x, (int)y - GamePanel.screenHeight , null);
+        // }
     }
 
 

@@ -11,16 +11,14 @@ import main.GamePanel;
 import main.UtilityTool;
 
 public class Entity {
-	GamePanel gp;
-    public int x, y;
-    public int speed;
-    
-
-    public BufferedImage up1, up2, up3, stand, down1, down2, left1, left2, right1, right2, chinhdien, xoaylung;
+	public GamePanel gp;
+    public int x;
+    public int y;
+    public double speed;
+    public BufferedImage up1, up2, up3, stand, down1, down2, left1, left2, right1, right2, chinhdien, xoaylung,image;
     //Mô tả hình ảnh dưới dạng một thông tin (để lưu trữ file ảnh))
 
     public String direction, directionbo;
-
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48); // default solid area for all entity
@@ -33,18 +31,60 @@ public class Entity {
 
     }
 
-    public void draw_NPC(Graphics2D g2) {
+      public void setDefault() {
+        x = 500;
+        y = 900;
+		speed =1.5;
+		direction = "down";
+	}
+
+    public void getImage(String address){
+        try{
+            image = ImageIO.read(getClass().getResourceAsStream(address));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+      public void update() {
+          // collisionOn = false;
+          // gp.cChecker.checkTile(this);// collision checker created in GamePanel thuá»™c pháº§n Collision
+          // if (collisionOn == false) {
+          switch (direction) {
+              case "up":
+                  y -= speed;
+                  break;
+              case "down":
+                  y += speed;
+                  break;
+              case "left":
+                  x -= speed;
+                  break;
+              case "right":
+                  x += speed;
+                  break;
+          }
+        
+          spriteCounter++;
+          if (spriteCounter > 12) {
+              if (spriteNum == 1) {
+                  spriteNum = 2;
+              } else if (spriteNum == 2) {
+                  spriteNum = 1;
+              }
+              spriteCounter = 0;
+          }
+
+    }
+
+    public void draw(Graphics2D g2) {
 
         BufferedImage image = null;
-        int screenX = x - gp.player.x + gp.player.x;
-        int screenY = y - gp.player.y + gp.player.y;
-
-        if (x + GamePanel.tilesize > gp.player.x - gp.player.x &&
-                x - GamePanel.tilesize < gp.player.x + gp.player.y &&
-                y + GamePanel.tilesize > gp.player.y - gp.player.y&&
-                y - GamePanel.tilesize < gp.player.y + gp.player.y) {
 
             switch (direction) {
+                case "stand":
+                    image=stand;
                 case "up":
                     if (spriteNum == 1) {
                         image = up1;
@@ -83,51 +123,8 @@ public class Entity {
 
             }
 
-            g2.drawImage(image, screenX, screenY, GamePanel.tilesize, GamePanel.tilesize, null);
+            g2.drawImage(image, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
         }
-
-    }
-  	
-
-      // NPC movement
-      public void setAction() {
-
-      }
-
-      public void update() {
-          setAction();
-
-          // collisionOn = false;
-          // gp.cChecker.checkTile(this);// collision checker created in GamePanel thuá»™c pháº§n Collision
-
-          // if (collisionOn == false) {
-          switch (direction) {
-              case "up":
-                  y -= speed;
-                  break;
-              case "down":
-                  y += speed;
-                  break;
-              case "left":
-                  x -= speed;
-                  break;
-              case "right":
-                  x += speed;
-                  break;
-          }
-        
-
-          spriteCounter++;
-          if (spriteCounter > 12) {
-              if (spriteNum == 1) {
-                  spriteNum = 2;
-              } else if (spriteNum == 2) {
-                  spriteNum = 1;
-              }
-              spriteCounter = 0;
-          }
-
-      }
 
 
 }
