@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import Map.*;
-import Object.*;
 import entity.*;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -105,11 +104,15 @@ public class GamePanel extends JPanel implements Runnable {
 
 	        int j = 1;
 	        while( j<=5 && obj[j]!= null) {
-	        	obj[j].draw_NPC(g2, "round");
+	        	obj[j].setdirection("round");
+	        	obj[j].draw(g2);
 	        	j++;
-	        	obj[j].draw_NPC(g2, "triangle");
+	        	obj[j].setdirection("triangle");
+	        	obj[j].draw(g2 );
+	        	
 	        	j++;
-	        	obj[j].draw_NPC(g2, "square");   	
+	        	obj[j].setdirection("square");
+	        	obj[j].draw(g2);   	
 	        	j++;
 	        }
 
