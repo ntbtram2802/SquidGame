@@ -9,47 +9,47 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 
 public class Boss extends Entity{
-	static int count = 0;
+
 
 	public Boss(GamePanel gp) {
 		super(gp);
-		setDefaultValues();
-		getBossImage();
+		setDefault();
+		getImage();
 		
 	}
 	public void setDefaultValues() {
-		directionbo = "xoaylung";
+		direction = "xoaylung";
 	}
-	public void getBossImage() {
+	public void getImage() {
 		try {
-			chinhdien = ImageIO.read(getClass().getResourceAsStream("/Boss/boss_chinhdien.png"));
-			xoaylung = ImageIO.read(getClass().getResourceAsStream("/Boss/boss_xoaylung.png"));
+			image1 = ImageIO.read(getClass().getResourceAsStream("/Boss/boss_chinhdien.png"));
+			image2 = ImageIO.read(getClass().getResourceAsStream("/Boss/boss_xoaylung.png"));
 		} catch (IOException e) {
 				e.printStackTrace();
 		}
 	}
 
 	public void update() {
-		count++;
-		if (count < 400 ) {
-			directionbo = "xoaylung";
+		actionLockCounter++;
+		if (actionLockCounter < 400 ) { // 400 lan update dau tien thi con boss se o huong xoay lung
+			direction = "xoaylung";
 		}
-		if(count> 400 && count<550) {
-			directionbo = "chinhdien";
+		if(actionLockCounter> 400 && actionLockCounter<550) { // sau do con boss se quay lai trong 150 lan update
+			direction = "chinhdien";
 		}
-		if (count>=550) {
-			count=0;
+		if (actionLockCounter>=550) {
+			actionLockCounter=0;
 		}
 	}
 	
 	public void draw (Graphics2D g2) {
 		BufferedImage image = null;
-		switch(directionbo) {
+		switch(direction) {
 		case "xoaylung":
-			image = xoaylung;
+			image = image2;
 			break;
 		case "chinhdien":
-			image = chinhdien;
+			image = image1;
 			break;	
 		}
 		g2.drawImage(image, 352, 120, GamePanel.tilesize*2,GamePanel.tilesize*2, null );

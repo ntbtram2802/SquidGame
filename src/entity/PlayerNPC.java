@@ -9,20 +9,20 @@ public class PlayerNPC extends Entity{
 	public PlayerNPC(GamePanel gp) {
 		super(gp);
 		setDefault();
-		getNPCImage();
+		getImage();
 	}
 
-	public void getNPCImage() {
+	public void getImage() {
 		
 		try {
-			up1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up1.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up2.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down2.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left1.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right1.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right2.png"));
+			image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up1.png"));
+			image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up2.png"));
+			image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down1.png"));
+			image5 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down2.png"));
+			image6 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left1.png"));
+			image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left2.png"));
+			image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right1.png"));
+			image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right2.png"));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}	
@@ -57,7 +57,31 @@ public class PlayerNPC extends Entity{
 
 	public void update(){
 		setAction();
-		super.update();
+		switch (direction) {
+        case "up":
+            y -= speed;
+            break;
+        case "down":
+            y += speed;
+            break;
+        case "left":
+            x -= speed;
+            break;
+        case "right":
+            x += speed;
+            break;
+    }
+  
+    spriteCounter++;
+    if (spriteCounter > 12) {
+        if (spriteNum == 1) {
+            spriteNum = 2;
+        } else if (spriteNum == 2) {
+            spriteNum = 1;
+        }
+        spriteCounter = 0;
+    }
+
 	}
 
 	@Override
