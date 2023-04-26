@@ -28,10 +28,13 @@ public abstract class Entity {
 
     }
 
+    public abstract void getImage(); //method lay hinh anh
+    public abstract void update(); //method update nhan vat
+
       public void setDefault() { // Initial nhung gia tri dau tien cho nhan vat
-        x = 500; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
+        x= 500; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
         y = 900; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
-		speed =1.5; // van toc cua nhan vat = 1.5
+		speed =1; // van toc cua nhan vat = 1.5
 		direction = "down";
 	}
       public void setdirection (String d) { //ham thay doi huong cua nhan vat
@@ -45,9 +48,13 @@ public abstract class Entity {
     	  this.y = y;
       }
 
-    public abstract void getImage(); //method lay hinh anh
-    public abstract void update(); //method update nhan vat
+      public double getSpeed() {
+          return speed;
+      }
 
+    public void checkCollision(){
+        
+    }
 
     public void draw(Graphics2D g2) { // update roi ve hinh anh moi update
 

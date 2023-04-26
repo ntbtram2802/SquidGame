@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array // sua npc th�nh NPC
     int FPS=60;
     
-    // Background bg;
+    // Background
 	public Background bg = new Background("/background/background2.png");
     
     public GamePanel() {

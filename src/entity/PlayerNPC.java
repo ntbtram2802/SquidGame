@@ -41,9 +41,9 @@ public class PlayerNPC extends Entity{
 			if (x <= 25) {
 					direction = "up";
 				}
-			if (x > 25 && y <= 50) {
-					direction = "down";
-				}
+			// if (x > 25 && y <= 50) {
+			// 		direction = "down";
+			// 	}
 			if (x > 50 && y <=75) {
 					direction = "left";
 				}
@@ -61,9 +61,9 @@ public class PlayerNPC extends Entity{
         case "up":
             y -= speed;
             break;
-        case "down":
-            y += speed;
-            break;
+        // case "down":
+        //     y += speed;
+        //     break;
         case "left":
             x -= speed;
             break;
@@ -84,18 +84,11 @@ public class PlayerNPC extends Entity{
 
 	}
 
+	
+
 	@Override
 	public void draw(Graphics2D g2){
-        int screenX = x - gp.player.x + gp.player.x;
-        int screenY = y - gp.player.y + gp.player.y;
-
-        if (x + GamePanel.tilesize > this.gp.player.x - gp.player.x &&
-                x - GamePanel.tilesize < gp.player.x + gp.player.y &&
-                y + GamePanel.tilesize > gp.player.y - gp.player.y&&
-                y - GamePanel.tilesize < gp.player.y + gp.player.y) {
 			super.draw(g2);
-		}
-
 	}
 
 }
