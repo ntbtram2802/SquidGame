@@ -44,19 +44,15 @@ public class AssetSetter {
 
 		gp.NPC[1] = new PlayerNPC(gp);
 		gp.NPC[1].setx(2*gp.tilesize);
-	    gp.NPC[1].sety(900);
 		
 		gp.NPC[2] = new PlayerNPC(gp);
-		gp.NPC[2].setx(3*gp.tilesize);
-		gp.NPC[2].sety(900);
+		gp.NPC[2].setx(12*gp.tilesize);
 		
 		gp.NPC[3] = new PlayerNPC(gp);
-		gp.NPC[3].setx(5*gp.tilesize);
-		gp.NPC[3].sety(900);
+		gp.NPC[3].setx(6*gp.tilesize);
 		
 		gp.NPC[4] = new PlayerNPC(gp);
-		gp.NPC[4].setx(6*gp.tilesize);
-		gp.NPC[4].sety(900);
+		gp.NPC[4].setx(9*gp.tilesize);
 	}
 
 }

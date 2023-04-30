@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 
 public class Boss extends Entity{
-
+	private int size=32;
 
 	public Boss(GamePanel gp) {
 		super(gp);
@@ -52,7 +52,7 @@ public class Boss extends Entity{
 			image = image1;
 			break;	
 		}
-		g2.drawImage(image, 352, 120, GamePanel.tilesize*2,GamePanel.tilesize*2, null );
+		g2.drawImage(image, 352, 120,size*GamePanel.scale,size*GamePanel.scale, null);
 	}
 	
 
