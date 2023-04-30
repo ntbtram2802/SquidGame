@@ -24,6 +24,7 @@ public class GamePanel extends JPanel implements Runnable {
 	Thread gameThread;// to start and stop the game whenever you want to
 	public AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
+	Sound sound = new Sound();
 
 	// ENTITY &OBJECT
 	public Player player = new Player(this, keyH);
@@ -47,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void setupGame() {
 		aSetter.setObject();
 		aSetter.setNPC();
+		playMusic(0);
 	}
 
 	public void startGameThread() {
@@ -56,44 +58,43 @@ public class GamePanel extends JPanel implements Runnable {
 
 	@Override
 	public void run() {
-		double drawinterval = 1000000000 / FPS;
-		double delta = 0;
-		long lasttime = System.nanoTime();
-		long currenTime;
-		long timer = 0;
-		int DrawCount = 0;
-		while (gameThread != null) {
-			currenTime = System.nanoTime();
-			delta += (currenTime - lasttime) / drawinterval;
-			timer += (currenTime - lasttime);
-			lasttime = currenTime;
-			if (delta >= 1) {
-				update();
-				repaint();
-				delta--;
-				DrawCount++;
-			}
-			if (timer >= 1000000000) {
-				System.out.println("Fps" + DrawCount);
-				DrawCount = 0;
-				timer = 0;
-			}
+		double drawinterval=1000000000/FPS;
+	     double delta=0;
+	     long lasttime=System.nanoTime();
+	     long currenTime;
+	     long timer=0;
+	     int DrawCount=0;
+	     while(gameThread!=null){
+	         currenTime = System.nanoTime();
+	         delta += (currenTime-lasttime)/drawinterval;
+	         timer += (currenTime-lasttime);
+	         lasttime = currenTime;
+	         if(delta>=1){
+	             update();
+	             repaint();
+	             delta--;
+	             DrawCount++;
+	         } if (timer>=1000000000){
+	             System.out.println("Fps"+DrawCount);
+	             DrawCount=0;
+	             timer=0;
+	         }
 
-		}
-	}
-
+	     }
+	    }
+	
 	public void update() {
-		player.update();
-		boss.update();
+        player.update();
+        boss.update();
 
-		for (int z = 0; z < NPC.length; z++) {
-			if (NPC[z] != null) {
-				NPC[z].update();
-			}
-		}
-	}
+        for (int z = 0; z< NPC.length; z++) {
+        	if (NPC[z] != null) {
+        		NPC[z].update();
+        	}
+        }
+    }
 
-	public void paintComponent(Graphics g) {
+	 public void paintComponent(Graphics g){
 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g; 
@@ -122,6 +123,20 @@ public class GamePanel extends JPanel implements Runnable {
 		player.draw(g2);
 		boss.draw(g2);
 		g2.dispose();
+	      
 	}
+
+	public void playMusic(int i){
+		sound.setFile(i);
+		sound.play();
+		sound.loop();
+	  }
+	  public void stopMusic(){
+		sound.stop();
+	  }
+	  public void playSE(int i){
+		sound.setFile(i);
+		sound.play();
+	  }
 
 }
