@@ -13,17 +13,21 @@ public class GamePanel extends JPanel implements Runnable {
 	// SCREEN SETTINGS
     public static final int orignialTileSize = 16;
     public static final int scale = 3;
-    public static final int tilesize = orignialTileSize*scale; // 48X48 tile
+    public static final int tilesize = orignialTileSize*scale; // 48 X48 tile
     public static final int maxScreenCol = 20;// horizontal, ngang
     public static final int maxScreenRow = 16; // vertical,doc
     public static final int screenWidth = tilesize * maxScreenRow; //256 ngang
     public static final int screenHeight = tilesize * maxScreenCol;//320 doc
+
     
     //SYSTEM
     KeyHandler keyH= new KeyHandler();
-    Thread gameThread;// to start and stop the game whenever you want to
     public AssetSetter aSetter = new AssetSetter (this);
-    
+	Sound sound= new Sound();
+	Thread gamThread;
+
+
+    Thread gameThread;
     //ENTITY &OBJECT
     public Player player= new Player(this,keyH);
     public Boss boss = new Boss(this);
@@ -31,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array // sua npc th�nh NPC
     int FPS=60;
     
-    // Background
+    // Background bg;
 	public Background bg = new Background("/background/background2.png");
     
     public GamePanel() {
@@ -46,6 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void setupGame() {
 		aSetter.setObject();
 		aSetter.setNPC();
+		playMusic(0);
 	}
     
     public void startGameThread() {
@@ -95,31 +100,42 @@ public class GamePanel extends JPanel implements Runnable {
 	        super.paintComponent(g); 
 	        Graphics2D g2=(Graphics2D)g; // change graphics g-> graphics 2D
 	        bg.draw(g2);
-	        
-	        for(int i = 0; i < NPC.length; i++ ) {
-				if (NPC[i]!= null) {
-					NPC[i].draw(g2);
-				}	
+	        int j=1;
+			while(j<=5 && obj[j]!=null){
+				obj[j].setdirection("round");
+				obj[j].draw(g2);
+				j++;
+				obj[j].setdirection("triangle");
+				obj[j].draw(g2);
+				
+				j++;
+				obj[j].setdirection("square");
+				obj[j].draw(g2);
+				j++;
+				
 			}
-
-	        int j = 1;
-	        while( j<=5 && obj[j]!= null) {
-	        	obj[j].setdirection("round");
-	        	obj[j].draw(g2);
-	        	j++;
-	        	obj[j].setdirection("triangle");
-	        	obj[j].draw(g2 );
-	        	
-	        	j++;
-	        	obj[j].setdirection("square");
-	        	obj[j].draw(g2);   	
-	        	j++;
-	        }
-
-	        player.draw(g2);
 	        boss.draw(g2);
-	        g2.dispose();
+			if(player!=null){
+				player.draw(g2);
+			}
+			for(int i=0;i<NPC.length;i++){
+				if(NPC[i]!=null){
+					NPC[i].draw(g2);
+				}
+			}
 	      }
+		  public void playMusic(int i){
+			sound.setFile(i);
+			sound.play();
+			sound.loop();
+		  }
+		  public void stopMusic(){
+			sound.stop();
+		  }
+		  public void playSE(int i){
+			sound.setFile(i);
+			sound.play();
+		  }
 
 	    }
 
