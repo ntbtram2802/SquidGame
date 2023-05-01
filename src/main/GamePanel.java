@@ -2,8 +2,12 @@ package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Map.*;
@@ -24,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
 	Thread gameThread;// to start and stop the game whenever you want to
 	public AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
-	Sound sound = new Sound();
+	static Sound sound = new Sound();
 
 	// ENTITY &OBJECT
 	public Player player = new Player(this, keyH);
@@ -32,6 +36,12 @@ public class GamePanel extends JPanel implements Runnable {
 	public NPC obj[] = new NPC[7];
 	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array
 	int FPS = 60;
+
+	// GAME STATE
+	public static int gameState;
+	public final static int playState = 1;
+	public final static int titleState = 0;
+	public static int commandNum = 0;
 
 	// Background
 	public Background bg = new Background("/background/background2.png");
@@ -48,7 +58,8 @@ public class GamePanel extends JPanel implements Runnable {
 	public void setupGame() {
 		aSetter.setObject();
 		aSetter.setNPC();
-		playMusic(0);
+		// playMusic(0);
+		gameState = titleState;
 	}
 
 	public void startGameThread() {
@@ -85,12 +96,14 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		player.update();
-		boss.update();
+		if (gameState == playState) {
+			player.update();
+			boss.update();
 
-		for (int z = 0; z < NPC.length; z++) {
-			if (NPC[z] != null) {
-				NPC[z].update();
+			for (int z = 0; z < NPC.length; z++) {
+				if (NPC[z] != null) {
+					NPC[z].update();
+				}
 			}
 		}
 	}
@@ -99,34 +112,98 @@ public class GamePanel extends JPanel implements Runnable {
 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		bg.draw(g2);
+		if (gameState == titleState) {
 
-		for (int i = 0; i < NPC.length; i++) {
-			if (NPC[i] != null) {
-				NPC[i].draw(g2);
+			g2.setColor(new Color(157, 120, 100));
+			g2.fillRect(0, 0, screenWidth, screenHeight);
+
+			int x = 60;
+			int y = tilesize * 2;
+			try {
+				g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/menu/menu_squidgame.png")), x, y,
+						tilesize * 13, tilesize * 4, null);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		}
 
-		int j = 1;
-		while (j <= 5 && obj[j] != null) {
-			obj[j].setDirection("round");
-			obj[j].draw(g2);
-			j++;
-			obj[j].setDirection("triangle");
-			obj[j].draw(g2);
-			j++;
-			obj[j].setDirection("square");
-			obj[j].draw(g2);
-			j++;
-		}
+			// MENU IMAGE
+			x = screenWidth / 2 - (tilesize * 9) / 2;
+			y += tilesize * 5;
+			try {
+				g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/menu/menu_background.png")), x, y,
+						tilesize * 9, tilesize * 10, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-		player.draw(g2);
-		boss.draw(g2);
-		g2.dispose();
+			// MENU BUTTON
+			g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 60F));
+			String text = "Start";
+			x = 320;
+			y += tilesize * 5;
+			g2.setColor(new Color(80, 0, 0));
+			g2.drawString(text, x, y);
+			// button shadow
+			g2.setColor(new Color(157, 0, 0));
+			g2.drawString(text, x + 3, y + 3);
+
+			if (commandNum == 0) {
+				g2.drawString(">", x - tilesize, y);
+			}
+
+			text = "Quit";
+			x = 325;
+			y += tilesize * 2;
+			g2.setColor(new Color(80, 0, 0));
+			g2.drawString(text, x, y);
+			// button shadow
+			g2.setColor(new Color(157, 0, 0));
+			g2.drawString(text, x + 3, y + 3);
+
+			if (commandNum == 1) {
+				g2.drawString(">", x - tilesize, y);
+			}
+
+			// BOSS IMAGE MENU
+			x = screenWidth / 2 - (tilesize * 15) / 2;
+			y += tilesize - 100;
+			try {
+				g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Boss/boss_chinhdien.png")), x, y,
+						tilesize * 6, tilesize * 7, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} else {
+			bg.draw(g2);
+
+			for (int i = 0; i < NPC.length; i++) {
+				if (NPC[i] != null) {
+					NPC[i].draw(g2);
+				}
+			}
+
+			int j = 1;
+			while (j <= 5 && obj[j] != null) {
+				obj[j].setDirection("round");
+				obj[j].draw(g2);
+				j++;
+				obj[j].setDirection("triangle");
+				obj[j].draw(g2);
+				j++;
+				obj[j].setDirection("square");
+				obj[j].draw(g2);
+				j++;
+			}
+
+			player.draw(g2);
+			boss.draw(g2);
+			g2.dispose();
+		}
 
 	}
 
-	public void playMusic(int i) {
+	public static void playMusic(int i) {
 		sound.setFile(i);
 		sound.play();
 		sound.loop();
