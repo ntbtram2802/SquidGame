@@ -36,15 +36,15 @@ public class PlayerNPC extends Entity {
 
 			Random random = new Random();
 
-			int x = random.nextInt(100)+1; // pick up a number randomly 1-100 plus 1 bc it random from 0-99 and plus 1
-												  // is 1-100
+			int x = random.nextInt(100) + 1; // pick up a number randomly 1-100 plus 1 bc it random from 0-99 and plus 1
+												// is 1-100
 			int y = random.nextInt(100);
 
 			if (x <= 25) {
 				direction = "up";
 			}
 			if (x > 25 && y <= 50) {
-			direction = "down";
+				direction = "down";
 			}
 			if (x > 50 && y <= 75) {
 				direction = "left";
@@ -61,21 +61,21 @@ public class PlayerNPC extends Entity {
 		setAction();
 		switch (direction) {
 			case "up":
-				if (!gp.c.checkColision(this, gp.NPC) && y > 150) {
+				if (y > 150) {
 					y -= speed;
 				}
 				break;
 			case "down":
-				if (!gp.c.checkColision(this, gp.NPC) && y < (GamePanel.screenHeight - GamePanel.tilesize))
+				if (y < (GamePanel.screenHeight - GamePanel.tilesize))
 					y += speed / 4;
 				break;
 			case "left":
-				if (!gp.c.checkColision(this, gp.NPC) && x > 0) {
+				if (x > 0) {
 					x -= speed;
 				}
 				break;
 			case "right":
-				if (!gp.c.checkColision(this, gp.NPC) && x < (GamePanel.screenWidth - GamePanel.tilesize)) {
+				if (x < (GamePanel.screenWidth - GamePanel.tilesize)) {
 					x += speed;
 				}
 				break;

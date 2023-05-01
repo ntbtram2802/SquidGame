@@ -3,10 +3,6 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import main.GamePanel;
 
 public abstract class Entity {
@@ -36,7 +32,7 @@ public abstract class Entity {
         direction = "down";
     }
 
-    public void setdirection(String d) { // ham thay doi huong cua nhan vat
+    public void setDirection(String d) { // ham thay doi huong cua nhan vat
         this.direction = d;
     }
 
@@ -44,7 +40,7 @@ public abstract class Entity {
         return direction;
     }
 
-    public void setx(int x) { // method thay doi vi tri cua nhan vat theo truc x
+    public void setX(int x) { // method thay doi vi tri cua nhan vat theo truc x
         this.x = x;
     }
 
@@ -52,7 +48,7 @@ public abstract class Entity {
         return x;
     }
 
-    public void sety(int y) { // method thay doi vi tri cua nhan vat theo truc y
+    public void setY(int y) { // method thay doi vi tri cua nhan vat theo truc y
         this.y = y;
     }
 
@@ -60,9 +56,9 @@ public abstract class Entity {
         return y;
     }
 
-    public double getSpeed() {
-        return speed;
-    }
+    // public double getSpeed() {
+    // return speed;
+    // }
 
     public void draw(Graphics2D g2) { // update roi ve hinh anh moi update
 

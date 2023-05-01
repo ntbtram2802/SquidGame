@@ -43,22 +43,22 @@ public class Player extends Entity {
 
             if (keyH.upPressed == true && y > 150) {
                 direction = "up";
-                if (!gp.c.checkColision(this, gp.NPC)) {
+                if (!gp.c.checkPossibleMove(this, gp.NPC)) {
                     y -= speed;
                 }
             } else if (keyH.downPressed == true && y < (GamePanel.screenHeight - GamePanel.tilesize)) {
                 direction = "down";
-                if (!gp.c.checkColision(this, gp.NPC)) {
+                if (!gp.c.checkPossibleMove(this, gp.NPC)) {
                     y += speed;
                 }
             } else if (keyH.leftPressed == true && x > 0) {
                 direction = "left";
-                if (!gp.c.checkColision(this, gp.NPC)) {
+                if (!gp.c.checkPossibleMove(this, gp.NPC)) {
                     x -= speed;
                 }
             } else if (keyH.rightPressed == true && x < (GamePanel.screenWidth - GamePanel.tilesize)) {
                 direction = "right";
-                if (!gp.c.checkColision(this, gp.NPC)) {
+                if (!gp.c.checkPossibleMove(this, gp.NPC)) {
                     x += speed;
                 }
             }
@@ -83,7 +83,7 @@ public class Player extends Entity {
 
     public void draw(Graphics2D g2) {
         super.draw(g2);
-        //g2.draw(gp.c.playerBox);
+        // g2.draw(gp.c.playerBox);
     }
 
 }
