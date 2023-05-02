@@ -60,7 +60,7 @@ public class PlayerNPC extends Entity {
 	public void update() {
 		setAction();
 		if (!gp.c.checkCollision(this, gp.player)
-			 && !gp.c.checkPossibleMove(this, direction)){
+			 && !gp.c.checkPossibleMove(this)){
 			switch (direction) {
 				case "up":
 					y -= speed;

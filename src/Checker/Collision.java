@@ -22,57 +22,75 @@ public class Collision {
         for (int i = 0; i < npc.length; i++) {
             if (npc[i] != null) {
                 npcBox[i] = new Rectangle(npc[i].getX(), npc[i].getY(), GamePanel.tilesize, GamePanel.tilesize);
-                if (npcBox[i].intersects(playerBox)) {
-                    if (isOpposite(player, npc[i]))
-                        return false;
-                    return true;
+                if (playerBox.intersects(npcBox[i])
+                    && !isOpposite(player, npc[i])){
+                        return true;
                 }
             }
         }
         return false;
     }
+
     public boolean checkCollision(Entity e1, Entity e2) {
-        // int playerleft = e1.getX();
-        // int playerright = GamePanel.tilesize;
-        // int playertop = e1.getY();
-        // int playerbottom = GamePanel.tilesize;
+        e1Box = new Rectangle(e1.getX(), e1.getY(), GamePanel.tilesize - 6, GamePanel.tilesize - 6);
+        e2Box = new Rectangle(e2.getX(), e2.getY(), GamePanel.tilesize - 6, GamePanel.tilesize - 6);
 
-        e1Box = new Rectangle(e1.getX(),e1.getY(),GamePanel.tilesize,GamePanel.tilesize);
-        e2Box = new Rectangle(e2.getX(), e2.getY(), GamePanel.tilesize, GamePanel.tilesize);
+        if (e1Box.intersects(e2Box) 
+            && !isOpposite(e1, e2)){
+                return true;
+        }
 
-                if (e2Box.intersects(e1Box)) {
-                    if (isOpposite(e1,e2))
-                        return false;
-                    return true;
-                }
         return false;
     }
 
     public boolean isOpposite(Entity e1, Entity e2) {
-        if (e1.getDirection() == e2.getDirection()) {
-            return true;
+
+        if (e1.getX() < e2.getX() && e1.getDirection() == "right" && e2.getDirection() == "left") {
+            if ((e2.getY() < e1.getY() + GamePanel.tilesize
+                    && e2.getY() > e1.getY() + GamePanel.tilesize)) {
+                return true;
+            }
         }
-        if (e2.getX() < e1.getX() && e1.getDirection() == "right" && e2.getDirection() == "left") {
-            e1.setDirection("left");
-            return true;
+        if (e1.getX() > e2.getX() && e2.getDirection() == "right" && e1.getDirection() == "left") {
+            if ((e2.getY() > e1.getY() + GamePanel.tilesize
+                    && e1.getY() < e2.getY() + GamePanel.tilesize)) {
+                return true;
+            }
         }
-        if (e1.getX() < e2.getX() && e2.getDirection() == "right" && e1.getDirection() == "left") {
-            e1.setDirection("right");
-            return true;
+        if (e1.getY() > e2.getY() + GamePanel.tilesize && e1.getDirection() == "up" && e2.getDirection() == "down") {
+            if (e1.getX() + GamePanel.tilesize > e2.getX()
+                    && e1.getX() + GamePanel.tilesize < e2.getX()+GamePanel.tilesize) {
+                return true;
+            }
+            if (e1.getX() + GamePanel.tilesize > e2.getX() + GamePanel.tilesize) {
+                if (e1.getX() > e2.getX() && e1.getX() < e2.getX() + GamePanel.tilesize) {
+                    return true;
+                }
+            }
         }
-        if (e2.getY() < e1.getY() && e1.getDirection() == "down" && e2.getDirection() == "up") {
-            e1.setDirection("up");
-            return true;
+        if (e1.getY() > e2.getY() + GamePanel.tilesize && e1.getDirection() == "up" && e2.getDirection() == "down") {
+            if (e1.getX() > e2.getX() && e1.getX() < e2.getX()+GamePanel.tilesize) {
+                return true;
+            }
+            if (e1.getX() < e2.getX() + GamePanel.tilesize) {
+                if (e1.getX()+GamePanel.tilesize > e2.getX()
+                        && e1.getX()+GamePanel.tilesize < e2.getX()+GamePanel.tilesize) {
+                    return true;
+                }
+            }
         }
-        if (e1.getY() < e2.getY() && e2.getDirection() == "down" && e1.getDirection() == "up") {
-            e1.setDirection("down");
-            return true;
+
+        else if (e1.getY() + GamePanel.tilesize < e2.getY() && e2.getDirection() == "up" && e1.getDirection() == "down") {
+            if (e1.getX() > e2.getX() + GamePanel.tilesize
+                    || e1.getX() + GamePanel.tilesize < e2.getX()) {
+                return true;
+            }
         }
         return false;
     }
 
-    public boolean checkPossibleMove(Entity e, String direction) {
-        switch (direction) {
+    public boolean checkPossibleMove(Entity e) {
+        switch (e.getDirection()) {
             case "up":
                 if ((e.getY() < 150)) {
                     e.setDirection("down");

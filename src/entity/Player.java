@@ -40,32 +40,39 @@ public class Player extends Entity {
     public void update() {
         if (keyH.upPressed == true || keyH.downPressed == true ||
                 keyH.leftPressed == true || keyH.rightPressed == true) {
-               
+
             if (keyH.upPressed == true) {
-            direction = "up";
-            if (!gp.c.checkCollision(this, gp.NPC)) {
-            y -= speed;
-            }
+                direction = "up";
+                if (!gp.c.checkCollision(this, gp.NPC)
+                      && !gp.c.checkPossibleMove(this)) {
+                    y -= speed;
+                }
 
             } else if (keyH.downPressed == true) {
-            direction = "down";
-            if (!gp.c.checkCollision(this, gp.NPC))
-            y += speed;
+                direction = "down";
+                if (!gp.c.checkCollision(this, gp.NPC)
+                      && !gp.c.checkPossibleMove(this)) {
+                    y += speed;
+                }
 
             } else if (keyH.leftPressed == true) {
-            direction = "left";
-            if (!gp.c.checkCollision(this, gp.NPC))
-            x -= speed;
+                direction = "left";
+                if (!gp.c.checkCollision(this, gp.NPC)
+                      && !gp.c.checkPossibleMove(this)) {
+                    x -= speed;
+                }
 
             } else if (keyH.rightPressed == true) {
-            direction = "right";
-            if (!gp.c.checkCollision(this, gp.NPC))
-            x += speed;
+                direction = "right";
+                if (!gp.c.checkCollision(this, gp.NPC)
+                      && !gp.c.checkPossibleMove(this)) {
+                    x += speed;
+                }
 
             }
 
             else {
-            direction = "stand";
+                direction = "stand";
             }
 
             spriteCounter++;
