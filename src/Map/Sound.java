@@ -1,4 +1,4 @@
-package main;
+package Map;
 
 import java.net.URL;
 

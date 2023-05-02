@@ -59,20 +59,22 @@ public class PlayerNPC extends Entity {
 
 	public void update() {
 		setAction();
-		gp.c.checkPossibleMove(this, direction);
-		switch (direction) {
-			case "up":
+		if (!gp.c.checkCollision(this, gp.player)
+			 && !gp.c.checkPossibleMove(this, direction)){
+			switch (direction) {
+				case "up":
 					y -= speed;
-				break;
-			case "down":
+					break;
+				case "down":
 					y += speed;
-				break;
-			case "left":
+					break;
+				case "left":
 					x -= speed;
-				break;
-			case "right":
+					break;
+				case "right":
 					x += speed;
-				break;
+					break;
+			}
 		}
 
 		spriteCounter++;

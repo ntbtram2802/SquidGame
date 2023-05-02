@@ -21,9 +21,9 @@ public abstract class Entity {
         this.gp = gp;
     }
 
-    public abstract void getImage(); // method lay hinh anh
+    public abstract void getImage();
 
-    public abstract void update(); // method update nhan vat
+    public abstract void update();
 
     public void setDefault() { // Initial nhung gia tri dau tien cho nhan vat
         x = 500; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
@@ -59,6 +59,9 @@ public abstract class Entity {
     // public double getSpeed() {
     // return speed;
     // }
+    public void setSpeed(int speed) {
+        this.speed=speed;
+    }
 
     public void draw(Graphics2D g2) { // update roi ve hinh anh moi update
 
@@ -107,5 +110,6 @@ public abstract class Entity {
 
         g2.drawImage(image, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
     }
+
 
 }

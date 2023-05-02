@@ -27,15 +27,15 @@ public class GamePanel extends JPanel implements Runnable {
 	// SYSTEM
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;// to start and stop the game whenever you want to
-	public AssetSetter aSetter = new AssetSetter(this);
+	private AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
-	static Sound sound = new Sound();
+	public static Sound sound = new Sound();
 
 	// ENTITY &OBJECT
 	public Player player = new Player(this, keyH);
 	public Boss boss = new Boss(this);
 	public NPC obj[] = new NPC[7];
-	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array
+	public PlayerNPC NPC[] = new PlayerNPC[7];// this is npc array
 	int FPS = 60;
 
 	// GAME STATE
@@ -151,7 +151,6 @@ public class GamePanel extends JPanel implements Runnable {
 			if (commandNum == 0) {
 				g2.drawString(">", x - tilesize, y);
 			}
-
 			text = "Quit";
 			x = 325;
 			y += tilesize * 2;
@@ -164,7 +163,6 @@ public class GamePanel extends JPanel implements Runnable {
 			if (commandNum == 1) {
 				g2.drawString(">", x - tilesize, y);
 			}
-
 			// BOSS IMAGE MENU
 			x = screenWidth / 2 - (tilesize * 15) / 2;
 			y += tilesize - 100;
@@ -177,28 +175,22 @@ public class GamePanel extends JPanel implements Runnable {
 
 		} else {
 			bg.draw(g2);
-
+			player.draw(g2);
+			boss.draw(g2);
+			
 			for (int i = 0; i < NPC.length; i++) {
 				if (NPC[i] != null) {
 					NPC[i].draw(g2);
 				}
 			}
 
-			int j = 1;
-			while (j <= 5 && obj[j] != null) {
-				obj[j].setDirection("round");
-				obj[j].draw(g2);
-				j++;
-				obj[j].setDirection("triangle");
-				obj[j].draw(g2);
-				j++;
-				obj[j].setDirection("square");
-				obj[j].draw(g2);
-				j++;
+			for (int j = 1; j <= 6; j++) {
+				if (obj[j] != null) {
+					obj[j].draw(g2);
+				}
 			}
 
-			player.draw(g2);
-			boss.draw(g2);
+			
 			g2.dispose();
 		}
 

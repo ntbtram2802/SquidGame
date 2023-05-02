@@ -16,27 +16,32 @@ public class AssetSetter {
 		gp.obj[1] = new NPC(gp);
 		gp.obj[1].setX(1 * tilesize);
 		gp.obj[1].setY(3 * tilesize);
+		gp.obj[1].setDirection("round");
 
 		gp.obj[2] = new NPC(gp);
 		gp.obj[2].setX(3 * tilesize);
 		gp.obj[2].setY(3 * tilesize);
+		gp.obj[2].setDirection("triangle");
 
 		gp.obj[3] = new NPC(gp);
 		gp.obj[3].setX(5 * tilesize);
 		gp.obj[3].setY(3 * tilesize);
+		gp.obj[3].setDirection("square");
 
 		gp.obj[4] = new NPC(gp);
 		gp.obj[4].setX(9 * tilesize);
 		gp.obj[4].setY(3 * tilesize);
+		gp.obj[4].setDirection("round");
 
 		gp.obj[5] = new NPC(gp);
 		gp.obj[5].setX(11 * tilesize);
 		gp.obj[5].setY(3 * tilesize);
+		gp.obj[5].setDirection("triangle");
 
 		gp.obj[6] = new NPC(gp);
 		gp.obj[6].setX(13 * tilesize);
 		gp.obj[6].setY(3 * tilesize);
-
+		gp.obj[6].setDirection("square");
 	}
 
 	public void setNPC() {

@@ -35,11 +35,10 @@ public class NPC extends Entity{
 	}
 	@Override
 	public void getImage() {
-		// TODO Auto-generated method stub
 		try {
-			image1 = ImageIO.read(getClass().getResourceAsStream("/Object_linh/npc-round.png"));
-			image2 = ImageIO.read(getClass().getResourceAsStream("/Object_linh/npc-triangle.png"));
-			image3 = ImageIO.read(getClass().getResourceAsStream("/Object_linh/npc-square.png"));
+			image1 = ImageIO.read(getClass().getResourceAsStream("/Object_guard/npc-round.png"));
+			image2 = ImageIO.read(getClass().getResourceAsStream("/Object_guard/npc-triangle.png"));
+			image3 = ImageIO.read(getClass().getResourceAsStream("/Object_guard/npc-square.png"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -47,7 +46,5 @@ public class NPC extends Entity{
 	}
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 }
