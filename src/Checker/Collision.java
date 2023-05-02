@@ -1,15 +1,16 @@
-package main;
+package Checker;
 
 import java.awt.Rectangle;
 
 import entity.Entity;
 import entity.PlayerNPC;
+import main.GamePanel;
 
 public class Collision {
     Rectangle playerBox = new Rectangle(0, 0, 10, 10);
     Rectangle npcBox[] = new Rectangle[10];
 
-    public boolean checkPossibleMove(Entity player, PlayerNPC npc[]) {
+    public boolean checkCollision(Entity player, PlayerNPC npc[]) {
 
         int playerleft = player.getX();
         int playerright = GamePanel.tilesize;
@@ -50,24 +51,28 @@ public class Collision {
         return false;
     }
 
-    public void check(Entity e, String direction) {
+    public void checkPossibleMove(Entity e, String direction) {
         switch (direction) {
             case "up":
                 if ((e.getY() < 150)) {
-                    direction="down";
+                    e.setDirection("down");
                 }
+                break;
             case "down":
                 if (e.getY() > (GamePanel.screenHeight - GamePanel.tilesize)) {
-                    direction="up";
+                    e.setDirection("up");
                 }
+                break;
             case "left":
                 if (e.getX() < 0) {
-                    direction="right";
+                    e.setDirection("right");
                 }
+                break;
             case "right":
                 if (e.getX() > (GamePanel.screenHeight - GamePanel.tilesize)) {
-                    direction="left";
+                    e.setDirection("left");
                 }
+                break;
         }
     }
 

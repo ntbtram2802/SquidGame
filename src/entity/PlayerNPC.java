@@ -59,25 +59,19 @@ public class PlayerNPC extends Entity {
 
 	public void update() {
 		setAction();
+		gp.c.checkPossibleMove(this, direction);
 		switch (direction) {
 			case "up":
-				if (y > 150) {
 					y -= speed;
-				}
 				break;
 			case "down":
-				if (y < (GamePanel.screenHeight - GamePanel.tilesize))
-					y += speed / 4;
+					y += speed;
 				break;
 			case "left":
-				if (x > 0) {
 					x -= speed;
-				}
 				break;
 			case "right":
-				if (x < (GamePanel.screenWidth - GamePanel.tilesize)) {
 					x += speed;
-				}
 				break;
 		}
 

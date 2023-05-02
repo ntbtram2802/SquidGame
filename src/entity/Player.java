@@ -41,26 +41,27 @@ public class Player extends Entity {
         if (keyH.upPressed == true || keyH.downPressed == true ||
                 keyH.leftPressed == true || keyH.rightPressed == true) {
 
-            if (keyH.upPressed == true && y > 150) {
+            if (keyH.upPressed == true) {
                 direction = "up";
-                if (!gp.c.checkPossibleMove(this, gp.NPC)) {
+                if (!gp.c.checkCollision(this, gp.NPC)) {
                     y -= speed;
                 }
-            } else if (keyH.downPressed == true && y < (GamePanel.screenHeight - GamePanel.tilesize)) {
+                
+            } else if (keyH.downPressed == true) {
                 direction = "down";
-                if (!gp.c.checkPossibleMove(this, gp.NPC)) {
+                if (!gp.c.checkCollision(this, gp.NPC)) 
                     y += speed;
-                }
-            } else if (keyH.leftPressed == true && x > 0) {
+                
+            } else if (keyH.leftPressed == true) {
                 direction = "left";
-                if (!gp.c.checkPossibleMove(this, gp.NPC)) {
+                if (!gp.c.checkCollision(this, gp.NPC)) 
                     x -= speed;
-                }
-            } else if (keyH.rightPressed == true && x < (GamePanel.screenWidth - GamePanel.tilesize)) {
+                
+            } else if (keyH.rightPressed == true) {
                 direction = "right";
-                if (!gp.c.checkPossibleMove(this, gp.NPC)) {
+                if (!gp.c.checkCollision(this, gp.NPC)) 
                     x += speed;
-                }
+                
             }
 
             else {
@@ -87,3 +88,4 @@ public class Player extends Entity {
     }
 
 }
+
