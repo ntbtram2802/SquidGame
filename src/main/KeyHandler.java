@@ -9,38 +9,37 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        int code = e.getKeyCode();// return the number of key that was pressed
+        int code = e.getKeyCode();
 
-        //TITLE STATE
-        if (GamePanel.gameState == GamePanel.menuState) {
-        if (code == KeyEvent.VK_W) {
-        GamePanel.commandNum--;
-        if (GamePanel.commandNum < 0) {
-        GamePanel.commandNum = 1;
-        }
-        }
-        if (code == KeyEvent.VK_S) {
-        GamePanel.commandNum++;
-        if (GamePanel.commandNum > 1) {
-        GamePanel.commandNum = 0;
-        }
-        }
-        if (code == KeyEvent.VK_ENTER) {
-        if (GamePanel.commandNum == 0) {
-        GamePanel.gameState = GamePanel.playState;
-        GamePanel.playMusic(0);
+        // //TITLE STATE
+        // if (GamePanel.gameState == GamePanel.menuState) {
+        // if (code == KeyEvent.VK_W) {
+        // GamePanel.commandNum--;
+        // if (GamePanel.commandNum < 0) {
+        // GamePanel.commandNum = 1;
+        // }
+        // }
+        // if (code == KeyEvent.VK_S) {
+        // GamePanel.commandNum++;
+        // if (GamePanel.commandNum > 1) {
+        // GamePanel.commandNum = 0;
+        // }
+        // }
+        // if (code == KeyEvent.VK_ENTER) {
+        // if (GamePanel.commandNum == 0) {
+        // GamePanel.gameState = GamePanel.playState;
+        // GamePanel.playMusic(0);
 
-        }
-        if (GamePanel.commandNum == 1) {
-        System.exit(0);
-        }
-       }
-       }
-
+        // }
+        // if (GamePanel.commandNum == 1) {
+        // System.exit(0);
+        // }
+        // }
+        // }
+        // check if user pressed enter
         if (code == KeyEvent.VK_W) {
             upPressed = true;
         }
-        // check if user pressed enter
         if (code == KeyEvent.VK_S) {
             downPressed = true;
         }

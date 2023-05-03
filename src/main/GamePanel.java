@@ -1,13 +1,9 @@
 package main;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Checker.Collision;
@@ -34,16 +30,15 @@ public class GamePanel extends JPanel implements Runnable {
 	// ENTITY &OBJECT
 	public Player player = new Player(this, keyH);
 	public Boss boss = new Boss(this);
-	public NPC obj[] = new NPC[7];
-	public PlayerNPC NPC[] = new PlayerNPC[7];// this is npc array
+	public NPC obj[] = new NPC[10];
+	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array
 	int FPS = 60;
 
 	// GAME STATE
 	public static int gameState;
 	public final static int playState = 1;
 	public final static int menuState = 0;
-	public static int commandNum = 0;
-	public MenuState menu= new MenuState();
+	public MenuState menu= new MenuState(keyH);
 
 	// Background
 	public Background bg = new Background("/background/background2.png");
@@ -98,7 +93,6 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		
 		if (gameState == 1) {
 			player.update();
 			boss.update();
@@ -108,6 +102,9 @@ public class GamePanel extends JPanel implements Runnable {
 					NPC[z].update();
 				}
 			}
+		}
+		else{
+			menu.update();
 		}
 
 	}
