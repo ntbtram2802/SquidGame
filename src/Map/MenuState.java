@@ -7,9 +7,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+
 import main.GamePanel;
 
 public class MenuState {
+   
 
     public void draw(Graphics2D g2) {
         g2.setColor(new Color(157, 120, 100));
@@ -41,6 +43,7 @@ public class MenuState {
         y += GamePanel.tilesize * 5;
         g2.setColor(new Color(80, 0, 0));
         g2.drawString(text, x, y);
+
         // button shadow
         g2.setColor(new Color(157, 0, 0));
         g2.drawString(text, x + 3, y + 3);
@@ -53,13 +56,14 @@ public class MenuState {
         y += GamePanel.tilesize * 2;
         g2.setColor(new Color(80, 0, 0));
         g2.drawString(text, x, y);
+
         // button shadow
         g2.setColor(new Color(157, 0, 0));
         g2.drawString(text, x + 3, y + 3);
-
         if (GamePanel.commandNum == 1) {
             g2.drawString(">", x - GamePanel.tilesize, y);
         }
+
         // BOSS IMAGE MENU
         x = GamePanel.screenWidth / 2 - (GamePanel.tilesize * 15) / 2;
         y += GamePanel.tilesize - 100;

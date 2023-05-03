@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
 	// GAME STATE
 	public static int gameState;
 	public final static int playState = 1;
-	public final static int titleState = 0;
+	public final static int menuState = 0;
 	public static int commandNum = 0;
 	public MenuState menu= new MenuState();
 
@@ -51,7 +51,6 @@ public class GamePanel extends JPanel implements Runnable {
 
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-		this.setBackground(Color.black);
 		this.setVisible(true);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
@@ -62,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
 		aSetter.setObject();
 		aSetter.setNPC();
 		// playMusic(0);
-		gameState = titleState;
+		gameState = 0;
 	}
 
 	public void startGameThread() {
@@ -99,7 +98,8 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		if (gameState == playState) {
+		
+		if (gameState == 1) {
 			player.update();
 			boss.update();
 
@@ -109,13 +109,14 @@ public class GamePanel extends JPanel implements Runnable {
 				}
 			}
 		}
+
 	}
 
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		if (gameState == titleState) {
+		if (gameState == 0) {
 			menu.draw(g2);
 			
 		} else {
