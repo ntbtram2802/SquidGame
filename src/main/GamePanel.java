@@ -43,9 +43,11 @@ public class GamePanel extends JPanel implements Runnable {
 	public final static int playState = 1;
 	public final static int titleState = 0;
 	public static int commandNum = 0;
+	public MenuState menu= new MenuState();
 
 	// Background
 	public Background bg = new Background("/background/background2.png");
+
 
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -114,65 +116,8 @@ public class GamePanel extends JPanel implements Runnable {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		if (gameState == titleState) {
-
-			g2.setColor(new Color(157, 120, 100));
-			g2.fillRect(0, 0, screenWidth, screenHeight);
-
-			int x = 60;
-			int y = tilesize * 2;
-			try {
-				g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/menu/menu_squidgame.png")), x, y,
-						tilesize * 13, tilesize * 4, null);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			// MENU IMAGE
-			x = screenWidth / 2 - (tilesize * 9) / 2;
-			y += tilesize * 5;
-			try {
-				g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/menu/menu_background.png")), x, y,
-						tilesize * 9, tilesize * 10, null);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			// MENU BUTTON
-			g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 60F));
-			String text = "Start";
-			x = 320;
-			y += tilesize * 5;
-			g2.setColor(new Color(80, 0, 0));
-			g2.drawString(text, x, y);
-			// button shadow
-			g2.setColor(new Color(157, 0, 0));
-			g2.drawString(text, x + 3, y + 3);
-
-			if (commandNum == 0) {
-				g2.drawString(">", x - tilesize, y);
-			}
-			text = "Quit";
-			x = 325;
-			y += tilesize * 2;
-			g2.setColor(new Color(80, 0, 0));
-			g2.drawString(text, x, y);
-			// button shadow
-			g2.setColor(new Color(157, 0, 0));
-			g2.drawString(text, x + 3, y + 3);
-
-			if (commandNum == 1) {
-				g2.drawString(">", x - tilesize, y);
-			}
-			// BOSS IMAGE MENU
-			x = screenWidth / 2 - (tilesize * 15) / 2;
-			y += tilesize - 100;
-			try {
-				g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Boss/boss_chinhdien.png")), x, y,
-						tilesize * 6, tilesize * 7, null);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
+			menu.draw(g2);
+			
 		} else {
 			bg.draw(g2);
 			player.draw(g2);
@@ -189,8 +134,7 @@ public class GamePanel extends JPanel implements Runnable {
 					obj[j].draw(g2);
 				}
 			}
-
-			
+	
 			g2.dispose();
 		}
 

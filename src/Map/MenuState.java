@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 
 public class MenuState {
+
     public void draw(Graphics2D g2) {
         g2.setColor(new Color(157, 120, 100));
         g2.fillRect(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
