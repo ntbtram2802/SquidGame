@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import Checker.Collision;
+import Checker.Time_Win;
+import GUI.UI;
 import Map.*;
 import entity.*;
 
@@ -22,10 +24,12 @@ public class GamePanel extends JPanel implements Runnable {
 
 	// SYSTEM
 	KeyHandler keyH = new KeyHandler();
-	Thread gameThread;// to start and stop the game whenever you want to
+	public Thread gameThread;// to start and stop the game whenever you want to
 	private AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
 	public static Sound sound = new Sound();
+	public Time_Win time_win = new Time_Win(this);
+	public UI u = new UI(this);
 
 	// ENTITY &OBJECT
 	public Player player = new Player(this, keyH);
@@ -33,11 +37,13 @@ public class GamePanel extends JPanel implements Runnable {
 	public NPC obj[] = new NPC[10];
 	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array
 	int FPS = 60;
+	public double playTime = 60.00;
 
 	// GAME STATE
 	public static int gameState;
 	public final static int playState = 1;
 	public final static int menuState = 0;
+	public final static int pauseState = 2;
 	public MenuState menu= new MenuState(keyH);
 
 	// Background
@@ -93,15 +99,33 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		if (gameState == 1) {
-			player.update();
+		if (gameState == playState) {
+			time_win.upcounter();
 			boss.update();
-
+			
 			for (int z = 0; z < NPC.length; z++) {
 				if (NPC[z] != null) {
-					NPC[z].update();
+					if (NPC[z].getwin() == false) {
+						if (NPC[z].getalive() == true && NPC[z].getdying() == false) {
+							NPC[z].update();
+						}
+						if (NPC[z].getalive() == false) {
+							NPC[z] = null;
+						}
+					}
 				}
 			}
+			if (player != null) {
+				if (player.getwin() == false) {
+					if (player.getalive() == true && player.getdying() == false) {
+						player.update();
+					}
+					if (player.getalive() == false) {
+						player = null;
+					}
+				}
+			}
+			
 		}
 		else{
 			menu.update();
@@ -118,21 +142,21 @@ public class GamePanel extends JPanel implements Runnable {
 			
 		} else {
 			bg.draw(g2);
-			player.draw(g2);
+			u.draw(g2);
 			boss.draw(g2);
-			
-			for (int i = 0; i < NPC.length; i++) {
-				if (NPC[i] != null) {
-					NPC[i].draw(g2);
-				}
-			}
-
 			for (int j = 1; j <= 6; j++) {
 				if (obj[j] != null) {
 					obj[j].draw(g2);
 				}
 			}
-	
+			if (player != null) {
+				player.draw(g2);
+			}
+			for (int i = 0; i < NPC.length; i++) {
+				if (NPC[i] != null) {
+					NPC[i].draw(g2);
+				}
+			}
 			g2.dispose();
 		}
 

@@ -30,6 +30,11 @@ public class Player extends Entity {
             image7 = ImageIO.read(getClass().getResourceAsStream("/player/player_left2.png"));
             image8 = ImageIO.read(getClass().getResourceAsStream("/player/player_right1.png"));
             image9 = ImageIO.read(getClass().getResourceAsStream("/player/player_right2.png"));
+            image11 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost1.png"));
+			image12 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost2.png"));
+			image13 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost3.png"));
+			image14 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost4.png"));
+			image15 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost5.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,54 +42,66 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (keyH.upPressed == true || keyH.downPressed == true ||
-                keyH.leftPressed == true || keyH.rightPressed == true) {
+    	gp.time_win.checkTime(this);
+		if (timeDeath == false) {
+			if (keyH.upPressed == true || keyH.downPressed == true ||
+	                keyH.leftPressed == true || keyH.rightPressed == true) {
 
-            if (keyH.upPressed == true) {
-                direction = "up";
-                if (!gp.c.checkCollision(this, gp.NPC)
-                      && !gp.c.checkPossibleMove(this)) {
-                    y -= speed;
-                }
+	            if (keyH.upPressed == true) {
+	                direction = "up";
+	                if (!gp.c.checkCollision(this, gp.NPC)
+	                      && !gp.c.checkPossibleMove(this)) {
+	                    y -= speed;
+	                }
 
-            } else if (keyH.downPressed == true) {
-                direction = "down";
-                if (!gp.c.checkCollision(this, gp.NPC)
-                      && !gp.c.checkPossibleMove(this)) {
-                    y += speed;
-                }
+	            } else if (keyH.downPressed == true) {
+	                direction = "down";
+	                if (!gp.c.checkCollision(this, gp.NPC)
+	                      && !gp.c.checkPossibleMove(this)) {
+	                    y += speed;
+	                }
 
-            } else if (keyH.leftPressed == true) {
-                direction = "left";
-                if (!gp.c.checkCollision(this, gp.NPC)
-                      && !gp.c.checkPossibleMove(this)) {
-                    x -= speed;
-                }
+	            } else if (keyH.leftPressed == true) {
+	                direction = "left";
+	                if (!gp.c.checkCollision(this, gp.NPC)
+	                      && !gp.c.checkPossibleMove(this)) {
+	                    x -= speed;
+	                }
 
-            } else if (keyH.rightPressed == true) {
-                direction = "right";
-                if (!gp.c.checkCollision(this, gp.NPC)
-                      && !gp.c.checkPossibleMove(this)) {
-                    x += speed;
-                }
+	            } else if (keyH.rightPressed == true) {
+	                direction = "right";
+	                if (!gp.c.checkCollision(this, gp.NPC)
+	                      && !gp.c.checkPossibleMove(this)) {
+	                    x += speed;
+	                }
 
-            }
+	            }
 
-            else {
-                direction = "stand";
-            }
+	            else {
+	                direction = "stand";
+	            }
 
-            spriteCounter++;
-            if (spriteCounter > 20) {
-                if (spriteNum == 1) {
-                    spriteNum = 2;
-                } else if (spriteNum == 2) {
-                    spriteNum = 1;
-                }
-                spriteCounter = 0;
-            }
+	            spriteCounter++;
+	            if (spriteCounter > 20) {
+	                if (spriteNum == 1) {
+	                    spriteNum = 2;
+	                } else if (spriteNum == 2) {
+	                    spriteNum = 1;
+	                }
+	                spriteCounter = 0;
+	            }
 
-        }
+	        }
+			else {
+				if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true
+						|| keyH.rightPressed == true) {
+					actionLockCounter =0;
+					this.dying = true;
+				}
+			}
+			gp.time_win.checkwin(this);
+		}
+        
 
     }
 
