@@ -14,7 +14,6 @@ public class Time_Win {
 			//gamoversreen
 		}
 		else if(e.getY()<=184 && (gp.playTime) >0) {
-			gp.u.setgamefinish(true);
 			e.setwin(true);
 		}
 	}

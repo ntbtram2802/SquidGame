@@ -35,6 +35,10 @@ public class Player extends Entity {
 			image13 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost3.png"));
 			image14 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost4.png"));
 			image15 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost5.png"));
+			image16 = ImageIO.read(getClass().getResourceAsStream("/playerwin/winState-1.png"));
+			image17 = ImageIO.read(getClass().getResourceAsStream("/playerwin/winState-2.png"));
+			image18 = ImageIO.read(getClass().getResourceAsStream("/playerwin/winState-3.png"));
+			image19 = ImageIO.read(getClass().getResourceAsStream("/playerwin/winState-4.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +99,6 @@ public class Player extends Entity {
 			else {
 				if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true
 						|| keyH.rightPressed == true) {
-					actionLockCounter =0;
 					this.dying = true;
 				}
 			}
@@ -106,7 +109,15 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics2D g2) {
-        super.draw(g2);
+    	super.draw(g2);
+        if(win == true) {
+        	actionLockCounter++;
+        	int i = 10;
+        	if(actionLockCounter<=i) {g2.drawImage(image16, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+        	if (actionLockCounter >i && actionLockCounter <=i*2) {g2.drawImage(image17, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+        	if (actionLockCounter >i*2 && actionLockCounter <=i*3) {g2.drawImage(image18, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+        	if (actionLockCounter >i*3 && actionLockCounter <=i*4) {g2.drawImage(image19, x, y, GamePanel.tilesize, GamePanel.tilesize, null);gp.u.setgamefinish(true);}
+    	}
         // g2.draw(gp.c.playerBox);
     }
 }
