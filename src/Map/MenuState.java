@@ -11,7 +11,7 @@ import main.GamePanel;
 
 public class MenuState {
     private KeyHandler keyH;
-    public int commandNum = 0;
+    private int commandNum = 0;
 
     public MenuState(KeyHandler keyH) {
         this.keyH = keyH;
@@ -22,10 +22,9 @@ public class MenuState {
 
             if ((keyH.upPressed == true)) {
                 commandNum--;
-                System.out.println("Up:"+commandNum);
+                System.out.println("UP"+commandNum);
                 if (commandNum < 0) {
                      commandNum = 0;
-                    System.out.println("afterup:"+commandNum);
                 }
             }
 
@@ -33,9 +32,7 @@ public class MenuState {
             commandNum++;
             if (commandNum >1 ) {
                 commandNum = 1;
-            System.out.println("afterDown:"+commandNum);
             }
-            System.out.println("Down:"+commandNum);
         }
         if (keyH.enterPressed == true) {
             if (commandNum == 0) {

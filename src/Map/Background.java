@@ -12,10 +12,8 @@ public class Background {
 
     private double x;
     private double y;
-    private double dx;
-    private double dy;
-
-    
+    private int width=GamePanel.screenWidth;
+    private int height=GamePanel.screenHeight;
 
     public Background(String address){
         try{
@@ -26,27 +24,28 @@ public class Background {
         }
     }
 
-    public void setPostion(double x, double y){
-        this.x = (x) % GamePanel.screenWidth ;
-        this.y = (y) % GamePanel.screenHeight;
+    public void setWidth(int width){
+        this.width=width;
+    }
+    public void setHeight(int height){
+        this.height=height;
+    }
+    public void setX(int x){
+        this.x=x;
+    }
+    public void setY(int y){
+        this.y=y;
     }
 
-    public void setVector(double dx, double dy){
-        this.dx = dx;
-        this.dy = dy;
-    }
 
-    public void update(){
-        x += dx;
-        y += dy;
-    }
 
     public void draw(Graphics2D g2){
+
         if(g2==null){
             System.out.println("graphic is null in bg");
             System.exit(0);
         }
-        g2.drawImage(bg,(int)x, (int)y,GamePanel.screenWidth, GamePanel.screenHeight, null);
+        g2.drawImage(bg,(int)x, (int)y, width, height, null);
     }
 
 

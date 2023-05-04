@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import Checker.Collision;
+import Checker.*;
 import Map.*;
 import entity.*;
 
@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 	// SYSTEM
 	KeyHandler keyH = new KeyHandler();
-	Thread gameThread;// to start and stop the game whenever you want to
+	public static Thread gameThread;// to start and stop the game whenever you want to
 	private AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
 	public static Sound sound = new Sound();
@@ -30,19 +30,20 @@ public class GamePanel extends JPanel implements Runnable {
 	// ENTITY &OBJECT
 	public Player player = new Player(this, keyH);
 	public Boss boss = new Boss(this);
-	public NPC obj[] = new NPC[10];
-	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array
+	public NPC obj[] = new NPC[7];
+	public PlayerNPC NPC[] = new PlayerNPC[10];
 	int FPS = 60;
 
 	// GAME STATE
 	public static int gameState;
-	public final static int playState = 1;
 	public final static int menuState = 0;
-	public MenuState menu= new MenuState(keyH);
+	public final static int playState = 1;
+	public static boolean pauseState = false;
+	private MenuState menu = new MenuState(keyH);
+	private PauseState pause = new PauseState(keyH);
 
 	// Background
-	public Background bg = new Background("/background/background2.png");
-
+	private Background bg = new Background("/background/background2.png");
 
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -93,17 +94,17 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		if (gameState == 1) {
+		if (gameState == 1 && pauseState == false) {
 			player.update();
 			boss.update();
-
+		
 			for (int z = 0; z < NPC.length; z++) {
 				if (NPC[z] != null) {
 					NPC[z].update();
 				}
 			}
-		}
-		else{
+
+		} else {
 			menu.update();
 		}
 
@@ -113,14 +114,19 @@ public class GamePanel extends JPanel implements Runnable {
 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+
+		
 		if (gameState == 0) {
 			menu.draw(g2);
+		}
+
+		if (gameState == 1) {
 			
-		} else {
+	
 			bg.draw(g2);
 			player.draw(g2);
 			boss.draw(g2);
-			
+
 			for (int i = 0; i < NPC.length; i++) {
 				if (NPC[i] != null) {
 					NPC[i].draw(g2);
@@ -132,10 +138,14 @@ public class GamePanel extends JPanel implements Runnable {
 					obj[j].draw(g2);
 				}
 			}
-	
-			g2.dispose();
+		
 		}
-
+		if (pauseState == true) {
+			pause.draw(g2);
+			//System.out.println("drawed");
+		}
+		g2.dispose();
+		
 	}
 
 	public static void playMusic(int i) {
