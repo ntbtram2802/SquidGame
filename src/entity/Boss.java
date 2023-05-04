@@ -30,15 +30,12 @@ public class Boss extends Entity{
 	}
 
 	public void update() {
-		actionLockCounter++;
-		if (actionLockCounter < 400 ) { // 400 lan update dau tien thi con boss se o huong xoay lung
+		gp.time_win.checkTime(this);
+		if(timeDeath == false) {
 			direction = "xoaylung";
 		}
-		if(actionLockCounter> 400 && actionLockCounter<550) { // sau do con boss se quay lai trong 150 lan update
+		else {
 			direction = "chinhdien";
-		}
-		if (actionLockCounter>=550) {
-			actionLockCounter=0;
 		}
 	}
 	

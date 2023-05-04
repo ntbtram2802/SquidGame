@@ -23,6 +23,11 @@ public class PlayerNPC extends Entity {
 			image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left2.png"));
 			image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right1.png"));
 			image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right2.png"));
+			image11 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost1.png"));
+			image12 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost2.png"));
+			image13 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost3.png"));
+			image14 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost4.png"));
+			image15 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost5.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -58,34 +63,53 @@ public class PlayerNPC extends Entity {
 	}
 
 	public void update() {
-		setAction();
-		if (!gp.c.checkCollision(this, gp.player)
-			 && !gp.c.checkPossibleMove(this)){
-			switch (direction) {
-				case "up":
-					y -= speed;
-					break;
-				case "down":
-					y += speed;
-					break;
-				case "left":
-					x -= speed;
-					break;
-				case "right":
-					x += speed;
-					break;
+		Random random = new Random();
+		gp.time_win.checkTime(this);
+		if (timeDeath == false) { //khuc boss quay len -> time song
+			setAction();
+			if (!gp.c.checkCollision(this, gp.player)
+				 && !gp.c.checkPossibleMove(this)){
+				switch (direction) {
+					case "up":
+						y -= speed;
+						break;
+					case "down":
+						y += speed;
+						break;
+					case "left":
+						x -= speed;
+						break;
+					case "right":
+						x += speed;
+						break;
+				}
 			}
-		}
 
-		spriteCounter++;
-		if (spriteCounter > 12) {
-			if (spriteNum == 1) {
-				spriteNum = 2;
-			} else if (spriteNum == 2) {
-				spriteNum = 1;
+			spriteCounter++;
+			if (spriteCounter > 12) {
+				if (spriteNum == 1) {
+					spriteNum = 2;
+				} else if (spriteNum == 2) {
+					spriteNum = 1;
+				}
+				spriteCounter = 0;
 			}
-			spriteCounter = 0;
 		}
+		else { //khuc quyet dinh song chet trong time chet
+			int x = random.nextInt(100)+1;
+    		if(x==10) {
+    			actionLockCounter =0;
+    			this.dying = true;
+    		}
+    		else {
+    			setAction();
+    			x+=0;
+    			y+=0;
+    		}
+    	
+		}
+		gp.time_win.checkwin(this);
+		
 
 	}
 
