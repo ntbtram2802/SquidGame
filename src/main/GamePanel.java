@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import Checker.*;
+import GUI.MenuState;
+import GUI.PauseState;
 import GUI.UI;
 import Map.*;
 import entity.*;
@@ -35,8 +37,9 @@ public class GamePanel extends JPanel implements Runnable {
 	public Boss boss = new Boss(this);
 	public NPC obj[] = new NPC[7];
 	public PlayerNPC NPC[] = new PlayerNPC[10];
+	public double playTime = 3
+	0.00;
 	int FPS = 60;
-	public double playTime = 60.00;
 
 	// GAME STATE
 	public static int gameState;
@@ -99,9 +102,10 @@ public class GamePanel extends JPanel implements Runnable {
 
 	public void update() {
 		if (gameState == playState && pauseState == false) {
+
 			time_win.upcounter();
 			boss.update();
-			
+
 			for (int z = 0; z < NPC.length; z++) {
 				if (NPC[z] != null) {
 					if (NPC[z].getwin() == false) {
@@ -124,9 +128,8 @@ public class GamePanel extends JPanel implements Runnable {
 					}
 				}
 			}
-			
-		}
-		else{
+
+		} else {
 			menu.update();
 		}
 
@@ -137,37 +140,38 @@ public class GamePanel extends JPanel implements Runnable {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 
-		
 		if (gameState == 0) {
 			menu.draw(g2);
 		}
 
 		if (gameState == 1) {
-			
-	
+
 			bg.draw(g2);
 			u.draw(g2);
 			boss.draw(g2);
+
+			if (player != null) {
+				player.draw(g2);
+			}
+
 			for (int j = 1; j <= 6; j++) {
 				if (obj[j] != null) {
 					obj[j].draw(g2);
 				}
 			}
-			if (player != null) {
-				player.draw(g2);
-			}
+
 			for (int i = 0; i < NPC.length; i++) {
 				if (NPC[i] != null) {
 					NPC[i].draw(g2);
 				}
 			}
 
-		if (pauseState == true) {
-			pause.draw(g2);
-			//System.out.println("drawed");
+			if (pauseState == true) {
+				pause.draw(g2);
+				// System.out.println("drawed");
+			}
+			g2.dispose();
 		}
-		g2.dispose();
-		
 	}
 
 	public static void playMusic(int i) {

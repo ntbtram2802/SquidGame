@@ -1,18 +1,17 @@
-package Map;
+package GUI;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
-import java.io.IOException;
-import java.util.Scanner;
+// import java.io.IOException;
+// import java.util.Scanner;
 
-import javax.imageio.ImageIO;
+// import javax.imageio.ImageIO;
 
+import Map.Background;
 import main.GamePanel;
 import main.KeyHandler;
 
 public class PauseState {
-    private GamePanel gp;
+   // private GamePanel gp;
     private KeyHandler keyH;
     private Background bg;
 
