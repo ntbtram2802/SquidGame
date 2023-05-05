@@ -10,7 +10,7 @@ public abstract class Entity {
     protected int x; // Vi tri cua nhan vat tren truc x cua man hinh
     protected int y; // Vi tri cua nhan vat tren truc y cua man hinh
     protected double speed; // Van toc di chuyen cua nhan vat
-    protected BufferedImage image, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15;
+    protected BufferedImage image, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19;
 
     protected String direction; // huong cua nhan vat
     protected int spriteCounter = 0;
@@ -89,7 +89,7 @@ public abstract class Entity {
     	  this.timeDeath = t;
       }
     public void draw(Graphics2D g2) { // update roi ve hinh anh moi update
-    	if (dying == false) {
+    	if (dying == false && win == false) {
     		BufferedImage image = null;
             switch (direction) {
                 case "stand":
@@ -135,9 +135,7 @@ public abstract class Entity {
     	else if (dying == true) {
     		dyingAnimation(g2);
     	}
-    	else if(win == true) {
-    		dyingAnimation(g2);
-    	}
+    	
       }
     public void dyingAnimation(Graphics2D g2) {
     	actionLockCounter++;
@@ -158,5 +156,5 @@ public abstract class Entity {
     public void changeAlpha(Graphics2D g2, float alphanum) {
     	g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphanum));
     	}
-
+ 
 }

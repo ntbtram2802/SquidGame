@@ -96,7 +96,7 @@ public class PlayerNPC extends Entity {
 			}
 		}
 		else { //khuc quyet dinh song chet trong time chet
-			int x = random.nextInt(100)+1;
+			int x = random.nextInt(200)+1;
     		if(x==10) {
     			actionLockCounter =0;
     			this.dying = true;
@@ -115,6 +115,9 @@ public class PlayerNPC extends Entity {
 
 	public void draw(Graphics2D g2) {
 		super.draw(g2);
+		 if(win == true) {
+			 g2.drawImage(image1, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
+		 }
 	}
 
 }
