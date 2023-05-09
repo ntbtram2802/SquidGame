@@ -40,7 +40,9 @@ public class MenuState {
         if (keyH.enterPressed == true) {
             if (commandNum == 0) {
                 GamePanel.gameState = GamePanel.playState;
-                GamePanel.playMusic(0);
+                GamePanel.stopMusic();
+                GamePanel.playSE(0);
+                
             }
             if (commandNum == 1) {
                 System.exit(0);

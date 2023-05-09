@@ -27,7 +27,8 @@ public class GamePanel extends JPanel implements Runnable {
 	public Thread gameThread;// to start and stop the game whenever you want to
 	private AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
-	public static Sound sound = new Sound();
+	public static Sound music = new Sound();
+	public static Sound se= new Sound();
 	public Time_Win time_win = new Time_Win(this);
 	public UI u = new UI(this);
 
@@ -61,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void setupGame() {
 		aSetter.setObject();
 		aSetter.setNPC();
-		// playMusic(0);
+		playMusic(3);
 		gameState = 0;
 	}
 
@@ -163,18 +164,19 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public static void playMusic(int i) {
-		sound.setFile(i);
-		sound.play();
-		sound.loop();
+		music.setFile(i);
+		music.play();
+		music.loop();
 	}
 
-	public void stopMusic() {
-		sound.stop();
+	public static void stopMusic() {
+		music.stop();
 	}
 
-	public void playSE(int i) {
-		sound.setFile(i);
-		sound.play();
+	public static void playSE(int i) {
+		se.setFile(i);
+		se.play();
+		se.loop();
 	}
 
 }
