@@ -11,25 +11,28 @@ import main.GamePanel;
 import main.KeyHandler;
 
 public class PauseState {
-   // private GamePanel gp;
+    // private GamePanel gp;
     private KeyHandler keyH;
     private Background bg;
+    private int subState=0;
+    private int textX,textY;
 
     public PauseState(KeyHandler keyH) {
         this.keyH = keyH;
     }
 
     public void update() {
-        if (keyH.pausePressed == true) {
+        if ((keyH.pausePressed == true)) {
             
-        }
+    }
+
     }
 
     public void draw(Graphics2D g2) {
         bg = new Background("/menu/menu_squidgame.png");
         bg.setHeight(GamePanel.screenHeight / 2);
         bg.setWidth(GamePanel.screenWidth / 2);
-        //System.out.println("call draw");
+        // System.out.println("call draw");
         bg.draw(g2);
     }
 

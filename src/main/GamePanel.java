@@ -37,8 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Boss boss = new Boss(this);
 	public NPC obj[] = new NPC[7];
 	public PlayerNPC NPC[] = new PlayerNPC[10];
-	public double playTime = 3
-	0.00;
+	public double playTime = 60.00;
 	int FPS = 60;
 
 	// GAME STATE
@@ -155,9 +154,7 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 
 			for (int j = 1; j <= 6; j++) {
-				if (obj[j] != null) {
 					obj[j].draw(g2);
-				}
 			}
 
 			for (int i = 0; i < NPC.length; i++) {

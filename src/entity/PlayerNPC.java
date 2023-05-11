@@ -65,10 +65,11 @@ public class PlayerNPC extends Entity {
 	public void update() {
 		Random random = new Random();
 		gp.time_win.checkTime(this);
-		if (timeDeath == false) { //khuc boss quay len -> time song
+		if (timeDeath == false) { // khuc boss quay len -> time song
 			setAction();
 			if (!gp.c.checkCollision(this, gp.player)
-				 && !gp.c.checkPossibleMove(this)){
+					&& !gp.c.checkPossibleMove(this)
+					&& !gp.c.checkCollision(this, gp.NPC)) {
 				switch (direction) {
 					case "up":
 						y -= speed;
@@ -94,30 +95,27 @@ public class PlayerNPC extends Entity {
 				}
 				spriteCounter = 0;
 			}
-		}
-		else { //khuc quyet dinh song chet trong time chet
-			int x = random.nextInt(200)+1;
-    		if(x==10) {
-    			actionLockCounter =0;
-    			this.dying = true;
-    		}
-    		else {
-    			setAction();
-    			x+=0;
-    			y+=0;
-    		}
-    	
+		} else { // khuc quyet dinh song chet trong time chet
+			int x = random.nextInt(200) + 1;
+			if (x == 10) {
+				actionLockCounter = 0;
+				this.dying = true;
+			} else {
+				setAction();
+				x += 0;
+				y += 0;
+			}
+
 		}
 		gp.time_win.checkwin(this);
-		
 
 	}
 
 	public void draw(Graphics2D g2) {
 		super.draw(g2);
-		 if(win == true) {
-			 g2.drawImage(image1, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-		 }
+		if (win == true) {
+			g2.drawImage(image1, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
+		}
 	}
 
 }

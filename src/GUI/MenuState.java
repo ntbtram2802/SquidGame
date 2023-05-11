@@ -22,7 +22,6 @@ public class MenuState {
 
             if ((keyH.upPressed == true)) {
                 commandNum--;
-                System.out.println("UP"+commandNum);
                 if (commandNum < 0) {
                      commandNum = 0;
                 }
