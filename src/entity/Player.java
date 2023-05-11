@@ -96,14 +96,16 @@ public class Player extends Entity {
 	            }
 
 	        }
+		}
 			else {
 				if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true
 						|| keyH.rightPressed == true) {
 					this.dying = true;
+					System.out.println("HAAAAA");
 				}
 			}
 			gp.time_win.checkwin(this);
-		}
+		
         
 
     }
