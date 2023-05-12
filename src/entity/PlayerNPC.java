@@ -96,12 +96,11 @@ public class PlayerNPC extends Entity {
 				spriteCounter = 0;
 			}
 		} else { // khuc quyet dinh song chet trong time chet
-			int x = random.nextInt(200) + 1;
+			int x = random.nextInt(1200) + 1;
 			if (x == 10) {
 				actionLockCounter = 0;
 				this.dying = true;
 			} else {
-				setAction();
 				x += 0;
 				y += 0;
 			}

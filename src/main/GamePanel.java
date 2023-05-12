@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Collision c = new Collision();
 	public static Sound music = new Sound();
 	public static Sound se= new Sound();
+	public static Sound ingame= new Sound();
 	public Time_Win time_win = new Time_Win(this);
 	public UI u = new UI(this);
 
@@ -140,12 +141,11 @@ public class GamePanel extends JPanel implements Runnable {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 
-		if (gameState == 0) {
+		if (gameState == menuState) {
 			menu.draw(g2);
 		}
 
-		if (gameState == 1) {
-
+		if (gameState == playState) {
 			bg.draw(g2);
 			u.draw(g2);
 			boss.draw(g2);
@@ -166,7 +166,6 @@ public class GamePanel extends JPanel implements Runnable {
 
 			if (pauseState == true) {
 				pause.draw(g2);
-				// System.out.println("drawed");
 			}
 			g2.dispose();
 		}
@@ -181,11 +180,18 @@ public class GamePanel extends JPanel implements Runnable {
 	public static void stopMusic() {
 		music.stop();
 	}
-
+	public static void conituemusic() {
+		ingame.loop();
+	}
 	public static void playSE(int i) {
 		se.setFile(i);
 		se.play();
 		se.loop();
+	}
+
+	public static void stopSE() {
+		ingame = se;
+		se.stop();
 	}
 
 }

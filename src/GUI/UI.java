@@ -50,7 +50,7 @@ public class UI {
 			else {
 				g2.setFont(arial_30);
 				g2.setColor(Color.white);
-				gp.playTime -=(double)1/60;
+				if(gp.pauseState == false) {gp.playTime -=(double)1/60;}
 				g2.drawString("Time: "+dFormat.format(gp.playTime),gp.tilesize*11 , gp.tilesize*2);
 				
 			}

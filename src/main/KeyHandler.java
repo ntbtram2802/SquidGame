@@ -29,12 +29,12 @@ public class KeyHandler implements KeyListener {
         }
         if(code == KeyEvent.VK_P){
             if(GamePanel.pauseState==false){
-                GamePanel.pauseState = true;
-                GamePanel.sound.stop();
+            	GamePanel.pauseState = true;
+                GamePanel.stopSE();    
             }    
             else{
                 GamePanel.pauseState = false;
-                GamePanel.sound.play();
+                GamePanel.conituemusic();
             } 
         }
 
