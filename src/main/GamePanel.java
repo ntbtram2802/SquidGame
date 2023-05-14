@@ -6,10 +6,9 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import Checker.*;
-import GUI.MenuState;
-import GUI.PauseState;
-import GUI.UI;
+import Checker.Collision;
+import Checker.Time_Win;
+import GUI.*;
 import Map.*;
 import entity.*;
 
@@ -25,33 +24,35 @@ public class GamePanel extends JPanel implements Runnable {
 
 	// SYSTEM
 	KeyHandler keyH = new KeyHandler();
-	public static Thread gameThread;// to start and stop the game whenever you want to
+	public Thread gameThread;// to start and stop the game whenever you want to
 	private AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
 	public static Sound music = new Sound();
-	public static Sound se= new Sound();
-	public static Sound ingame= new Sound();
+	public static Sound se = new Sound();
 	public Time_Win time_win = new Time_Win(this);
 	public UI u = new UI(this);
+	public gameWin gameWin = new gameWin(this);
+	public gameOver gameOver = new gameOver(this);
 
-	// ENTITY &OBJECT
+	// ENTITY & OBJECT
 	public Player player = new Player(this, keyH);
 	public Boss boss = new Boss(this);
-	public NPC obj[] = new NPC[7];
-	public PlayerNPC NPC[] = new PlayerNPC[10];
-	public double playTime = 60.00;
+	public NPC obj[] = new NPC[10];
+	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array
 	int FPS = 60;
+	public double playTime = 60.00;
 
 	// GAME STATE
 	public static int gameState;
 	public final static int menuState = 0;
 	public final static int playState = 1;
-	public static boolean pauseState = false;
-	private MenuState menu = new MenuState(keyH);
-	private PauseState pause = new PauseState(keyH);
+	public final static int pauseState = 2;
+	public final static int winState = 3;
+	public final static int loseState = 4;
+	public MenuState menu = new MenuState(keyH);
 
 	// Background
-	private Background bg = new Background("/background/background2.png");
+	public Background bg = new Background("/background/background2.png");
 
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -102,8 +103,7 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		if (gameState == playState && pauseState == false) {
-
+		if (gameState == playState) {
 			time_win.upcounter();
 			boss.update();
 
@@ -123,13 +123,14 @@ public class GamePanel extends JPanel implements Runnable {
 				if (player.getwin() == false) {
 					if (player.getalive() == true && player.getdying() == false) {
 						player.update();
-					}
-					if (player.getalive() == false) {
+					} else if (player.getalive() == false) {
 						player = null;
+						GamePanel.gameState = GamePanel.loseState;
 					}
+				} else if (player.getwin() == true) {
+					GamePanel.gameState = GamePanel.winState;
 				}
 			}
-
 		} else {
 			menu.update();
 		}
@@ -140,35 +141,64 @@ public class GamePanel extends JPanel implements Runnable {
 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-
-		if (gameState == menuState) {
+		if (gameState == 0) {
 			menu.draw(g2);
-		}
 
-		if (gameState == playState) {
+		} else if (gameState == winState) {
 			bg.draw(g2);
-			u.draw(g2);
 			boss.draw(g2);
-
+			for (int j = 1; j <= 6; j++) {
+				if (obj[j] != null) {
+					obj[j].draw(g2);
+				}
+			}
 			if (player != null) {
 				player.draw(g2);
 			}
-
-			for (int j = 1; j <= 6; j++) {
-					obj[j].draw(g2);
-			}
-
 			for (int i = 0; i < NPC.length; i++) {
 				if (NPC[i] != null) {
 					NPC[i].draw(g2);
 				}
 			}
-
-			if (pauseState == true) {
-				pause.draw(g2);
+			gameWin.draw(g2);
+		} else if (gameState == loseState) {
+			bg.draw(g2);
+			boss.draw(g2);
+			for (int j = 1; j <= 6; j++) {
+				if (obj[j] != null) {
+					obj[j].draw(g2);
+				}
 			}
+			if (player != null) {
+				player.draw(g2);
+			}
+			for (int i = 0; i < NPC.length; i++) {
+				if (NPC[i] != null) {
+					NPC[i].draw(g2);
+				}
+			}
+			gameOver.draw(g2);
+		} else {
+			bg.draw(g2);
+			boss.draw(g2);
+			for (int j = 1; j <= 6; j++) {
+				if (obj[j] != null) {
+					obj[j].draw(g2);
+				}
+			}
+			if (player != null) {
+				player.draw(g2);
+			}
+			for (int i = 0; i < NPC.length; i++) {
+				if (NPC[i] != null) {
+					NPC[i].draw(g2);
+				}
+			}
+			u.draw(g2);
 			g2.dispose();
+
 		}
+
 	}
 
 	public static void playMusic(int i) {
@@ -180,18 +210,11 @@ public class GamePanel extends JPanel implements Runnable {
 	public static void stopMusic() {
 		music.stop();
 	}
-	public static void conituemusic() {
-		ingame.loop();
-	}
+
 	public static void playSE(int i) {
 		se.setFile(i);
 		se.play();
 		se.loop();
-	}
-
-	public static void stopSE() {
-		ingame = se;
-		se.stop();
 	}
 
 }
