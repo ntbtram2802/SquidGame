@@ -27,16 +27,17 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
         }
-        // if(code == KeyEvent.VK_P){
-        // if(GamePanel.pauseState = false){
-        // GamePanel.pauseState = true;
-        // GamePanel.stopSE();
-        // }
-        // else{
-        // GamePanel.pauseState = false;
-        // GamePanel.conituemusic();
-        // }
-        // }
+        if(code == KeyEvent.VK_P){
+            if(GamePanel.pauseState==false){
+            	GamePanel.pauseState = true;
+                GamePanel.stopSE();
+                
+            }    
+            else{
+                GamePanel.pauseState = false;
+                GamePanel.conitue();
+            } 
+        }
 
     }
 

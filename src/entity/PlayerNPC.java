@@ -103,6 +103,7 @@ public class PlayerNPC extends Entity {
 			} else {
 				x += 0;
 				y += 0;
+				
 			}
 
 		}
