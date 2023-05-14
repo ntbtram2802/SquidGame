@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -16,8 +17,8 @@ public class gameWin {
     int x;
     int y;
 
-    public gameWin(GamePanel gp) {
-        this.gp = gp;
+    public gameWin(KeyHandler keyH) {
+    	 this.keyH = keyH;
     }
 
     public void update() {
@@ -66,10 +67,11 @@ public class gameWin {
             e.printStackTrace();
         }
 
+        g2.setColor(new Color(157, 0, 0));
         if (commandNum == 0) {
-            g2.drawString(">", x - GamePanel.tilesize, y);
+            g2.drawString(">", 200, 485);
         } else if (commandNum == 1) {
-            g2.drawString(">", x - GamePanel.tilesize, y);
+            g2.drawString(">", 200, 585);
         }
     }
 }

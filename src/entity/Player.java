@@ -123,7 +123,9 @@ public class Player extends Entity {
 			}
 			if (actionLockCounter > i * 3 && actionLockCounter <= i * 4) {
 				g2.drawImage(image19, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-				gp.u.setGameFinish(true);
+			}
+			if(actionLockCounter > i*4) {
+				g2.drawImage(image4, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
 			}
 		}
 		// g2.draw(gp.c.playerBox);

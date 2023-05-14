@@ -32,8 +32,6 @@ public class GamePanel extends JPanel implements Runnable {
 	public static Sound ingame= new Sound();
 	public Time_Win time_win = new Time_Win(this);
 	public UI u = new UI(this);
-	public gameWin gameWin = new gameWin(this);
-	public gameOver gameOver = new gameOver(this);
 
 	// ENTITY & OBJECT
 	public Player player = new Player(this, keyH);
@@ -52,6 +50,8 @@ public class GamePanel extends JPanel implements Runnable {
 	public static boolean pauseState = false;
 	public MenuState menu = new MenuState(keyH);
 	private PauseState pause = new PauseState(keyH);
+	public gameOver gameOver = new gameOver( keyH);
+	public gameWin gameWin = new gameWin(keyH);
 
 	// Background
 	public Background bg = new Background("/background/background2.png");
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		if (gameState == playState  && pauseState == false) {
+		if (gameState == playState  && pauseState == false) { 
 			time_win.upcounter();
 			boss.update();
 
@@ -133,8 +133,18 @@ public class GamePanel extends JPanel implements Runnable {
 					GamePanel.gameState = GamePanel.winState;
 				}
 			}
-		} else {
+		} else if (gameState == menuState) {
 			menu.update();
+		}
+		else if (gameState == winState) {
+			stopMusic();
+			stopSE();
+			gameWin.update();
+		}
+		else if(gameState == loseState) {
+			stopMusic();
+			stopSE();
+			gameOver.update();
 		}
 
 	}
@@ -146,10 +156,11 @@ public class GamePanel extends JPanel implements Runnable {
 		if (gameState == menuState) {
 			menu.draw(g2);
 
-		}else if (gameState == playState || gameState == winState || gameState==loseState) {
+		}else  { //Neu gameState la play/win/die thi ve nhung cai sau
+			
 			bg.draw(g2);
 			boss.draw(g2);
-			if(pauseState == false) {u.draw(g2);}
+			if(pauseState == false) {u.draw(g2);} //khi an pause thi se khong hien dong ho
 			for (int j = 1; j <= 6; j++) {
 				if (obj[j] != null) {
 					obj[j].draw(g2);
@@ -163,13 +174,13 @@ public class GamePanel extends JPanel implements Runnable {
 					NPC[i].draw(g2);
 				}
 			}
-			if(gameState==winState) {
+			if(gameState==winState) { // neu la man hinh win thi ve them man hinh win
 				gameWin.draw(g2);
 			}
-			else if (gameState==loseState) {
+			else if (gameState==loseState) { // neu ng choi thua thi ve cai nay
 				gameOver.draw(g2);
 			}
-			else if (pauseState == true) {
+			else if (pauseState == true) { 
 				pause.draw(g2);
 			}
 			g2.dispose();
