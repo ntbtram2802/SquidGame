@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-    public boolean upPressed, downPressed, leftPressed, 
-                    rightPressed, enterPressed, pausePressed;
+    public boolean upPressed, downPressed, leftPressed,
+            rightPressed, enterPressed, pausePressed;
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -29,10 +29,13 @@ public class KeyHandler implements KeyListener {
         }
         if(code == KeyEvent.VK_P){
             if(GamePanel.pauseState==false){
-                GamePanel.pauseState = true;
+            	GamePanel.pauseState = true;
+                GamePanel.stopSE();
+                
             }    
             else{
                 GamePanel.pauseState = false;
+                GamePanel.conitue();
             } 
         }
 
@@ -57,7 +60,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = false;
         }
-        if (code == KeyEvent.VK_P){
+        if (code == KeyEvent.VK_P) {
             pausePressed = false;
         }
     }
