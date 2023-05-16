@@ -24,6 +24,10 @@ public class Background {
         }
     }
 
+    public BufferedImage getImage(){
+        return bg;
+    }
+
     public void setWidth(int width){
         this.width=width;
     }

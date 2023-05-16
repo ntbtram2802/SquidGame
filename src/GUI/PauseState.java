@@ -22,18 +22,14 @@ public class PauseState {
     }
 
     public void update() {
-        if ((keyH.pausePressed == true)) {
-            
-    }
 
     }
 
     public void draw(Graphics2D g2) {
-        bg = new Background("/menu/menu_squidgame.png");
-        bg.setHeight(GamePanel.screenHeight / 2);
-        bg.setWidth(GamePanel.screenWidth / 2);
+        bg = new Background("/gameplayMenu/optionMenu.png");
+        g2.drawImage(bg.getImage(),200, 250, GamePanel.tilesize*8, GamePanel.tilesize*10 , null);
         // System.out.println("call draw");
-        bg.draw(g2);
+        //bg.draw(g2);
     }
 
 }
