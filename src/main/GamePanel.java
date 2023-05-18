@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Collision c = new Collision();
 	public static Sound music = new Sound();
 	public static Sound se = new Sound();
-	public static Sound ingame= new Sound();
+	public static Sound ingame = new Sound();
 	public Time_Win time_win = new Time_Win(this);
 	public UI u = new UI(this);
 
@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public static boolean pauseState = false;
 	public MenuState menu = new MenuState(keyH);
 	private PauseState pause = new PauseState(keyH);
-	public gameOver gameOver = new gameOver( keyH);
+	public gameOver gameOver = new gameOver(keyH);
 	public gameWin gameWin = new gameWin(keyH);
 
 	// Background
@@ -96,7 +96,7 @@ public class GamePanel extends JPanel implements Runnable {
 				DrawCount++;
 			}
 			if (timer >= 1000000000) {
-//				System.out.println("Fps" + DrawCount);
+				// System.out.println("Fps" + DrawCount);
 				DrawCount = 0;
 				timer = 0;
 			}
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		if (gameState == playState  && pauseState == false) { 
+		if (gameState == playState && pauseState == false) {
 			time_win.upcounter();
 			boss.update();
 
@@ -135,18 +135,15 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 		} else if (gameState == 0) {
 			menu.update();
-		}
-		else if (gameState == 3) {
+		} else if (gameState == 3) {
 			stopMusic();
 			stopSE();
 			gameWin.update();
-		}
-		else if(gameState == 4) {
+		} else if (gameState == 4) {
 			stopMusic();
 			stopSE();
 			gameOver.update();
-		}
-		else if( pauseState==true){
+		} else if (pauseState == true) {
 			pause.update();
 		}
 
@@ -159,12 +156,14 @@ public class GamePanel extends JPanel implements Runnable {
 		if (gameState == menuState) {
 			menu.draw(g2);
 
-		}else  { 
-			
+		} else {
+
 			bg.draw(g2);
 			boss.draw(g2);
-			if(pauseState == false) {u.draw(g2);} 
-			for (int j = 1; j < 6; j++) {
+			if (pauseState == false) {
+				u.draw(g2);
+			}
+			for (int j = 0; j < 6; j++) {
 				if (obj[j] != null) {
 					obj[j].draw(g2);
 				}
@@ -177,20 +176,17 @@ public class GamePanel extends JPanel implements Runnable {
 					NPC[i].draw(g2);
 				}
 			}
-			
-			if(gameState==winState) { // neu la man hinh win thi ve them man hinh win
+
+			if (gameState == winState) { // neu la man hinh win thi ve them man hinh win
 				gameWin.draw(g2);
-			}
-			else if (gameState==loseState) { // neu ng choi thua thi ve cai nay
+			} else if (gameState == loseState) { // neu ng choi thua thi ve cai nay
 				gameOver.draw(g2);
-			}
-			else if (pauseState == true) { 
+			} else if (pauseState == true) {
 				pause.draw(g2);
 			}
 			g2.dispose();
 
 		}
-
 
 	}
 
@@ -203,6 +199,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public static void stopMusic() {
 		music.stop();
 	}
+
 	public static void conitue() {
 		ingame.loop();
 	}
@@ -212,10 +209,10 @@ public class GamePanel extends JPanel implements Runnable {
 		se.play();
 		se.loop();
 	}
+
 	public static void stopSE() {
 		ingame = se;
 		se.stop();
 	}
-
 
 }
