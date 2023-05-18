@@ -34,7 +34,7 @@ public abstract class Entity {
         x = 500; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
         y = 900; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
         speed = 1; // van toc cua nhan vat = 1.5
-        direction = "down";
+        direction = "up";
         timeDeath = false;
         alive = true;
         dying = false;
@@ -147,54 +147,11 @@ public abstract class Entity {
     public void dyingAnimation(Graphics2D g2) {
         actionLockCounter++;
         int i = 5;
-        if (actionLockCounter <= i) {
-            g2.drawImage(image11, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 1f);
-        }
-        if (actionLockCounter > i && actionLockCounter <= i * 2) {
-            g2.drawImage(image11, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 0f);
-        }
-        if (actionLockCounter > i * 2 && actionLockCounter <= i * 3) {
-            g2.drawImage(image12, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 1f);
-        }
-        if (actionLockCounter > i * 3 && actionLockCounter <= i * 4) {
-            g2.drawImage(image12, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 0f);
-        }
-        if (actionLockCounter > i * 4 && actionLockCounter <= i * 5) {
-            g2.drawImage(image13, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 1f);
-        }
-        if (actionLockCounter > i * 5 && actionLockCounter <= i * 6) {
-            g2.drawImage(image13, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 0f);
-        }
-        if (actionLockCounter > i * 6 && actionLockCounter <= i * 7) {
-            g2.drawImage(image14, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 1f);
-        }
-        if (actionLockCounter > i * 7 && actionLockCounter <= i * 8) {
-            g2.drawImage(image14, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 0f);
-        }
-        if (actionLockCounter > i * 8 && actionLockCounter <= i * 9) {
-            g2.drawImage(image15, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 1f);
-        }
-        if (actionLockCounter > i * 9 && actionLockCounter <= i * 10) {
-            g2.drawImage(image15, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-            changeAlpha(g2, 0f);
-        }
-        if (actionLockCounter > i * 10) {
-            dying = false;
-            alive = false;
-        }
+        if (actionLockCounter <= i) {g2.drawImage(image11, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+        if (actionLockCounter > i * 2 && actionLockCounter <= i * 3) {g2.drawImage(image12, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+        if (actionLockCounter > i * 4 && actionLockCounter <= i * 5) {g2.drawImage(image13, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+        if (actionLockCounter > i * 6 && actionLockCounter <= i * 7) {g2.drawImage(image14, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+        if (actionLockCounter > i * 8 && actionLockCounter <= i * 9) {g2.drawImage(image15, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+        if (actionLockCounter > i * 10) {dying = false;alive = false;}
     }
-
-    public void changeAlpha(Graphics2D g2, float alphanum) {
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphanum));
-    }
-
 }

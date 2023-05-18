@@ -25,10 +25,10 @@ public class gameOver {
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
             if ((keyH.upPressed == true)) {
                 commandNum--;
-                System.out.println("Up:" + commandNum);
+//                System.out.println("Up:" + commandNum);
                 if (commandNum < 0) {
                     commandNum = 0;
-                    System.out.println("afterup:" + commandNum);
+//                    System.out.println("afterup:" + commandNum);
                 }
             }
 
@@ -37,9 +37,9 @@ public class gameOver {
             commandNum++;
             if (commandNum > 1) {
                 commandNum = 1;
-                System.out.println("afterDown:" + commandNum);
+//                System.out.println("afterDown:" + commandNum);
             }
-            System.out.println("Down:" + commandNum);
+ //           System.out.println("Down:" + commandNum);
         }
         if (keyH.enterPressed == true) {
             if (commandNum == 0) {

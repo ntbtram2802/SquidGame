@@ -26,7 +26,7 @@ public class gameWin {
 
             if ((keyH.upPressed == true)) {
                 commandNum--;
-                System.out.println("Up:" + commandNum);
+//                System.out.println("Up:" + commandNum);
                 if (commandNum < 0) {
                     commandNum = 0;
                     System.out.println("afterup:" + commandNum);

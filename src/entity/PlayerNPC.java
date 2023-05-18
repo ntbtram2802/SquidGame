@@ -100,12 +100,7 @@ public class PlayerNPC extends Entity {
 			if (x == 10) {
 				actionLockCounter = 0;
 				this.dying = true;
-			} else {
-				x += 0;
-				y += 0;
-				
-			}
-
+			} 
 		}
 		gp.time_win.checkwin(this);
 
@@ -114,7 +109,7 @@ public class PlayerNPC extends Entity {
 	public void draw(Graphics2D g2) {
 		super.draw(g2);
 		if (win == true) {
-			g2.drawImage(image1, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
+			g2.drawImage(image4, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
 		}
 	}
 
