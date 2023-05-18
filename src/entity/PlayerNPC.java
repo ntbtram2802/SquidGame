@@ -11,7 +11,6 @@ public class PlayerNPC extends Entity {
 	public PlayerNPC(GamePanel gp) {
 		super(gp);
 		setDefault();
-		type = "nau";
 	}
 
 	public void setType(String type) {
@@ -88,19 +87,15 @@ public class PlayerNPC extends Entity {
 				switch (direction) {
 					case "up":
 						y -= speed;
-						System.out.println("up"+y);
 						break;
 					case "down":
 						y += speed;
-						System.out.println("down"+y);
 						break;
 					case "left":
 						x -= speed;
-						System.out.println("left"+x);
 						break;
 					case "right":
 						x += speed;
-						System.out.println("right"+x);
 						break;
 				}
 			}

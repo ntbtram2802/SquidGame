@@ -72,8 +72,8 @@ public class GamePanel extends JPanel implements Runnable {
 		gameState = 0;
 	}
 	public void restartt() {
-		aSetter.restartNPC();
 		time_win.recounter();
+		aSetter.restartNPC();
 		player.setDefault();
 		stopMusic();
         playSE(0);
@@ -171,15 +171,9 @@ public class GamePanel extends JPanel implements Runnable {
 			if (pauseState == false) {
 				u.draw(g2);
 			}
-			for (int j = 0; j < obj.length; j++) {
-					obj[j].draw(g2);
-			}
+			for (int j = 0; j < obj.length; j++) {obj[j].draw(g2);}
 				player.draw(g2);
-			for (int i = 0; i < NPC.length; i++) {
-//				if (NPC[i] != null) {
-					NPC[i].draw(g2);
-				//}
-			}
+			for (int i = 0; i < NPC.length; i++) {NPC[i].draw(g2);}
 
 			if (gameState == winState) { // neu la man hinh win thi ve them man hinh win
 				gameWin.draw(g2);

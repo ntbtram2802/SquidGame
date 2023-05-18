@@ -33,25 +33,26 @@ public class AssetSetter {
 	}
 
 	public void setNPC() {
-		Random random = new Random();
 		for (int i = 0; i < gp.NPC.length; i++) {
-			int x = random.nextInt(15) + 1;
-			int y = random.nextInt((19 - 17) + 1) + 17;
 			gp.NPC[i] = new PlayerNPC(gp);
-			gp.NPC[i].setX(x * tilesize);
-			gp.NPC[i].setY(y * tilesize);
-			if (x % 2 != 0) {
-				gp.NPC[i].setType("trang");
-			}
-			gp.NPC[i].getImage();
+			setposisionNPC(i) ;
 		}
+		
+	}
+	public void setposisionNPC(int i) {
+		int x = random.nextInt(15) + 1;
+		int y = random.nextInt(3) + 17;
+		gp.NPC[i].setX(x * tilesize);
+		gp.NPC[i].setY(y * tilesize);
+		if (x % 2 != 0) {gp.NPC[i].setType("trang");}
+		else if (x%2 ==0){gp.NPC[i].setType("nau");		}
+		gp.NPC[i].getImage();
+		
 	}
 	public void restartNPC() {
 		for(int i =0; i<gp.NPC.length;i++) {
-			gp.NPC[i].setDefault();
-			int x = random.nextInt(15)+1;
-			gp.NPC[i].setX((x)*tilesize);
-			gp.NPC[i].setY((18)*tilesize);
+			gp.NPC[i].setDefault();	
+			setposisionNPC(i) ;
 		}
 	}
 

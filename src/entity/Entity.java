@@ -13,9 +13,9 @@ public abstract class Entity {
             image11, image12, image13, image14, image15, image16, image17, image18, image19;
 
     protected String direction; // huong cua nhan vat
-    protected int spriteCounter = 0;
-    protected int spriteNum = 1;
-    protected int actionLockCounter = 0; // so lan ham update duoc goi ke tu khi tro choi bat dau
+    protected int spriteCounter;
+    protected int spriteNum;
+    protected int actionLockCounter; // so lan ham update duoc goi ke tu khi tro choi bat dau
     protected boolean timeDeath;
     protected boolean alive;
     protected boolean win;
@@ -32,6 +32,9 @@ public abstract class Entity {
         x = 500; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
         y = 900; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
         speed = 1; // van toc cua nhan vat = 0.2
+        actionLockCounter = 0;
+        spriteCounter = 0;
+        spriteNum = 1;
         direction = "up";
         timeDeath = false;
         alive = true;

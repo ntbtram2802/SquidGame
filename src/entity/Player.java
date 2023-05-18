@@ -19,6 +19,7 @@ public class Player extends Entity {
 	}
 	public void restartplayer() {
 		setDefault();
+		
 	}
 
 	public void getImage() {
