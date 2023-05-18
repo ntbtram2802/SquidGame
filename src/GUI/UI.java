@@ -36,7 +36,6 @@ public class UI {
 				}	
 			}
 			g2.drawString("Time: " + dFormat.format(gp.playTime), GamePanel.tilesize * 11, GamePanel.tilesize * 2);
-		 
 	}
 
 

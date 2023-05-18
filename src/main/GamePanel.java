@@ -133,18 +133,21 @@ public class GamePanel extends JPanel implements Runnable {
 					GamePanel.gameState = GamePanel.winState;
 				}
 			}
-		} else if (gameState == menuState) {
+		} else if (gameState == 0) {
 			menu.update();
 		}
-		else if (gameState == winState) {
+		else if (gameState == 3) {
 			stopMusic();
 			stopSE();
 			gameWin.update();
 		}
-		else if(gameState == loseState) {
+		else if(gameState == 4) {
 			stopMusic();
 			stopSE();
 			gameOver.update();
+		}
+		else if( pauseState==true){
+			pause.update();
 		}
 
 	}
@@ -156,11 +159,11 @@ public class GamePanel extends JPanel implements Runnable {
 		if (gameState == menuState) {
 			menu.draw(g2);
 
-		}else  { //Neu gameState la play/win/die thi ve nhung cai sau
+		}else  { 
 			
 			bg.draw(g2);
 			boss.draw(g2);
-			if(pauseState == false) {u.draw(g2);} //khi an pause thi se khong hien dong ho
+			if(pauseState == false) {u.draw(g2);} 
 			for (int j = 1; j <= 6; j++) {
 				if (obj[j] != null) {
 					obj[j].draw(g2);
@@ -174,10 +177,10 @@ public class GamePanel extends JPanel implements Runnable {
 					NPC[i].draw(g2);
 				}
 			}
-			if(gameState==winState) { // neu la man hinh win thi ve them man hinh win
+			if(gameState==3) { // neu la man hinh win thi ve them man hinh win
 				gameWin.draw(g2);
 			}
-			else if (gameState==loseState) { // neu ng choi thua thi ve cai nay
+			else if (gameState==4) { // neu ng choi thua thi ve cai nay
 				gameOver.draw(g2);
 			}
 			else if (pauseState == true) { 

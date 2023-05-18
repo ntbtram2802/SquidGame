@@ -13,7 +13,7 @@ public class gameOver {
     Graphics2D g2;
     GamePanel gp;
     Player player;
-    public int commandNum = 0;
+    private int commandNum = 0;
     int x;
     int y;
 
