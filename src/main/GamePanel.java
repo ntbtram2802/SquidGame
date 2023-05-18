@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
 	// ENTITY & OBJECT
 	public Player player = new Player(this, keyH);
 	public Boss boss = new Boss(this);
-	public NPC obj[] = new NPC[10];
+	public NPC obj[] = new NPC[6];
 	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array
 	int FPS = 60;
 	public double playTime = 60.00;
@@ -96,7 +96,7 @@ public class GamePanel extends JPanel implements Runnable {
 				DrawCount++;
 			}
 			if (timer >= 1000000000) {
-				System.out.println("Fps" + DrawCount);
+//				System.out.println("Fps" + DrawCount);
 				DrawCount = 0;
 				timer = 0;
 			}
@@ -127,10 +127,10 @@ public class GamePanel extends JPanel implements Runnable {
 						player.update();
 					} else if (player.getalive() == false) {
 						player = null;
-						GamePanel.gameState = GamePanel.loseState;
+						gameState = loseState;
 					}
 				} else if (player.getwin() == true) {
-					GamePanel.gameState = GamePanel.winState;
+					gameState = winState;
 				}
 			}
 		} else if (gameState == 0) {
@@ -177,7 +177,8 @@ public class GamePanel extends JPanel implements Runnable {
 					NPC[i].draw(g2);
 				}
 			}
-			if(gameState==3) { // neu la man hinh win thi ve them man hinh win
+			
+			if(gameState==winState) { // neu la man hinh win thi ve them man hinh win
 				gameWin.draw(g2);
 			}
 			else if (gameState==4) { // neu ng choi thua thi ve cai nay

@@ -13,12 +13,7 @@ public class Boss extends Entity{
 
 	public Boss(GamePanel gp) {
 		super(gp);
-		setDefault();
-		getImage();
-		
-	}
-	public void setDefaultValues() {
-		direction = "xoaylung";
+		getImage();		
 	}
 	public void getImage() {
 		try {
