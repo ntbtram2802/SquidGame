@@ -7,7 +7,6 @@ import main.GamePanel;
 import main.KeyHandler;
 
 public class PauseState {
-    // private GamePanel gp;
     private KeyHandler keyH;
     private Background bg;
     private int commandNum=0;
@@ -24,7 +23,6 @@ public class PauseState {
                 System.out.println("Up:" + commandNum);
                 if (commandNum < 0) {
                     commandNum = 0;
-                    System.out.println("afterup:" + commandNum);
                 }
             }
 
@@ -33,9 +31,7 @@ public class PauseState {
             commandNum++;
             if (commandNum > 1) {
                 commandNum = 1;
-                System.out.println("afterDown:" + commandNum);
             }
-            System.out.println("Down:" + commandNum);
         }
         if (keyH.enterPressed == true) {
             if (commandNum == 0) {

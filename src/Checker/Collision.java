@@ -7,7 +7,7 @@ import entity.PlayerNPC;
 import main.GamePanel;
 
 public class Collision {
-    Rectangle e1Box, e2Box, e1FutureBox = new Rectangle(0, 0, 10, 10);
+    private Rectangle e1Box, e2Box, e1FutureBox = new Rectangle(0, 0, 10, 10);
 
     public boolean checkCollision(Entity player, PlayerNPC npc[]) {
 
