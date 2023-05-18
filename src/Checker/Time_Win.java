@@ -19,7 +19,7 @@ public class Time_Win {
 			e.setdying(true);
 		} else if (e.getY() <= 184 && (gp.playTime) > 0) {
 			e.setwin(true);
-			e.setY(e.getY()-gp.orignialTileSize);
+			e.setY(e.getY()-GamePanel.orignialTileSize);
 		}
 	}
 

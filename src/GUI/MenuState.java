@@ -37,7 +37,7 @@ public class MenuState {
             if (commandNum == 0) {
                 GamePanel.gameState = GamePanel.playState;
                 GamePanel.stopMusic();
-               GamePanel.playSE(0);;
+                GamePanel.playSE(0);;
                 
             }
             if (commandNum == 1) {

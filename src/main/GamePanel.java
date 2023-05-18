@@ -17,10 +17,10 @@ public class GamePanel extends JPanel implements Runnable {
 	public static final int orignialTileSize = 16;
 	public static final int scale = 3;
 	public static final int tilesize = orignialTileSize * scale; // 48X48 tile
-	public static final int maxScreenCol = 20;// horizontal, ngang
-	public static final int maxScreenRow = 16; // vertical,doc
-	public static final int screenWidth = tilesize * maxScreenRow; // 256 ngang
-	public static final int screenHeight = tilesize * maxScreenCol;// 320 doc
+	public static final int maxScreenCol = 16;// cột
+	public static final int maxScreenRow = 20; // hàng
+	public static final int screenWidth = tilesize * maxScreenCol; // 256 ngang
+	public static final int screenHeight = tilesize * maxScreenRow;// 320 doc
 
 	// SYSTEM
 	KeyHandler keyH = new KeyHandler();
@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Player player = new Player(this, keyH);
 	public Boss boss = new Boss(this);
 	public NPC obj[] = new NPC[6];
-	public PlayerNPC NPC[] = new PlayerNPC[10];// this is npc array
+	public PlayerNPC NPC[] = new PlayerNPC[10];
 	int FPS = 60;
 	public double playTime = 60.00;
 
@@ -164,7 +164,7 @@ public class GamePanel extends JPanel implements Runnable {
 			bg.draw(g2);
 			boss.draw(g2);
 			if(pauseState == false) {u.draw(g2);} 
-			for (int j = 1; j <= 6; j++) {
+			for (int j = 1; j < 6; j++) {
 				if (obj[j] != null) {
 					obj[j].draw(g2);
 				}
@@ -181,7 +181,7 @@ public class GamePanel extends JPanel implements Runnable {
 			if(gameState==winState) { // neu la man hinh win thi ve them man hinh win
 				gameWin.draw(g2);
 			}
-			else if (gameState==4) { // neu ng choi thua thi ve cai nay
+			else if (gameState==loseState) { // neu ng choi thua thi ve cai nay
 				gameOver.draw(g2);
 			}
 			else if (pauseState == true) { 
