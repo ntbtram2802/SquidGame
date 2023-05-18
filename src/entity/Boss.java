@@ -13,7 +13,8 @@ public class Boss extends Entity{
 
 	public Boss(GamePanel gp) {
 		super(gp);
-		getImage();		
+		getImage();	
+		direction = "xoaylung";
 	}
 	public void getImage() {
 		try {
@@ -26,12 +27,8 @@ public class Boss extends Entity{
 
 	public void update() {
 		gp.time_win.checkTime(this);
-		if(timeDeath == false) {
-			direction = "xoaylung";
-		}
-		else {
-			direction = "chinhdien";
-		}
+		if(timeDeath == false) {direction = "xoaylung";}
+		else {direction = "chinhdien";}
 	}
 	
 	public void draw (Graphics2D g2) {
@@ -46,6 +43,4 @@ public class Boss extends Entity{
 		}
 		g2.drawImage(image, 352, 120,size*GamePanel.scale,size*GamePanel.scale, null);
 	}
-	
-
 }

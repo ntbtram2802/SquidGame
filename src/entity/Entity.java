@@ -18,7 +18,6 @@ public abstract class Entity {
     protected int actionLockCounter = 0; // so lan ham update duoc goi ke tu khi tro choi bat dau
     protected boolean timeDeath;
     protected boolean alive;
-    protected boolean dying;
     protected boolean win;
 
     public Entity(GamePanel gp) {
@@ -32,71 +31,29 @@ public abstract class Entity {
     public void setDefault() { // Initial nhung gia tri dau tien cho nhan vat
         x = 500; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
         y = 900; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
-        speed = 1; // van toc cua nhan vat = 1.5
+        speed = 1; // van toc cua nhan vat = 0.2
         direction = "up";
         timeDeath = false;
         alive = true;
-        dying = false;
         win = false;
     }
-
-    public void setDirection(String d) { // ham thay doi huong cua nhan vat
-        this.direction = d;
-    }
-
-    public String getDirection() {
-        return direction;
-    }
-
-    public void setX(int x) { // method thay doi vi tri cua nhan vat theo truc x
-        this.x = x;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setY(int y) { // method thay doi vi tri cua nhan vat theo truc y
-        this.y = y;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    // public double getSpeed() {
-    // return speed;
-    // }
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public boolean getalive() {
-        return alive;
-    }
-
-    public boolean getdying() {
-        return dying;
-    }
-
-    public void setdying(boolean t) {
-        this.dying = t;
-    }
-
-    public void setwin(boolean t) {
-        this.win = t;
-    }
-
-    public boolean getwin() {
-        return win;
-    }
-
-    public void setchecktime(boolean t) {
-        this.timeDeath = t;
-    }
-
+ // getter + setter cua variable direction, x, y, speed
+    public void setDirection(String d) { this.direction = d;}
+    public String getDirection() {return direction;}
+    public void setX(int x) {this.x = x;}
+    public int getX() {return x; }
+    public void setY(int y) {this.y = y;}
+    public int getY() {return y;}
+    public void setSpeed(int speed) {this.speed = speed;}
+// getter + setter cua variale lien quan den gameplay
+    public boolean getalive() {return alive;}
+    public void setalive(boolean t) {this.alive = t;}
+    public void setwin(boolean t) {this.win = t;}
+    public boolean getwin() {return win;}
+    public void setchecktime(boolean t) {this.timeDeath = t;}
+ 
     public void draw(Graphics2D g2) { // update roi ve hinh anh moi update
-        if (dying == false && win == false) {
+    	 if (win == false && alive == true) {
             BufferedImage image = null;
             switch (direction) {
                 case "stand":
@@ -138,7 +95,7 @@ public abstract class Entity {
                     break;
             }
             g2.drawImage(image, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
-        } else if (dying == true) {
+        } else if (alive==false) {
             dyingAnimation(g2);
         }
     }
@@ -151,6 +108,6 @@ public abstract class Entity {
         if (actionLockCounter > i * 4 && actionLockCounter <= i * 5) {g2.drawImage(image13, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
         if (actionLockCounter > i * 6 && actionLockCounter <= i * 7) {g2.drawImage(image14, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
         if (actionLockCounter > i * 8 && actionLockCounter <= i * 9) {g2.drawImage(image15, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
-        if (actionLockCounter > i * 10) {dying = false;alive = false;}
+        if (actionLockCounter > i * 10) {g2.drawImage(image15, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}//dying = false;alive = false;
     }
 }

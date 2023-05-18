@@ -48,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public final static int winState = 3;
 	public final static int loseState = 4;
 	public static boolean pauseState = false;
+	public static boolean restart = false;
 	public MenuState menu = new MenuState(keyH);
 	private PauseState pause = new PauseState(keyH);
 	public gameOver gameOver = new gameOver(keyH);
@@ -69,6 +70,16 @@ public class GamePanel extends JPanel implements Runnable {
 		aSetter.setNPC();
 		playMusic(3);
 		gameState = 0;
+	}
+	public void restartt() {
+		aSetter.restartNPC();
+		time_win.recounter();
+		player.setDefault();
+		stopMusic();
+        playSE(0);
+        playTime = 60.00;
+        gameState = playState;
+		restart = false;
 	}
 
 	public void startGameThread() {
@@ -105,41 +116,40 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
+		if(restart == true) {
+			restartt();
+		}
 		if (gameState == playState && pauseState == false) {
 			time_win.upcounter();
 			boss.update();
 
 			for (int z = 0; z < NPC.length; z++) {
-				if (NPC[z] != null) {
+				//if (NPC[z] != null) {
 					if (NPC[z].getwin() == false) {
-						if (NPC[z].getalive() == true && NPC[z].getdying() == false) {
+						if (NPC[z].getalive() == true) {
 							NPC[z].update();
 						}
-						if (NPC[z].getalive() == false) {
-							NPC[z] = null;
-						}
 					}
-				}
+				//}
 			}
-			if (player != null) {
+			//if (player != null) {
 				if (player.getwin() == false) {
-					if (player.getalive() == true && player.getdying() == false) {
+					if (player.getalive() == true) {
 						player.update();
 					} else if (player.getalive() == false) {
-						player = null;
 						gameState = loseState;
 					}
 				} else if (player.getwin() == true) {
 					gameState = winState;
 				}
-			}
-		} else if (gameState == 0) {
+			//}
+		} else if (gameState == menuState) {
 			menu.update();
-		} else if (gameState == 3) {
+		} else if (gameState == winState) {
 			stopMusic();
 			stopSE();
 			gameWin.update();
-		} else if (gameState == 4) {
+		} else if (gameState == loseState) {
 			stopMusic();
 			stopSE();
 			gameOver.update();
@@ -150,31 +160,25 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void paintComponent(Graphics g) {
-
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		if (gameState == menuState) {
 			menu.draw(g2);
 
 		} else {
-
 			bg.draw(g2);
 			boss.draw(g2);
 			if (pauseState == false) {
 				u.draw(g2);
 			}
-			for (int j = 0; j < 6; j++) {
-				if (obj[j] != null) {
+			for (int j = 0; j < obj.length; j++) {
 					obj[j].draw(g2);
-				}
 			}
-			if (player != null) {
 				player.draw(g2);
-			}
 			for (int i = 0; i < NPC.length; i++) {
-				if (NPC[i] != null) {
+//				if (NPC[i] != null) {
 					NPC[i].draw(g2);
-				}
+				//}
 			}
 
 			if (gameState == winState) { // neu la man hinh win thi ve them man hinh win

@@ -21,20 +21,14 @@ public class AssetSetter {
 			gp.obj[i] = new NPC(gp);
 			gp.obj[i].setX((j) * tilesize);
 			gp.obj[i].setY((3) * tilesize);
-			if (i == 2) {
-				j += 4;
-			} else {
-				j += 2;
-			}
+			if (i == 2) {j += 4;
+			} else {j += 2;}
 		}
 		int x = 0;
 		while (x < 6) {
-			gp.obj[x].setDirection("round");
-			x++;
-			gp.obj[x].setDirection("triangle");
-			x++;
-			gp.obj[x].setDirection("square");
-			x++;
+			gp.obj[x].setDirection("round");x++;
+			gp.obj[x].setDirection("triangle");x++;
+			gp.obj[x].setDirection("square");x++;
 		}
 	}
 
@@ -42,13 +36,22 @@ public class AssetSetter {
 		Random random = new Random();
 		for (int i = 0; i < gp.NPC.length; i++) {
 			int x = random.nextInt(15) + 1;
+			int y = random.nextInt((19 - 17) + 1) + 17;
 			gp.NPC[i] = new PlayerNPC(gp);
-			gp.NPC[i].setX((x) * tilesize);
-			gp.NPC[i].setY((18) * tilesize);
+			gp.NPC[i].setX(x * tilesize);
+			gp.NPC[i].setY(y * tilesize);
 			if (x % 2 != 0) {
 				gp.NPC[i].setType("trang");
 			}
 			gp.NPC[i].getImage();
+		}
+	}
+	public void restartNPC() {
+		for(int i =0; i<gp.NPC.length;i++) {
+			gp.NPC[i].setDefault();
+			int x = random.nextInt(15)+1;
+			gp.NPC[i].setX((x)*tilesize);
+			gp.NPC[i].setY((18)*tilesize);
 		}
 	}
 

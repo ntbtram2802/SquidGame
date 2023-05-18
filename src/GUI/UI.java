@@ -27,7 +27,7 @@ public class UI {
 		this.g2 = g2;
 			g2.setFont(arial_30);
 			g2.setColor(Color.white);
-			if (gp.gameState == gp.playState) {
+			if (gp.gameState == gp.playState && gp.pauseState == false) {
 				if(gp.playTime < 0.00) {
 					gp.playTime =0;
 				}

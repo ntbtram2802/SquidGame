@@ -14,26 +14,16 @@ public class Time_Win {
 	}
 
 	public void checkwin(Entity e) {
-		if (e.getY() > 184 && (gp.playTime) <= 0) {
-			e.setwin(false);
-			e.setdying(true);
-		} else if (e.getY() <= 184 && (gp.playTime) > 0) {
-			e.setwin(true);
-			e.setY(e.getY()-GamePanel.orignialTileSize);
-		}
+		if (e.getY() > 184 && (gp.playTime) <= 0) {e.setwin(false);e.setalive(false);
+		} else if (e.getY() <= 184 && (gp.playTime) > 0) {e.setwin(true);e.setY(e.getY()-GamePanel.orignialTileSize);}
 	}
 
-	public void upcounter() {
-		this.actioncounter++;
-	}
+	public void upcounter() {this.actioncounter++;}
+	public void recounter() {this.actioncounter = 0;}
 
 	public void checkTime(Entity e) {
-		if (actioncounter < 320) {
-			e.setchecktime(false);
-		} else if (actioncounter >= 320 && actioncounter < 720) {
-			e.setchecktime(true);
-		} else if (actioncounter == 720) {
-			this.actioncounter = 0;
-		}
+		if (actioncounter < 320) {e.setchecktime(false);
+		} else if (actioncounter >= 320 && actioncounter < 720) {e.setchecktime(true);
+		} else if (actioncounter == 720) {this.actioncounter = 0;}
 	}
 }

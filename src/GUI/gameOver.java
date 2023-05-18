@@ -23,8 +23,7 @@ public class gameOver {
 
     public void update() {
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-            if ((keyH.upPressed == true)) {
-                commandNum--;
+            if ((keyH.upPressed == true)) {commandNum--;
 //                System.out.println("Up:" + commandNum);
                 if (commandNum < 0) {
                     commandNum = 0;
@@ -43,9 +42,7 @@ public class gameOver {
         }
         if (keyH.enterPressed == true) {
             if (commandNum == 0) {
-                GamePanel.gameState = GamePanel.playState;
-                GamePanel.stopMusic();
-                GamePanel.playSE(0);
+            	GamePanel.restart = true;
 
             }
             if (commandNum == 1) {

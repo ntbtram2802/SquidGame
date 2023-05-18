@@ -57,11 +57,9 @@ public class PlayerNPC extends Entity {
 										// seconds // note that we set FPS is 60
 
 			Random random = new Random();
-
 			int x = random.nextInt(100) + 1; // pick up a number randomly 1-100 plus 1 bc it random from 0-99 and plus 1
 												// is 1-100
 			int y = random.nextInt(100);
-
 			if (x <= 25) {
 				direction = "up";
 			}
@@ -90,15 +88,19 @@ public class PlayerNPC extends Entity {
 				switch (direction) {
 					case "up":
 						y -= speed;
+						System.out.println("up"+y);
 						break;
 					case "down":
 						y += speed;
+						System.out.println("down"+y);
 						break;
 					case "left":
 						x -= speed;
+						System.out.println("left"+x);
 						break;
 					case "right":
 						x += speed;
+						System.out.println("right"+x);
 						break;
 				}
 			}
@@ -116,7 +118,7 @@ public class PlayerNPC extends Entity {
 			int x = random.nextInt(1200) + 1;
 			if (x == 10) {
 				actionLockCounter = 0;
-				this.dying = true;
+				this.alive = false;
 			}
 		}
 		gp.time_win.checkwin(this);
