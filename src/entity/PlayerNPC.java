@@ -6,23 +6,40 @@ import java.awt.Graphics2D;
 import main.GamePanel;
 
 public class PlayerNPC extends Entity {
+	public static String type;
+
 	public PlayerNPC(GamePanel gp) {
 		super(gp);
 		setDefault();
-		getImage();
+		type = "nau";
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public void getImage() {
-
 		try {
-			image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up1.png"));
-			image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up2.png"));
-			image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down1.png"));
-			image5 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down2.png"));
-			image6 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left1.png"));
-			image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left2.png"));
-			image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right1.png"));
-			image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right2.png"));
+			if (type.equals("nau")) {
+				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up1.png"));
+				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up2.png"));
+				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down1.png"));
+				image5 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down2.png"));
+				image6 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left1.png"));
+				image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_left2.png"));
+				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right1.png"));
+				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right2.png"));
+			}
+			if (type.equals("trang")) {
+				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_up1.png"));
+				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_up2.png"));
+				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_down1.png"));
+				image5 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_down2.png"));
+				image6 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_left2.png"));
+				image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_left3.png"));
+				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right2.png"));
+				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right3.png"));
+			}
 			image11 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost1.png"));
 			image12 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost2.png"));
 			image13 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost3.png"));
@@ -100,7 +117,7 @@ public class PlayerNPC extends Entity {
 			if (x == 10) {
 				actionLockCounter = 0;
 				this.dying = true;
-			} 
+			}
 		}
 		gp.time_win.checkwin(this);
 
