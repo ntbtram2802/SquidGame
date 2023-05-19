@@ -52,26 +52,24 @@ public class PlayerNPC extends Entity {
 	public void setAction() {
 
 		actionLockCounter++;
-		if (actionLockCounter == 180) { // once pick up a direction it won't change for the next 120 frames with means 2
+		if (actionLockCounter == 100) { // once pick up a direction it won't change for the next 120 frames with means 2
 										// seconds // note that we set FPS is 60
 
 			Random random = new Random();
 			int x = random.nextInt(100) + 1; // pick up a number randomly 1-100 plus 1 bc it random from 0-99 and plus 1
 												// is 1-100
-			int y = random.nextInt(100);
-			if (x <= 25) {
+			if (x < 50) {
 				direction = "up";
 			}
-			if (x > 25 && y <= 50) {
+			else if (x <= 60) {
 				direction = "down";
 			}
-			if (x > 50 && y <= 75) {
+			else if (x <= 80 ) {
 				direction = "left";
 			}
-			if (x > 75 && y <= 100) {
+			else {
 				direction = "right";
 			}
-
 			actionLockCounter = 0;
 		}
 	}
