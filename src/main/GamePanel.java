@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public static final int screenHeight = tilesize * maxScreenRow;// 320 doc
 
 	// SYSTEM
-	KeyHandler keyH = new KeyHandler();
+	KeyHandler keyH = new KeyHandler(this);
 	public Thread gameThread;// to start and stop the game whenever you want to
 	private AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public static boolean pauseState = false;
 	public static boolean restart = false;
 	public MenuState menu = new MenuState(keyH);
-	private PauseState pause = new PauseState(keyH);
+	public PauseState pause = new PauseState(keyH);
 	public gameOver gameOver = new gameOver(keyH);
 	public gameWin gameWin = new gameWin(keyH);
 

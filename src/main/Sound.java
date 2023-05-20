@@ -10,7 +10,7 @@ public class Sound{
     Clip clip;
     URL soundUrl[]= new URL[30];
     private FloatControl fc;
-    private int volumeSlace=3;
+    private static int volumeSlace=3;
     private float volume;
 
     public Sound(){
@@ -19,16 +19,16 @@ public class Sound{
         soundUrl[2]=getClass().getResource("/sound/levelup.wav");
         soundUrl[3]=getClass().getResource("/sound/Squid Game - Way Back Then  Orchestral Cover.wav");
         soundUrl[4]=getClass().getResource("/sound/cursor.wav");
-
-
-
     }
+    public int getvolumeSlace() {return volumeSlace;}
+    public void setvolumeSlace(int newvolume) { this.volumeSlace = newvolume;}
     public void setFile(int i){
         try {
             AudioInputStream ais=AudioSystem.getAudioInputStream(soundUrl[i]);
             clip=AudioSystem.getClip();
             clip.open(ais);
             fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            checkVolume();
         } catch (Exception e) {
         }
 
@@ -46,18 +46,30 @@ public class Sound{
     }
     public void checkVolume(){
     switch (volumeSlace){
-        case 0:
-            volume = -80f;
-            break;
-        case 1:
-            volume = -12f;
-            break;
-        case 2:
-            volume = 1f;
-            break;
-        case 3: 
-            volume = 6f;
-            break;
+    case 0:
+        volume = -80f;
+        System.out.println("0");
+        break;
+    case 1:
+        volume = -20f;
+        System.out.println("1");
+        break;
+    case 2:
+        volume = -12f;
+        System.out.println("2");
+        break;
+    case 3: 
+        volume = -5f;
+        System.out.println("3");
+        break;
+    case 4: 
+        volume = 1f;
+        System.out.println("4");
+        break;
+    case 5: 
+        volume = 6f;
+        System.out.println("5");
+        break;
     }
     fc.setValue(volume);
     }
