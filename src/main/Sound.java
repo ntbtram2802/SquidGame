@@ -18,6 +18,8 @@ public class Sound{
         soundUrl[1]=getClass().getResource("/sound/gameover.wav");
         soundUrl[2]=getClass().getResource("/sound/levelup.wav");
         soundUrl[3]=getClass().getResource("/sound/Squid Game - Way Back Then  Orchestral Cover.wav");
+        soundUrl[4]=getClass().getResource("/sound/cursor.wav");
+
 
 
     }
