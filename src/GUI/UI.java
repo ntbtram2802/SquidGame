@@ -13,7 +13,6 @@ public class UI {
 	Font arial_30;
 	Font arial_40;
 	GamePanel gp;
-	Entity e;
 	public double time = 60.00;
 	public DecimalFormat dFormat = new DecimalFormat("#0.00");
 
@@ -27,13 +26,9 @@ public class UI {
 		this.g2 = g2;
 			g2.setFont(arial_30);
 			g2.setColor(Color.white);
-			if (gp.gameState == gp.playState && gp.pauseState == false) {
-				if(gp.playTime < 0.00) {
-					gp.playTime =0;
-				}
-				else {
-					gp.playTime -= (double) 1 / 60;
-				}	
+			if (gp.gameState == gp.playState) {
+				if(gp.playTime <= (double) 1 / 60) {gp.playTime = 0;}
+				else {gp.playTime -= (double) 1 / 60;}
 			}
 			g2.drawString("Time: " + dFormat.format(gp.playTime), GamePanel.tilesize * 11, GamePanel.tilesize * 2);
 	}

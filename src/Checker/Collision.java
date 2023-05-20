@@ -12,7 +12,6 @@ public class Collision {
     public boolean checkCollision(Entity player, PlayerNPC npc[]) {
 
         for (int i = 0; i < npc.length; i++) {
-        	 if (npc[i] != null) {
                 if (checkCollision(player, npc[i])) {
                     switch (player.getDirection()) {
                         case "up":
@@ -30,7 +29,6 @@ public class Collision {
                     }
                     return true;
                 }
-        	 }
         }
         return false;
     }
