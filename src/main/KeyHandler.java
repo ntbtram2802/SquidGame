@@ -31,10 +31,16 @@ public class KeyHandler implements KeyListener {
             enterPressed = true;
         }
         if(code == KeyEvent.VK_P){
-             	GamePanel.pauseState = true;
-                 GamePanel.stopSE();
-                           
-    }
+            if(GamePanel.pauseState==false){
+            	GamePanel.pauseState = true;
+                GamePanel.stopSE();
+                
+            }    
+            else{
+                GamePanel.pauseState = false;
+                GamePanel.conitue();
+            } 
+        }
     if(code==KeyEvent.VK_DOWN) {
     	if(gp.pauseState == true && gp.pause.getcommandNum() == 0  && gp.ingame.getvolumeSlace()>0) {
     		gp.ingame.setvolumeSlace(gp.ingame.getvolumeSlace()-1);

@@ -5,18 +5,17 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import Map.Background;
 import main.*;
 import entity.*;
 
 public class gameOver {
     
     private KeyHandler keyH;
-    Graphics2D g2;
-    GamePanel gp;
-    Player player;
+    private Graphics2D g2;
+    private GamePanel gp;
     private int commandNum = 0;
-    int x;
-    int y;
+    private int x,y;
 
     public gameOver(KeyHandler keyH) {
         this.keyH = keyH;
@@ -25,10 +24,8 @@ public class gameOver {
     public void update() {
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
             if ((keyH.upPressed == true)) {commandNum--;
-//                System.out.println("Up:" + commandNum);
                 if (commandNum < 0) {
                     commandNum = 0;
-//                    System.out.println("afterup:" + commandNum);
                 }
             }
 
@@ -37,9 +34,7 @@ public class gameOver {
             commandNum++;
             if (commandNum > 1) {
                 commandNum = 1;
-//                System.out.println("afterDown:" + commandNum);
             }
- //           System.out.println("Down:" + commandNum);
         }
         if (keyH.enterPressed == true) {
             if (commandNum == 0) {

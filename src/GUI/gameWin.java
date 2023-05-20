@@ -5,17 +5,16 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import Map.Background;
 import main.*;
 import entity.*;
 
 public class gameWin {
     private KeyHandler keyH;
-    Graphics2D g2;
-    GamePanel gp;
-    Player player;
-    public int commandNum = 0;
-    int x;
-    int y;
+    private Graphics2D g2;
+    private GamePanel gp;
+    private int commandNum = 0;
+    private int x,y;
 
     public gameWin(KeyHandler keyH) {
     	 this.keyH = keyH;
@@ -29,7 +28,7 @@ public class gameWin {
 //                System.out.println("Up:" + commandNum);
                 if (commandNum < 0) {
                     commandNum = 0;
-                    System.out.println("afterup:" + commandNum);
+//                    System.out.println("afterup:" + commandNum);
                 }
             }
 
@@ -38,9 +37,9 @@ public class gameWin {
             commandNum++;
             if (commandNum > 1) {
                 commandNum = 1;
-                System.out.println("afterDown:" + commandNum);
+//                System.out.println("afterDown:" + commandNum);
             }
-            System.out.println("Down:" + commandNum);
+//            System.out.println("Down:" + commandNum);
         }
         if (keyH.enterPressed == true) {
             if (commandNum == 0) {

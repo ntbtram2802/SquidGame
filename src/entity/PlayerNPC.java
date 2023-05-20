@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import main.GamePanel;
 
 public class PlayerNPC extends Entity {
-	public static String type;
+	private static String type;
 
 	public PlayerNPC(GamePanel gp) {
 		super(gp);

@@ -9,14 +9,15 @@ import GUI.UI;
 
 public class Time_Win {
 	private int actioncounter;
-	GamePanel gp;
-	UI ui;
-	Random random = new Random();
+	private GamePanel gp;
+	private UI ui;
+	
 	public Time_Win(GamePanel gp) {
 		this.gp = gp;
 	}
 
 	public void checkwin(Entity e) {
+		Random random = new Random();
 		if (e.getY() > 184 && (gp.playTime) <= 0) {e.setwin(false);e.setalive(false);
 		} else if (e.getY() <= 184 &&(gp.playTime) > 0) {
 			int y = random.nextInt(25)+5;

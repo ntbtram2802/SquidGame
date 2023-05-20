@@ -7,8 +7,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 public class Sound{
-    Clip clip;
-    URL soundUrl[]= new URL[30];
+    private Clip clip;
+    private URL soundUrl[]= new URL[30];
     private FloatControl fc;
     private static int volumeSlace=3;
     private float volume;
