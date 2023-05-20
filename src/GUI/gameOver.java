@@ -9,6 +9,7 @@ import main.*;
 import entity.*;
 
 public class gameOver {
+    
     private KeyHandler keyH;
     Graphics2D g2;
     GamePanel gp;
