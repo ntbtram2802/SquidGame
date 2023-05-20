@@ -29,8 +29,8 @@ public abstract class Entity {
     public abstract void update();
 
     public void setDefault() { // Initial nhung gia tri dau tien cho nhan vat
-        x = gp.tilesize *8; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
-        y = gp.tilesize *19; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
+        x = GamePanel.tilesize *8; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
+        y = GamePanel.tilesize *19; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
         speed = 1; // van toc cua nhan vat = 0.2
         actionLockCounter = 0;
         spriteCounter = 0;

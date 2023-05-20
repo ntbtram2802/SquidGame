@@ -41,6 +41,6 @@ public class Boss extends Entity{
 			image = image1;
 			break;	
 		}
-		g2.drawImage(image, gp.tilesize *7, gp.tilesize *5/2,size*GamePanel.scale,size*GamePanel.scale, null);
+		g2.drawImage(image, GamePanel.tilesize *7, GamePanel.tilesize *5/2,size*GamePanel.scale,size*GamePanel.scale, null);
 	}
 }
