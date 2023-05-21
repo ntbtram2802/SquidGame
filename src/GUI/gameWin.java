@@ -13,43 +13,43 @@ public class gameWin {
     private KeyHandler keyH;
     private Graphics2D g2;
     private GamePanel gp;
-    private int commandNum = 0;
+    public static int commandNum = 0;
     private int x,y;
-
-    public gameWin(KeyHandler keyH) {
-    	 this.keyH = keyH;
-    }
-
-    public void update() {
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-
-            if ((keyH.upPressed == true)) {
-                commandNum--;
-//                System.out.println("Up:" + commandNum);
-                if (commandNum < 0) {
-                    commandNum = 0;
-//                    System.out.println("afterup:" + commandNum);
-                }
-            }
-
-        }
-        if ((keyH.downPressed == true)) {
-            commandNum++;
-            if (commandNum > 1) {
-                commandNum = 1;
-//                System.out.println("afterDown:" + commandNum);
-            }
-//            System.out.println("Down:" + commandNum);
-        }
-        if (keyH.enterPressed == true) {
-            if (commandNum == 0) {
-            	GamePanel.restart = true;
-            }
-            if (commandNum == 1) {
-                System.exit(0);
-            }
-        }
-    }
+      
+//    public gameWin(KeyHandler keyH) {
+//    	 this.keyH = keyH;
+//    }
+//
+//    public void update() {
+//        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
+//
+//            if ((keyH.upPressed == true)) {
+//                commandNum--;
+////                System.out.println("Up:" + commandNum);
+//                if (commandNum < 0) {
+//                    commandNum = 0;
+////                    System.out.println("afterup:" + commandNum);
+//                }
+//            }
+//
+//        }
+//        if ((keyH.downPressed == true)) {
+//            commandNum++;
+//            if (commandNum > 1) {
+//                commandNum = 1;
+////                System.out.println("afterDown:" + commandNum);
+//            }
+////            System.out.println("Down:" + commandNum);
+//        }
+//        if (keyH.enterPressed == true) {
+//            if (commandNum == 0) {
+//            	GamePanel.restart = true;
+//            }
+//            if (commandNum == 1) {
+//                System.exit(0);
+//            }
+//        }
+//    }
 
     public void draw(Graphics2D g2) {
         this.g2 = g2;

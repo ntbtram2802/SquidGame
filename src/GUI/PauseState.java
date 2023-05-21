@@ -10,45 +10,45 @@ import main.GamePanel;
 import main.KeyHandler;
 
 public class PauseState {
-    private KeyHandler keyH;
+//    private KeyHandler keyH;
     private Background bg;
-    private int commandNum=0;
+    public static int commandNum=0;
     private Graphics2D g2;
     
 
-    public PauseState(KeyHandler keyH) {
-        this.keyH = keyH;
-    }
-    public int getcommandNum() {return commandNum;}
-    public void update() {
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-            if ((keyH.upPressed == true)) {
-                commandNum--;
-                
-                if (commandNum < 0) {
-                    commandNum = 0;
-                }
-                System.out.println("Up:" + commandNum);
-            }
-
-        }
-        if ((keyH.downPressed == true)) {
-            commandNum++;
-            if (commandNum > 1) {
-                commandNum = 1;
-            }
-            System.out.println("Down:" + commandNum);
-        }
-        if (keyH.enterPressed == true) {
-        //     if (commandNum == 0) { // an enter vao o music thi se tiep tuc
-        //     	GamePanel.ingame.checkVolume();
-        //    }
-            if (commandNum == 1) {
-                System.exit(0);
-            }
-        }
-
-    }
+//    public PauseState(KeyHandler keyH) {
+//        this.keyH = keyH;
+//    }
+//    public int getcommandNum() {return commandNum;}
+//    public void update() {
+//        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
+//            if ((keyH.upPressed == true)) {
+//                commandNum--;
+//                
+//                if (commandNum < 0) {
+//                    commandNum = 0;
+//                }
+//                System.out.println("Up:" + commandNum);
+//            }
+//
+//        }
+//        if ((keyH.downPressed == true)) {
+//            commandNum++;
+//            if (commandNum > 1) {
+//                commandNum = 1;
+//            }
+//            System.out.println("Down:" + commandNum);
+//        }
+//        if (keyH.enterPressed == true) {
+//        //     if (commandNum == 0) { // an enter vao o music thi se tiep tuc
+//        //     	GamePanel.ingame.checkVolume();
+//        //    }
+//            if (commandNum == 1) {
+//                System.exit(0);
+//            }
+//        }
+//
+//    }
 
     public void draw(Graphics2D g2) {
         // bg = new Background("/gameplayMenu/optionMenu.png");

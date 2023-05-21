@@ -49,10 +49,10 @@ public class GamePanel extends JPanel implements Runnable {
 	public final static int loseState = 4;
 	public static boolean pauseState = false;
 	public static boolean restart = false;
-	public MenuState menu = new MenuState(keyH);
-	public PauseState pause = new PauseState(keyH);
-	public gameOver gameOver = new gameOver(keyH);
-	public gameWin gameWin = new gameWin(keyH);
+	public MenuState menu = new MenuState();
+	public PauseState pause = new PauseState();
+	public gameOver gameOver = new gameOver();
+	public gameWin gameWin = new gameWin();
 
 	// Background
 	public Background bg = new Background("/background/background2.png");
@@ -132,15 +132,16 @@ public class GamePanel extends JPanel implements Runnable {
 					}
 			}
 				if (player.getwin() == false && player.getalive() == true) {player.update();}
-		} else if (gameState == menuState) {
-			menu.update();
-		} else if (gameState == winState) {
-			gameWin.update();
-		} else if (gameState == loseState) {
-			gameOver.update();
-		} else if (pauseState == true) {
-			pause.update();
 		}
+//		else if (gameState == menuState) {
+//			menu.update();
+//		} else if (gameState == winState) {
+//			gameWin.update();
+//		} else if (gameState == loseState) {
+//			gameOver.update();
+//		} else if (pauseState == true) {
+//			pause.update();
+//		}
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

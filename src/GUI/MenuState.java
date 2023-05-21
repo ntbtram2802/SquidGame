@@ -10,42 +10,42 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 
 public class MenuState {
-    private KeyHandler keyH;
-    private int commandNum = 0;
-
-    public MenuState(KeyHandler keyH) {
-        this.keyH = keyH;
-    }
-
-    public void update() {
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-
-            if ((keyH.upPressed == true)) {
-                commandNum--;
-                if (commandNum < 0) {
-                     commandNum = 0;
-                }
-            }
-
-        }if ((keyH.downPressed == true)) {
-            commandNum++;
-            if (commandNum >1 ) {
-                commandNum = 1;
-            }
-        }
-        if (keyH.enterPressed == true) {
-            if (commandNum == 0) {
-                GamePanel.gameState = GamePanel.playState;
-                GamePanel.stopMusic();
-                GamePanel.playSE(0);;
-                
-            }
-            if (commandNum == 1) {
-                System.exit(0);
-            }
-        }
-
-    }
+//    private KeyHandler keyH;
+    public static int commandNum = 0;
+//
+//    public MenuState(KeyHandler keyH) {
+//        this.keyH = keyH;
+//    }
+//
+//    public void update() {
+//        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
+//
+//            if ((keyH.upPressed == true)) {
+//                commandNum--;
+//                if (commandNum < 0) {
+//                     commandNum = 0;
+//                }
+//            }
+//
+//        }if ((keyH.downPressed == true)) {
+//            commandNum++;
+//            if (commandNum >1 ) {
+//                commandNum = 1;
+//            }
+//        }
+//        if (keyH.enterPressed == true) {
+//            if (commandNum == 0) {
+//                GamePanel.gameState = GamePanel.playState;
+//                GamePanel.stopMusic();
+//                GamePanel.playSE(0);;
+//                
+//            }
+//            if (commandNum == 1) {
+//                System.exit(0);
+//            }
+//        }
+//
+//    }
 
     public void draw(Graphics2D g2) {
 

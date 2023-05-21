@@ -12,9 +12,8 @@ public class UI {
 	Graphics2D g2;
 	Font arial_30;
 	Font arial_40;
-	GamePanel gp;
-	public double time = 60.00;
-	public DecimalFormat dFormat = new DecimalFormat("#0.00");
+	private GamePanel gp;
+	private DecimalFormat dFormat = new DecimalFormat("#0.00");
 
 	public UI(GamePanel gp) {
 		this.gp = gp;

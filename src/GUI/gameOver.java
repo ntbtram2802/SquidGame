@@ -10,42 +10,42 @@ import main.*;
 import entity.*;
 
 public class gameOver {
-    
-    private KeyHandler keyH;
+//    
+//    private KeyHandler keyH;
     private Graphics2D g2;
     private GamePanel gp;
-    private int commandNum = 0;
+    public static int commandNum = 0;
     private int x,y;
 
-    public gameOver(KeyHandler keyH) {
-        this.keyH = keyH;
-    }
-
-    public void update() {
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-            if ((keyH.upPressed == true)) {commandNum--;
-                if (commandNum < 0) {
-                    commandNum = 0;
-                }
-            }
-
-        }
-        if ((keyH.downPressed == true)) {
-            commandNum++;
-            if (commandNum > 1) {
-                commandNum = 1;
-            }
-        }
-        if (keyH.enterPressed == true) {
-            if (commandNum == 0) {
-            	GamePanel.restart = true;
-
-            }
-            if (commandNum == 1) {
-                System.exit(0);
-            }
-        }
-    }
+//    public gameOver(KeyHandler keyH) {
+//        this.keyH = keyH;
+//    }
+//
+//    public void update() {
+//        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
+//            if ((keyH.upPressed == true)) {commandNum--;
+//                if (commandNum < 0) {
+//                    commandNum = 0;
+//                }
+//            }
+//
+//        }
+//        if ((keyH.downPressed == true)) {
+//            commandNum++;
+//            if (commandNum > 1) {
+//                commandNum = 1;
+//            }
+//        }
+//        if (keyH.enterPressed == true) {
+//            if (commandNum == 0) {
+//            	GamePanel.restart = true;
+//
+//            }
+//            if (commandNum == 1) {
+//                System.exit(0);
+//            }
+//        }
+//    }
 
     public void draw(Graphics2D g2) {
         this.g2 = g2;
