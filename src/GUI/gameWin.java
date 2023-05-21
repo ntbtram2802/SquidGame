@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -9,50 +10,14 @@ import Map.Background;
 import main.*;
 import entity.*;
 
-public class gameWin {
-    private KeyHandler keyH;
-    private Graphics2D g2;
-    private GamePanel gp;
-    public static int commandNum = 0;
-    private int x,y;
-      
-//    public gameWin(KeyHandler keyH) {
-//    	 this.keyH = keyH;
-//    }
-//
-//    public void update() {
-//        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-//
-//            if ((keyH.upPressed == true)) {
-//                commandNum--;
-////                System.out.println("Up:" + commandNum);
-//                if (commandNum < 0) {
-//                    commandNum = 0;
-////                    System.out.println("afterup:" + commandNum);
-//                }
-//            }
-//
-//        }
-//        if ((keyH.downPressed == true)) {
-//            commandNum++;
-//            if (commandNum > 1) {
-//                commandNum = 1;
-////                System.out.println("afterDown:" + commandNum);
-//            }
-////            System.out.println("Down:" + commandNum);
-//        }
-//        if (keyH.enterPressed == true) {
-//            if (commandNum == 0) {
-//            	GamePanel.restart = true;
-//            }
-//            if (commandNum == 1) {
-//                System.exit(0);
-//            }
-//        }
-//    }
+public class gameWin extends GUI_Manager  {
+    
 
-    public void draw(Graphics2D g2) {
-        this.g2 = g2;
+    public gameWin(GamePanel gp) {
+		super(gp);
+	}
+    @Override
+	public void draw(Graphics2D g2) {
         x = GamePanel.screenWidth / 2 - (GamePanel.tilesize * 9) / 2;
         y = GamePanel.tilesize * 5;
         try {
@@ -63,11 +28,15 @@ public class gameWin {
             e.printStackTrace();
         }
 
+        g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 60F));
         g2.setColor(new Color(157, 0, 0));
         if (commandNum == 0) {
-            g2.drawString(">", 200, 485);
+            g2.drawString(">", 200, 450);
         } else if (commandNum == 1) {
-            g2.drawString(">", 200, 585);
+            g2.drawString(">", 200, 550);
+        }
+        else if(commandNum == 2) {
+        	g2.drawString(">", 200, 650);
         }
     }
 }

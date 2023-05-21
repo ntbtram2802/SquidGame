@@ -33,27 +33,30 @@ public class AssetSetter {
 	}
 
 	public void setNPC() {
-		for (int i = 0; i < gp.NPC.length; i++) {
-			gp.NPC[i] = new PlayerNPC(gp);
-			setposisionNPC(i) ;
+		if(gp.level == 1 || gp.level >3) {gp.NPC.clear();}
+		for(int i = 0; i <10; i++) {
+			PlayerNPC newNPC = new PlayerNPC(gp);
+			setposisionNPC(newNPC);
+			gp.NPC.add(newNPC);
 		}
 		
 	}
-	public void setposisionNPC(int i) {
+	public void setposisionNPC(PlayerNPC npc) {
 		int x = random.nextInt(15) + 1;
 		int y = random.nextInt(2) + 16;
-		gp.NPC[i].setX(x * tilesize);
-		gp.NPC[i].setY(y * tilesize);
-		if (x % 2 != 0) {gp.NPC[i].setType("trang");}
-		else if (x%2 ==0){gp.NPC[i].setType("nau");		}
-		gp.NPC[i].getImage();
+		npc.setX(x * tilesize);
+		npc.setY(y * tilesize);
+		if (x % 2 != 0) {npc.setType("trang");}
+		else if (x%2 ==0){npc.setType("nau");		}
+		npc.getImage();
 		
 	}
 	public void restartNPC() {
-		for(int i =0; i<gp.NPC.length;i++) {
-			gp.NPC[i].setDefault();	
-			setposisionNPC(i) ;
-		}
+		for(PlayerNPC npc:gp.NPC) {
+			npc.setDefault();	
+			setposisionNPC(npc) ;
+			if(gp.level >1) {npc.setSpeed(npc.getSpeed()+1);}
+			}
 	}
 
 }

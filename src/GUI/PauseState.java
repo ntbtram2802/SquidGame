@@ -9,56 +9,22 @@ import Map.Background;
 import main.GamePanel;
 import main.KeyHandler;
 
-public class PauseState {
-//    private KeyHandler keyH;
-    private Background bg;
-    public static int commandNum=0;
-    private Graphics2D g2;
-    
+public class PauseState extends GUI_Manager {
+   
 
-//    public PauseState(KeyHandler keyH) {
-//        this.keyH = keyH;
-//    }
-//    public int getcommandNum() {return commandNum;}
-//    public void update() {
-//        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-//            if ((keyH.upPressed == true)) {
-//                commandNum--;
-//                
-//                if (commandNum < 0) {
-//                    commandNum = 0;
-//                }
-//                System.out.println("Up:" + commandNum);
-//            }
-//
-//        }
-//        if ((keyH.downPressed == true)) {
-//            commandNum++;
-//            if (commandNum > 1) {
-//                commandNum = 1;
-//            }
-//            System.out.println("Down:" + commandNum);
-//        }
-//        if (keyH.enterPressed == true) {
-//        //     if (commandNum == 0) { // an enter vao o music thi se tiep tuc
-//        //     	GamePanel.ingame.checkVolume();
-//        //    }
-//            if (commandNum == 1) {
-//                System.exit(0);
-//            }
-//        }
-//
-//    }
-
-    public void draw(Graphics2D g2) {
+    public PauseState(GamePanel gp) {
+		super(gp);
+	}
+ @Override
+	public void draw(Graphics2D g2) {
         // bg = new Background("/gameplayMenu/optionMenu.png");
         // g2.drawImage(bg.getImage(),200, 250, GamePanel.tilesize*8, GamePanel.tilesize*10 , null);
 
         //Frame for option menu
     	g2.setColor(new Color(80, 0, 0));
     	g2.setFont(g2.getFont().deriveFont(60F));
-    	int x = 200;
-    	int y = GamePanel.tilesize*7;
+    	 x = 200;
+    	 y = GamePanel.tilesize*7;
     	int width = GamePanel.tilesize*8;
     	int height = GamePanel.tilesize*9;
     	g2.fillRoundRect(x, y, width, height, 35, 35);

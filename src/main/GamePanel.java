@@ -3,6 +3,7 @@ package main;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -37,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Player player = new Player(this, keyH);
 	public Boss boss = new Boss(this);
 	public NPC obj[] = new NPC[6];
-	public PlayerNPC NPC[] = new PlayerNPC[10];
+	public ArrayList<PlayerNPC> NPC = new ArrayList<PlayerNPC>();
 	int FPS = 60;
 	public double playTime = 60.00;
 
@@ -49,10 +50,11 @@ public class GamePanel extends JPanel implements Runnable {
 	public final static int loseState = 4;
 	public static boolean pauseState = false;
 	public static boolean restart = false;
-	public MenuState menu = new MenuState();
-	public PauseState pause = new PauseState();
-	public gameOver gameOver = new gameOver();
-	public gameWin gameWin = new gameWin();
+	public static int level;
+	public MenuState menu = new MenuState(this);
+	public PauseState pause = new PauseState(this);
+	public gameOver gameOver = new gameOver(this);
+	public gameWin gameWin = new gameWin(this);
 
 	// Background
 	public Background bg = new Background("/background/background2.png");
@@ -70,9 +72,11 @@ public class GamePanel extends JPanel implements Runnable {
 		aSetter.setNPC();
 		playMusic(3);
 		gameState = 0;
+		level = 1;
 	}
-	public void restartt() {
+	public void restart_game() {
 		time_win.recounter();
+		aSetter.setNPC();
 		aSetter.restartNPC();
 		player.setDefault();
 		stopMusic();
@@ -118,30 +122,21 @@ public class GamePanel extends JPanel implements Runnable {
 
 	public void update() {
 		if(restart == true) {
-			restartt();
+			restart_game();
 		}
 		if (gameState == playState && pauseState == false) {
 			time_win.upcounter();
 			boss.update();
-
-			for (int z = 0; z < NPC.length; z++) {
-					if (NPC[z].getwin() == false) {
-						if (NPC[z].getalive() == true) {
-							NPC[z].update();
+//			fire.update();
+			for (PlayerNPC npc:NPC) {
+					if (npc.getwin() == false) {
+						if (npc.getalive() == true) {
+							npc.update();
 						}
 					}
 			}
 				if (player.getwin() == false && player.getalive() == true) {player.update();}
-		}
-//		else if (gameState == menuState) {
-//			menu.update();
-//		} else if (gameState == winState) {
-//			gameWin.update();
-//		} else if (gameState == loseState) {
-//			gameOver.update();
-//		} else if (pauseState == true) {
-//			pause.update();
-//		}
+		} 
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -154,7 +149,7 @@ public class GamePanel extends JPanel implements Runnable {
 			if(pauseState == false) {u.draw(g2);}
 			for (int j = 0; j < obj.length; j++) {obj[j].draw(g2);}
 			player.draw(g2);
-			for (int i = 0; i < NPC.length; i++) {NPC[i].draw(g2);}
+			for(PlayerNPC npc:NPC) {npc.draw(g2);}
 			if (gameState == winState) { gameWin.draw(g2);
 			} else if (gameState == loseState) {gameOver.draw(g2);
 			} else if (pauseState == true) {pause.draw(g2);}
@@ -170,7 +165,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 	public static void stopMusic() {music.stop();}
 
-	public static void conitue() {ingame.loop();}
+	public static void continue_music() {ingame.loop();}
 
 	public static void playSE(int i) {
 		se.setFile(i);

@@ -1,6 +1,7 @@
 package Checker;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import entity.Entity;
 import entity.PlayerNPC;
@@ -9,10 +10,10 @@ import main.GamePanel;
 public class Collision {
     private Rectangle e1Box, e2Box, e1FutureBox = new Rectangle(0, 0, 10, 10);
 
-    public boolean checkCollision(Entity player, PlayerNPC npc[]) {
+    public boolean checkCollision(Entity player, ArrayList< PlayerNPC> npcs) {
 
-        for (int i = 0; i < npc.length; i++) {
-                if (checkCollision(player, npc[i])) {
+        for (PlayerNPC npc: npcs) {
+                if (checkCollision(player, npc)) {
                     switch (player.getDirection()) {
                         case "up":
                             player.setDirection("down");

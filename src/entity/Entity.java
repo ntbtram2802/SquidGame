@@ -8,7 +8,7 @@ public abstract class Entity {
     public GamePanel gp;
     protected int x; // Vi tri cua nhan vat tren truc x cua man hinh
     protected int y; // Vi tri cua nhan vat tren truc y cua man hinh
-    protected double speed; // Van toc di chuyen cua nhan vat
+    protected int speed; // Van toc di chuyen cua nhan vat
     protected BufferedImage image, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10,
             image11, image12, image13, image14, image15, image16, image17, image18, image19;
 
@@ -47,6 +47,7 @@ public abstract class Entity {
     public int getX() {return x; }
     public void setY(int y) {this.y = y;}
     public int getY() {return y;}
+    public int getSpeed() {return speed;}
     public void setSpeed(int speed) {this.speed = speed;}
 // getter + setter cua variale lien quan den gameplay
     public boolean getalive() {return alive;}

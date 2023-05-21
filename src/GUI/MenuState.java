@@ -9,51 +9,19 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 
-public class MenuState {
-//    private KeyHandler keyH;
-    public static int commandNum = 0;
-//
-//    public MenuState(KeyHandler keyH) {
-//        this.keyH = keyH;
-//    }
-//
-//    public void update() {
-//        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-//
-//            if ((keyH.upPressed == true)) {
-//                commandNum--;
-//                if (commandNum < 0) {
-//                     commandNum = 0;
-//                }
-//            }
-//
-//        }if ((keyH.downPressed == true)) {
-//            commandNum++;
-//            if (commandNum >1 ) {
-//                commandNum = 1;
-//            }
-//        }
-//        if (keyH.enterPressed == true) {
-//            if (commandNum == 0) {
-//                GamePanel.gameState = GamePanel.playState;
-//                GamePanel.stopMusic();
-//                GamePanel.playSE(0);;
-//                
-//            }
-//            if (commandNum == 1) {
-//                System.exit(0);
-//            }
-//        }
-//
-//    }
-
-    public void draw(Graphics2D g2) {
+public class MenuState extends GUI_Manager  {
+  
+    public MenuState(GamePanel gp) {
+		super(gp);
+	}
+    @Override
+	public void draw(Graphics2D g2) {
 
         g2.setColor(new Color(157, 120, 100));
         g2.fillRect(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
 
-        int x = 60;
-        int y = GamePanel.tilesize * 2;
+         x = 60;
+         y = GamePanel.tilesize * 2;
         try {
             g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/menu/menu_squidgame.png")), x, y,
                     GamePanel.tilesize * 13, GamePanel.tilesize * 4, null);

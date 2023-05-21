@@ -9,46 +9,13 @@ import Map.Background;
 import main.*;
 import entity.*;
 
-public class gameOver {
-//    
-//    private KeyHandler keyH;
-    private Graphics2D g2;
-    private GamePanel gp;
-    public static int commandNum = 0;
-    private int x,y;
+public class gameOver extends GUI_Manager {
 
-//    public gameOver(KeyHandler keyH) {
-//        this.keyH = keyH;
-//    }
-//
-//    public void update() {
-//        if (keyH.upPressed == true || keyH.downPressed == true || keyH.enterPressed == true) {
-//            if ((keyH.upPressed == true)) {commandNum--;
-//                if (commandNum < 0) {
-//                    commandNum = 0;
-//                }
-//            }
-//
-//        }
-//        if ((keyH.downPressed == true)) {
-//            commandNum++;
-//            if (commandNum > 1) {
-//                commandNum = 1;
-//            }
-//        }
-//        if (keyH.enterPressed == true) {
-//            if (commandNum == 0) {
-//            	GamePanel.restart = true;
-//
-//            }
-//            if (commandNum == 1) {
-//                System.exit(0);
-//            }
-//        }
-//    }
-
+    public gameOver(GamePanel gp) {
+		super(gp);
+	}
+    @Override
     public void draw(Graphics2D g2) {
-        this.g2 = g2;
         x = GamePanel.screenWidth / 2 - (GamePanel.tilesize * 9) / 2;
         y = GamePanel.tilesize * 5;
         try {

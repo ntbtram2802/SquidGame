@@ -45,24 +45,31 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_W) {
         	gp.gameWin.commandNum--;
                 if (gp.gameWin.commandNum < 0) {
-                	gp.gameWin.commandNum = 0;
+                	gp.gameWin.commandNum = 2;
         }
         }
         if (code == KeyEvent.VK_S) {
         		gp.gameWin.commandNum++;
-            if (gp.gameWin.commandNum > 1) {
-            	gp.gameWin.commandNum = 1;
+            if (gp.gameWin.commandNum > 2) {
+            	gp.gameWin.commandNum = 0;
             	System.out.println("down"+ gp.gameWin.commandNum);
             }
         }
         if (code == KeyEvent.VK_ENTER) {
-                if (gp.gameWin.commandNum == 0) {
-                	gp.restart = true;
+        		if (gp.gameWin.commandNum == 0) {
+                	gp.level ++;
+                	GamePanel.restart = true;
                 }
                 if (gp.gameWin.commandNum == 1) {
+                	gp.level = 1;
+                	GamePanel.restart = true;
+                }
+                if (gp.gameWin.commandNum == 2) {
                     System.exit(0);
                 }
+
         }
+        
     }
     public void optionmenu(int code) {
     	
@@ -96,15 +103,15 @@ public class KeyHandler implements KeyListener {
          	}
          }
          if(code == KeyEvent.VK_P){ // an 1p thi se quay lai tro choi
-        	 GamePanel.ingame.checkVolume();
-             GamePanel.pauseState = false;
-             GamePanel.conitue();
+        	 gp.ingame.checkVolume();
+        	 gp.pauseState = false;
+        	 gp.continue_music();
              }
          if (code == KeyEvent.VK_ENTER) {
         	 if (gp.pause.commandNum== 0) { // An enter vao nut volume thi se quay lai tro choi
-        		 GamePanel.ingame.checkVolume();
-                 GamePanel.pauseState = false;
-                 GamePanel.conitue();
+        		 gp.ingame.checkVolume();
+        		 gp.pauseState = false;
+        		 gp.continue_music();
         	 }
              if (gp.pause.commandNum == 1) { // An pause vao quit thi se thoat game
                  System.exit(0);
