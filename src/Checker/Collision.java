@@ -60,7 +60,7 @@ public class Collision {
                 break;
         }
 
-        if (e1FutureBox.intersects(e2Box)) {
+        if (e1FutureBox.intersects(e2Box) && e1.getwin() == false && e2.getwin() == false) {
             return true;
         }
         return false;

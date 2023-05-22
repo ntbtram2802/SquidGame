@@ -58,6 +58,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
         		if (gp.gameWin.commandNum == 0) {
                 	gp.level ++;
+                	if(gp.level ==4) {gp.level = 1;}
                 	GamePanel.restart = true;
                 }
                 if (gp.gameWin.commandNum == 1) {
@@ -133,6 +134,7 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_ENTER) {
             if (gp.gameOver.commandNum == 0) {
+            	gp.level = 1;
             	GamePanel.restart = true;
 
             }

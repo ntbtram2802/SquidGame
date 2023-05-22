@@ -33,7 +33,7 @@ public class AssetSetter {
 	}
 
 	public void setNPC() {
-		if(gp.level == 1 || gp.level >3) {gp.NPC.clear();}
+		if(gp.level == 1) {gp.NPC.clear();}
 		for(int i = 0; i <10; i++) {
 			PlayerNPC newNPC = new PlayerNPC(gp);
 			setposisionNPC(newNPC);

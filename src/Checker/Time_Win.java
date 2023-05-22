@@ -17,12 +17,10 @@ public class Time_Win {
 	}
 
 	public void checkwin(Entity e) {
-		Random random = new Random();
-		if (e.getY() > 184 && (gp.playTime) <= 0) {e.setwin(false);e.setalive(false);
-		} else if (e.getY() <= 184 &&(gp.playTime) > 0) {
-			int y = random.nextInt(25)+5;
-			e.setwin(true);
-			e.setY(e.getY()-y);}
+		if (e.getY() > 182 && (gp.playTime) <= 0) {e.setwin(false);e.setalive(false);
+		} else if (e.getY() <= 182 &&(gp.playTime) > 0) {
+			e.setwin(true);}
+			
 	}
 
 	public void upcounter() {this.actioncounter++;}

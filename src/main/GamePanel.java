@@ -148,8 +148,8 @@ public class GamePanel extends JPanel implements Runnable {
 			boss.draw(g2);
 			if(pauseState == false) {u.draw(g2);}
 			for (int j = 0; j < obj.length; j++) {obj[j].draw(g2);}
-			player.draw(g2);
 			for(PlayerNPC npc:NPC) {npc.draw(g2);}
+			player.draw(g2);
 			if (gameState == winState) { gameWin.draw(g2);
 			} else if (gameState == loseState) {gameOver.draw(g2);
 			} else if (pauseState == true) {pause.draw(g2);}

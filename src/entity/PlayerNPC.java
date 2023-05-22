@@ -115,12 +115,17 @@ public class PlayerNPC extends Entity {
 			}
 		}
 		gp.time_win.checkwin(this);
+		if(win == true) {
+			int y_win = random.nextInt(25)+5;
+			y = y-y_win;
+		}
 
 	}
 
 	public void draw(Graphics2D g2) {
 		super.draw(g2);
 		if (win == true) {
+			
 			g2.drawImage(image4, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
 		}
 	}
