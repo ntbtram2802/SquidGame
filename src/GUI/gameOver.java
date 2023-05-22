@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -12,8 +13,9 @@ import entity.*;
 public class gameOver extends GUI_Manager {
 
     public gameOver(GamePanel gp) {
-		super(gp);
-	}
+        super(gp);
+    }
+
     @Override
     public void draw(Graphics2D g2) {
         x = GamePanel.screenWidth / 2 - (GamePanel.tilesize * 9) / 2;
@@ -24,11 +26,12 @@ public class gameOver extends GUI_Manager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        g2.setColor(new Color(157, 0, 0));
+        g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 65F));
+        g2.setColor(new Color(21, 62, 95));
         if (commandNum == 0) {
-            g2.drawString(">", 200, 485);
+            g2.drawString(">", 215, 495);
         } else if (commandNum == 1) {
-            g2.drawString(">", 200, 585);
+            g2.drawString(">", 215, 595);
         }
     }
 }

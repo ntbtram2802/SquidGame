@@ -14,7 +14,7 @@ public class PlayerNPC extends Entity {
 	}
 
 	public void setType(String type) {
-		this.type = type;
+		PlayerNPC.type = type;
 	}
 
 	public void getImage() {
@@ -39,11 +39,13 @@ public class PlayerNPC extends Entity {
 				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right2.png"));
 				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right3.png"));
 			}
+			//Dead state
 			image11 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost1.png"));
 			image12 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost2.png"));
 			image13 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost3.png"));
 			image14 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost4.png"));
 			image15 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost5.png"));
+			image20 = ImageIO.read(getClass().getResourceAsStream("/ghost/bia_mo.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

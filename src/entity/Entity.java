@@ -10,7 +10,7 @@ public abstract class Entity {
     protected int y; // Vi tri cua nhan vat tren truc y cua man hinh
     protected int speed; // Van toc di chuyen cua nhan vat
     protected BufferedImage image, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10,
-            image11, image12, image13, image14, image15, image16, image17, image18, image19;
+            image11, image12, image13, image14, image15, image16, image17, image18, image19, image20;
 
     protected String direction; // huong cua nhan vat
     protected int spriteCounter;
@@ -31,7 +31,7 @@ public abstract class Entity {
     public void setDefault() { // Initial nhung gia tri dau tien cho nhan vat
         x = GamePanel.tilesize *8; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
         y = GamePanel.tilesize *19; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
-        speed = 1; // van toc cua nhan vat = 0.2
+        speed = 3; // van toc cua nhan vat = 0.2
         actionLockCounter = 0;
         spriteCounter = 0;
         spriteNum = 1;
@@ -66,7 +66,7 @@ public abstract class Entity {
                     if (spriteNum == 1) {
                         image = image1; // up1
                     }
-                    if (spriteNum == 2) {
+                    else if (spriteNum == 2) {
                         image = image2; // up2
                     }
                     break;
@@ -75,7 +75,7 @@ public abstract class Entity {
                     if (spriteNum == 1) {
                         image = image4; // down1
                     }
-                    if (spriteNum == 2) {
+                    else if (spriteNum == 2) {
                         image = image5;// down2
                     }
                     break;
@@ -84,7 +84,7 @@ public abstract class Entity {
                     if (spriteNum == 1) {
                         image = image6; // left1
                     }
-                    if (spriteNum == 2) {
+                    else if (spriteNum == 2) {
                         image = image7; // left2
                     }
                     break;
@@ -93,7 +93,7 @@ public abstract class Entity {
                     if (spriteNum == 1) {
                         image = image8;// right1
                     }
-                    if (spriteNum == 2) {
+                    else if (spriteNum == 2) {
                         image = image9; // right2
                     }
                     break;
@@ -112,6 +112,6 @@ public abstract class Entity {
         if (actionLockCounter > i * 4 && actionLockCounter <= i * 5) {g2.drawImage(image13, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
         if (actionLockCounter > i * 6 && actionLockCounter <= i * 7) {g2.drawImage(image14, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
         if (actionLockCounter > i * 8 && actionLockCounter <= i * 9) {g2.drawImage(image15, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
-        if (actionLockCounter > i * 10) {g2.drawImage(image15, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}//dying = false;alive = false;
+        if (actionLockCounter > i * 10) {g2.drawImage(image20, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}//dying = false;alive = false;
     }
 }

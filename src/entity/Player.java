@@ -24,9 +24,9 @@ public class Player extends Entity {
 
 	public void getImage() {
 		try {
-			image1 = ImageIO.read(getClass().getResourceAsStream("/player/player_up1.png"));
-			image2 = ImageIO.read(getClass().getResourceAsStream("/player/player_up2.png"));
-			image3 = ImageIO.read(getClass().getResourceAsStream("/player/player_up3.png"));
+			//Play state
+			image1 = ImageIO.read(getClass().getResourceAsStream("/player/player_up2.png"));
+			image2 = ImageIO.read(getClass().getResourceAsStream("/player/player_up3.png"));
 			image10 = ImageIO.read(getClass().getResourceAsStream("/player/player_standd.png"));
 			image4 = ImageIO.read(getClass().getResourceAsStream("/player/player_down1.png"));
 			image5 = ImageIO.read(getClass().getResourceAsStream("/player/player_down2.png"));
@@ -34,11 +34,14 @@ public class Player extends Entity {
 			image7 = ImageIO.read(getClass().getResourceAsStream("/player/player_left2.png"));
 			image8 = ImageIO.read(getClass().getResourceAsStream("/player/player_right1.png"));
 			image9 = ImageIO.read(getClass().getResourceAsStream("/player/player_right2.png"));
+			//Dead state
 			image11 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost1.png"));
 			image12 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost2.png"));
 			image13 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost3.png"));
 			image14 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost4.png"));
 			image15 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost5.png"));
+			image20 = ImageIO.read(getClass().getResourceAsStream("/ghost/bia_mo.png"));
+			//Win state
 			image16 = ImageIO.read(getClass().getResourceAsStream("/playerwin/winState-1.png"));
 			image17 = ImageIO.read(getClass().getResourceAsStream("/playerwin/winState-2.png"));
 			image18 = ImageIO.read(getClass().getResourceAsStream("/playerwin/winState-3.png"));
