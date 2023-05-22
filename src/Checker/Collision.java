@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import entity.Entity;
+import entity.Fire;
 import entity.PlayerNPC;
 import main.GamePanel;
 
@@ -95,5 +96,33 @@ public class Collision {
         }
         return false;
     }
+    public boolean checkCollision(Entity e1, Fire fire) {
+    	if(fire !=null) {
+    		  e2Box = new Rectangle(fire.getX(), fire.getY(),
+    	                GamePanel.tilesize, GamePanel.tilesize+20);
+
+    	        // draw a rectangle in front of the entity
+    	        switch (e1.getDirection()) {
+    	            case "up":
+    	                e1FutureBox = new Rectangle(e1.getX(), e1.getY() - e1.getSpeed(),GamePanel.tilesize, GamePanel.tilesize);
+    	                if (e1FutureBox.intersects(e2Box)) {e1.setDirection("down");return true;}
+    	                break;
+    	            case "down":
+    	                e1FutureBox = new Rectangle(e1.getX(), e1.getY() + e1.getSpeed(),GamePanel.tilesize, GamePanel.tilesize);
+    	                if (e1FutureBox.intersects(e2Box)) {e1.setDirection("up");return true;}
+    	                break;
+    	            case "left":
+    	                e1FutureBox = new Rectangle(e1.getX() - e1.getSpeed(), e1.getY(),GamePanel.tilesize, GamePanel.tilesize);
+    	                if (e1FutureBox.intersects(e2Box)) {e1.setDirection("right");return true;}
+    	                break;
+    	            case "right":
+    	                e1FutureBox = new Rectangle(e1.getX() +e1.getSpeed(), e1.getY(),GamePanel.tilesize, GamePanel.tilesize);
+    	                if (e1FutureBox.intersects(e2Box)) {e1.setDirection("left");return true;}
+    	                break;
+    	        }       
+    	}
+    	return false;
+    }
+
 
 }

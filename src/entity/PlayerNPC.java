@@ -81,7 +81,7 @@ public class PlayerNPC extends Entity {
 			setAction();
 			if (!gp.c.checkCollision(this, gp.player)
 					&& !gp.c.checkPossibleMove(this)
-					&& !gp.c.checkCollision(this, gp.NPC)) {
+					&& !gp.c.checkCollision(this, gp.NPC)&&!gp.c.checkCollision(this, gp.fire)) {
 				switch (direction) {
 					case "up":
 						y -= speed;
@@ -125,7 +125,6 @@ public class PlayerNPC extends Entity {
 	public void draw(Graphics2D g2) {
 		super.draw(g2);
 		if (win == true) {
-			
 			g2.drawImage(image4, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
 		}
 	}

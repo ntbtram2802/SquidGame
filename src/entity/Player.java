@@ -98,7 +98,7 @@ public class Player extends Entity {
 					}
 					spriteCounter = 0;
 				}
-
+				if(gp.c.checkCollision(this, gp.fire)==true) {gp.fire = null; System.out.println("True");}
 			}
 		} else {
 			if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true

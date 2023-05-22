@@ -33,11 +33,13 @@ public class GamePanel extends JPanel implements Runnable {
 	public static Sound ingame = new Sound();
 	public Time_Win time_win = new Time_Win(this);
 	public UI u = new UI(this);
+	public Lightting light = null;
 
 	// ENTITY & OBJECT
 	public Player player = new Player(this, keyH);
 	public Boss boss = new Boss(this);
 	public NPC obj[] = new NPC[6];
+	public Fire fire = null;
 	public ArrayList<PlayerNPC> NPC = new ArrayList<PlayerNPC>();
 	int FPS = 60;
 	public double playTime = 60.00;
@@ -85,6 +87,8 @@ public class GamePanel extends JPanel implements Runnable {
         playTime = 60.00;
         gameState = playState;
 		restart = false;
+		if(level ==3) {fire = new Fire(this);light = new Lightting(this);}
+		else {fire = null; light = null;}
 	}
 
 	public void startGameThread() {
@@ -127,7 +131,7 @@ public class GamePanel extends JPanel implements Runnable {
 		if (gameState == playState && pauseState == false) {
 			time_win.upcounter();
 			boss.update();
-//			fire.update();
+			if(fire!= null) {fire.update();}
 			for (PlayerNPC npc:NPC) {
 					if (npc.getwin() == false) {
 						if (npc.getalive() == true) {
@@ -150,6 +154,10 @@ public class GamePanel extends JPanel implements Runnable {
 			for (int j = 0; j < obj.length; j++) {obj[j].draw(g2);}
 			for(PlayerNPC npc:NPC) {npc.draw(g2);}
 			player.draw(g2);
+			if(fire != null) {fire.draw(g2);}
+			if(light !=null && gameState == playState) {
+				light.draw(g2);
+				}
 			if (gameState == winState) { gameWin.draw(g2);
 			} else if (gameState == loseState) {gameOver.draw(g2);
 			} else if (pauseState == true) {pause.draw(g2);}
@@ -177,5 +185,4 @@ public class GamePanel extends JPanel implements Runnable {
 		ingame = se;
 		se.stop();
 	}
-
 }
