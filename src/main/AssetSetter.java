@@ -46,8 +46,9 @@ public class AssetSetter {
 		int y = random.nextInt(1) + 17;
 		npc.setX(x * tilesize);
 		npc.setY(y * tilesize);
-		if (x % 2 != 0) {npc.setType("trang");}
-		else if (x%2 ==0){npc.setType("nau");		}
+		if (x <5) {npc.setType("trang");}
+		else if (x<10){npc.setType("nau");}
+		else{npc.setType("xanh");}
 		npc.getImage();
 		
 	}
@@ -55,7 +56,7 @@ public class AssetSetter {
 		for(PlayerNPC npc:gp.NPC) {
 			npc.setDefault();	
 			setposisionNPC(npc) ;
-			if(gp.level >1) {npc.setSpeed(npc.getSpeed()+1);}
+			if(gp.level >1) {npc.setSpeed(npc.getSpeed()+1/2);}
 			}
 	}
 

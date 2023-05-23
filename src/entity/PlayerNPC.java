@@ -39,6 +39,16 @@ public class PlayerNPC extends Entity {
 				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right2.png"));
 				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right3.png"));
 			}
+			if (type.equals("xanh")) {
+				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_up1.png"));
+				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_up2.png"));
+				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_down1.png"));
+				image5 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_down2.png"));
+				image6 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_left1.png"));
+				image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_left2.png"));
+				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_right1.png"));
+				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_right2.png"));
+			}
 			//Dead state
 			image11 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost1.png"));
 			image12 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost2.png"));
