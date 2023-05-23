@@ -112,13 +112,11 @@ public class Player extends Entity {
 		gp.time_win.checkwin(this);
 		if (win==true) {
 			GamePanel.gameState = GamePanel.winState;
-			GamePanel.stopMusic();
 			GamePanel.stopSE();
 			GamePanel.playMusic(2);
 		}
 		if (alive == false) {
 			GamePanel.gameState = GamePanel.loseState;
-			GamePanel.stopMusic();
 			GamePanel.stopSE();
 			GamePanel.playMusic(1);
 		}
@@ -127,7 +125,7 @@ public class Player extends Entity {
 
 	public void draw(Graphics2D g2) {
 		super.draw(g2);
-		if (win == true) {
+		if (win == true && gp.level!=3) {
 			actionLockCounter++;
 			int i = 10;
 			if (actionLockCounter <= i) {g2.drawImage(image16, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}

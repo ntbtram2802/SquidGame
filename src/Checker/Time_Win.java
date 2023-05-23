@@ -20,9 +20,7 @@ public class Time_Win {
 		if (e.getY() > 182 && (gp.playTime) <= 0) {e.setwin(false);e.setalive(false);
 		} else if (e.getY() <= 182 &&(gp.playTime) > 0) {
 			e.setwin(true);}
-			
 	}
-
 	public void upcounter() {this.actioncounter++;}
 	public void recounter() {this.actioncounter = 0;}
 

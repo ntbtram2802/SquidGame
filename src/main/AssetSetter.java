@@ -43,7 +43,7 @@ public class AssetSetter {
 	}
 	public void setposisionNPC(PlayerNPC npc) {
 		int x = random.nextInt(15) + 1;
-		int y = random.nextInt(2) + 16;
+		int y = random.nextInt(1) + 17;
 		npc.setX(x * tilesize);
 		npc.setY(y * tilesize);
 		if (x % 2 != 0) {npc.setType("trang");}

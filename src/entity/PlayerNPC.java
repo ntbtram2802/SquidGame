@@ -60,13 +60,13 @@ public class PlayerNPC extends Entity {
 			Random random = new Random();
 			int x = random.nextInt(100) + 1; // pick up a number randomly 1-100 plus 1 bc it random from 0-99 and plus 1
 												// is 1-100
-			if (x < 50) {
+			if (x < 40) {
 				direction = "up";
 			}
-			else if (x <= 60) {
+			else if (x <= 50) {
 				direction = "down";
 			}
-			else if (x <= 80 ) {
+			else if (x <= 75) {
 				direction = "left";
 			}
 			else {

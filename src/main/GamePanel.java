@@ -77,18 +77,16 @@ public class GamePanel extends JPanel implements Runnable {
 		level = 1;
 	}
 	public void restart_game() {
-		time_win.recounter();
 		aSetter.setNPC();
 		aSetter.restartNPC();
 		player.setDefault();
-		stopMusic();
-		stopSE();
-        playSE(0);
         playTime = 60.00;
         gameState = playState;
 		restart = false;
 		if(level ==3) {fire = new Fire(this);light = new Lightting(this);}
 		else {fire = null; light = null;}
+		time_win.recounter();
+		
 	}
 
 	public void startGameThread() {
@@ -159,6 +157,7 @@ public class GamePanel extends JPanel implements Runnable {
 				light.draw(g2);
 				}
 			if (gameState == winState) { gameWin.draw(g2);
+			
 			} else if (gameState == loseState) {gameOver.draw(g2);
 			} else if (pauseState == true) {pause.draw(g2);}
 			g2.dispose();

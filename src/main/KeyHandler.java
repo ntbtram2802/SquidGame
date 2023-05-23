@@ -43,26 +43,31 @@ public class KeyHandler implements KeyListener {
     }
     public void winoption(int code) {
         if (code == KeyEvent.VK_W) {
-        	gp.gameWin.commandNum--;
+        	gp.gameWin.commandNum--; //len
                 if (gp.gameWin.commandNum < 0) {
-                	gp.gameWin.commandNum = 2;
+                	gp.gameWin.commandNum = 0;
         }
         }
-        if (code == KeyEvent.VK_S) {
+        if (code == KeyEvent.VK_S) { //xuong
         		gp.gameWin.commandNum++;
             if (gp.gameWin.commandNum > 2) {
-            	gp.gameWin.commandNum = 0;
+            	gp.gameWin.commandNum = 2;
             	System.out.println("down"+ gp.gameWin.commandNum);
             }
         }
         if (code == KeyEvent.VK_ENTER) {
         		if (gp.gameWin.commandNum == 0) {
                 	gp.level ++;
+                	gp.stopMusic();
+                	gp.playSE(0);
                 	if(gp.level ==4) {gp.level = 1;}
                 	GamePanel.restart = true;
+                	gp.gameWin.commandNum =4;
                 }
                 if (gp.gameWin.commandNum == 1) {
                 	gp.level = 1;
+                	gp.stopMusic();
+                    gp.playSE(0);
                 	GamePanel.restart = true;
                 }
                 if (gp.gameWin.commandNum == 2) {
@@ -134,9 +139,10 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_ENTER) {
             if (gp.gameOver.commandNum == 0) {
-            	gp.level = 1;
+            	gp.level = 1;    
+            	gp.stopMusic();
+            	gp.playSE(0);
             	GamePanel.restart = true;
-
             }
             if (gp.gameOver.commandNum == 1) {
                 System.exit(0);
