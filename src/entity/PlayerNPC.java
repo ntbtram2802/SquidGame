@@ -19,7 +19,7 @@ public class PlayerNPC extends Entity {
 
 	public void getImage() {
 		try {
-			if (type.equals("nau")) {
+			if (type.equals("dark")) {
 				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up1.png"));
 				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up2.png"));
 				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down1.png"));
@@ -29,7 +29,7 @@ public class PlayerNPC extends Entity {
 				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right1.png"));
 				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right2.png"));
 			}
-			if (type.equals("trang")) {
+			if (type.equals("white")) {
 				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_up1.png"));
 				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_up2.png"));
 				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_down1.png"));
@@ -39,7 +39,7 @@ public class PlayerNPC extends Entity {
 				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right2.png"));
 				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right3.png"));
 			}
-			if (type.equals("xanh")) {
+			if (type.equals("green")) {
 				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_up1.png"));
 				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_up2.png"));
 				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_down1.png"));
@@ -48,6 +48,16 @@ public class PlayerNPC extends Entity {
 				image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_left2.png"));
 				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_right1.png"));
 				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_right2.png"));
+			}
+			if (type.equals("blue")) {
+				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_up1.png"));
+				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_up2.png"));
+				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_down1.png"));
+				image5 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_down2.png"));
+				image6 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_left1.png"));
+				image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_left2.png"));
+				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_right1.png"));
+				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_right2.png"));
 			}
 			//Dead state
 			image11 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost1.png"));

@@ -46,9 +46,10 @@ public class AssetSetter {
 		int y = random.nextInt(1) + 17;
 		npc.setX(x * tilesize);
 		npc.setY(y * tilesize);
-		if (x <5) {npc.setType("trang");}
-		else if (x<10){npc.setType("nau");}
-		else{npc.setType("xanh");}
+		if (x <3) {npc.setType("white");}
+		else if (x<7){npc.setType("dark");}
+		else if (x<11){npc.setType("green");}
+		else{npc.setType("blue");}
 		npc.getImage();
 		
 	}
