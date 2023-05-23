@@ -20,12 +20,8 @@ public class gameOver extends GUI_Manager {
     public void draw(Graphics2D g2) {
         x = GamePanel.screenWidth / 2 - (GamePanel.tilesize * 9) / 2;
         y = GamePanel.tilesize * 5;
-        try {
-            g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/gameplayMenu/gameOverMenu.png")), x, y,
-                    GamePanel.tilesize * 9, GamePanel.tilesize * 10, null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Background background1 = new Background("/gameplayMenu/gameOverMenu.png");
+        g2.drawImage(background1.getImage(),x, y,  GamePanel.tilesize *9 , GamePanel.tilesize * 10, null);
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 65F));
         g2.setColor(new Color(21, 62, 95));
         if (commandNum == 0) {

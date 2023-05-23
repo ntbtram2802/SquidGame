@@ -1,5 +1,7 @@
 package GUI;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import main.GamePanel;
@@ -14,5 +16,6 @@ public abstract class GUI_Manager {
     	commandNum = 0;
     }
     public abstract void draw(Graphics2D g2);
+    	
 }
 
