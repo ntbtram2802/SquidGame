@@ -4,12 +4,13 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 import main.GamePanel;
+import main.Subject_Time;
 
 public class PlayerNPC extends Entity {
 	private static String type;
 
-	public PlayerNPC(GamePanel gp) {
-		super(gp);
+	public PlayerNPC(GamePanel gp, Subject_Time subject) {
+		super(gp, subject);
 		setDefault();
 	}
 
@@ -98,12 +99,11 @@ public class PlayerNPC extends Entity {
 
 	public void update() {
 		Random random = new Random();
-		gp.time_win.checkTime(this);
-		if (timeDeath == false) { // khuc boss quay len -> time song
+		if(!gp.subject.getState()) {
 			setAction();
 			if (!gp.c.checkCollision(this, gp.player)
 					&& !gp.c.checkPossibleMove(this)
-					&& !gp.c.checkCollision(this, gp.NPC)&&!gp.c.checkCollision(this, gp.fire)) {
+					&& !gp.c.checkCollision(this, gp.NPC) &&!gp.c.checkCollision(this, gp.fire)) {
 				switch (direction) {
 					case "up":
 						y -= speed;
@@ -134,14 +134,10 @@ public class PlayerNPC extends Entity {
 			if (x == 10) {
 				actionLockCounter = 0;
 				this.alive = false;
+				
 			}
 		}
 		gp.time_win.checkwin(this);
-		if(win == true) {
-			int y_win = random.nextInt(25)+5;
-			y = y-y_win;
-		}
-
 	}
 
 	public void draw(Graphics2D g2) {

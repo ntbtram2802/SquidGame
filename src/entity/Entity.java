@@ -3,6 +3,7 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import main.GamePanel;
+import main.Subject_Time;
 
 public abstract class Entity {
     public GamePanel gp;
@@ -19,9 +20,12 @@ public abstract class Entity {
     protected boolean timeDeath;
     protected boolean alive;
     protected boolean win;
+    protected Subject_Time subject;
 
-    public Entity(GamePanel gp) {
+    public Entity(GamePanel gp,Subject_Time subject) {
         this.gp = gp;
+        this.subject = subject;
+        this.subject.attach(this);
     }
 
     public abstract void getImage();

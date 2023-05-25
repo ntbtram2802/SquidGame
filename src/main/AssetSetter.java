@@ -18,7 +18,7 @@ public class AssetSetter {
 
 	public void setObject() {
 		for (int i = 0; i < gp.obj.length; i++) {
-			gp.obj[i] = new NPC(gp);
+			gp.obj[i] = new NPC(gp, gp.subject);
 			gp.obj[i].setX((j) * tilesize);
 			gp.obj[i].setY((3) * tilesize);
 			if (i == 2) {j += 4;
@@ -35,7 +35,7 @@ public class AssetSetter {
 	public void setNPC() {
 		if(gp.level == 1) {gp.NPC.clear();}
 		for(int i = 0; i <10; i++) {
-			PlayerNPC newNPC = new PlayerNPC(gp);
+			PlayerNPC newNPC = new PlayerNPC(gp, gp.subject);
 			setposisionNPC(newNPC);
 			gp.NPC.add(newNPC);
 		}

@@ -43,7 +43,7 @@ public class MenuState extends GUI_Manager  {
             g2.setColor(new Color(157, 0, 0));
             g2.drawString(text, x + 3, y + 3);
          
-            if (commandNum == 0) {
+            if (gp.keyH.commandNum == 0) {
                 g2.drawString(">", x - GamePanel.tilesize, y);
             }
             text = "Quit";
@@ -55,7 +55,7 @@ public class MenuState extends GUI_Manager  {
             // button shadow
             g2.setColor(new Color(157, 0, 0));
             g2.drawString(text, x + 3, y + 3);
-            if (commandNum == 1) {
+            if (gp.keyH.commandNum == 1) {
                 g2.drawString(">", x - GamePanel.tilesize, y);
             }
 

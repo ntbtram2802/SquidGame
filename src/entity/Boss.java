@@ -5,15 +5,17 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
 import main.GamePanel;
+import main.Subject_Time;
 
 public class Boss extends Entity{
 	private int size=32;
 
-	public Boss(GamePanel gp) {
-		super(gp);
+	public Boss(GamePanel gp, Subject_Time subject) {
+		super(gp, subject);
 		getImage();	
+		alive = true;
+		win = false;
 		direction = "xoaylung";
 	}
 	public void getImage() {
@@ -26,8 +28,10 @@ public class Boss extends Entity{
 	}
 
 	public void update() {
-		gp.time_win.checkTime(this);
-		if(timeDeath == false) {direction = "xoaylung";}
+		if(!gp.subject.getState()) {
+			
+			direction = "xoaylung";
+			}
 		else {direction = "chinhdien";}
 	}
 	

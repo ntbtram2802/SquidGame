@@ -12,6 +12,7 @@ import Checker.Time_Win;
 import GUI.*;
 import Map.*;
 import entity.*;
+import object.Fire;
 
 public class GamePanel extends JPanel implements Runnable {
 	// SCREEN SETTINGS
@@ -24,8 +25,9 @@ public class GamePanel extends JPanel implements Runnable {
 	public static final int screenHeight = tilesize * maxScreenRow;// 320 doc
 
 	// SYSTEM
-	KeyHandler keyH = new KeyHandler(this);
+	public KeyHandler keyH = new KeyHandler(this);
 	public Thread gameThread;// to start and stop the game whenever you want to
+	public Subject_Time subject = new Subject_Time(this);
 	private AssetSetter aSetter = new AssetSetter(this);
 	public Collision c = new Collision();
 	public static Sound music = new Sound();
@@ -36,8 +38,8 @@ public class GamePanel extends JPanel implements Runnable {
 	public Lightting light = null;
 
 	// ENTITY & OBJECT
-	public Player player = new Player(this, keyH);
-	public Boss boss = new Boss(this);
+	public Player player = new Player(this, keyH, subject);
+	public Boss boss = new Boss(this, subject);
 	public NPC obj[] = new NPC[6];
 	public Fire fire = null;
 	public ArrayList<PlayerNPC> NPC = new ArrayList<PlayerNPC>();
@@ -50,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public final static int playState = 1;
 	public final static int winState = 3;
 	public final static int loseState = 4;
+	public final static int endState = 5;
 	public static boolean pauseState = false;
 	public static boolean restart = false;
 	public static int level;
@@ -57,6 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public PauseState pause = new PauseState(this);
 	public gameOver gameOver = new gameOver(this);
 	public gameWin gameWin = new gameWin(this);
+	public EndGame endgame = new EndGame(this);
 
 	// Background
 	public Background bg = new Background("/background/background2.png");
@@ -81,8 +85,8 @@ public class GamePanel extends JPanel implements Runnable {
 		aSetter.restartNPC();
 		player.setDefault();
         playTime = 60.00;
-        gameState = playState;
 		restart = false;
+		gameState = playState;
 		if(level ==3) {fire = new Fire(this);light = new Lightting(this);}
 		else {fire = null; light = null;}
 		time_win.recounter();
@@ -127,17 +131,7 @@ public class GamePanel extends JPanel implements Runnable {
 			restart_game();
 		}
 		if (gameState == playState && pauseState == false) {
-			time_win.upcounter();
-			boss.update();
-			if(fire!= null) {fire.update();}
-			for (PlayerNPC npc:NPC) {
-					if (npc.getwin() == false) {
-						if (npc.getalive() == true) {
-							npc.update();
-						}
-					}
-			}
-				if (player.getwin() == false && player.getalive() == true) {player.update();}
+			time_win.checkTime();
 		} 
 	}
 	public void paintComponent(Graphics g) {
@@ -156,9 +150,10 @@ public class GamePanel extends JPanel implements Runnable {
 			if(light !=null && gameState == playState) {
 				light.draw(g2);
 				}
-			if (gameState == winState) { gameWin.draw(g2);
 			
+			if (gameState == winState) { gameWin.draw(g2);
 			} else if (gameState == loseState) {gameOver.draw(g2);
+			}else if(gameState == endState) {endgame.draw(g2);
 			} else if (pauseState == true) {pause.draw(g2);}
 			g2.dispose();
 		}
