@@ -45,13 +45,13 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_W) {
         	gp.gameWin.commandNum--;
                 if (gp.gameWin.commandNum < 0) {
-                	gp.gameWin.commandNum = 2;
+                	gp.gameWin.commandNum = 0;
         }
         }
         if (code == KeyEvent.VK_S) {
         		gp.gameWin.commandNum++;
-            if (gp.gameWin.commandNum > 2) {
-            	gp.gameWin.commandNum = 0;
+            if (gp.gameWin.commandNum > 1) {
+            	gp.gameWin.commandNum = 1;
             	System.out.println("down"+ gp.gameWin.commandNum);
             }
         }
@@ -65,7 +65,7 @@ public class KeyHandler implements KeyListener {
                 	gp.level = 1;
                 	GamePanel.restart = true;
                 }
-                if (gp.gameWin.commandNum == 2) {
+                if (gp.gameWin.commandNum == 1) {
                     System.exit(0);
                 }
 
