@@ -106,10 +106,7 @@ public class Player extends Entity {
 			if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true
 					|| keyH.rightPressed == true) {
 				this.alive = false;
-				GamePanel.gameState = GamePanel.loseState;
-				GamePanel.stopMusic();
-				GamePanel.stopSE();
-				GamePanel.playMusic(1);
+
 			}
 		}
 		gp.time_win.checkwin(this);
@@ -122,6 +119,12 @@ public class Player extends Entity {
 			else {
 			GamePanel.gameState = GamePanel.winState;
 			GamePanel.playMusic(2);}
+		}
+		if(alive == false) {
+			GamePanel.gameState = GamePanel.loseState;
+			GamePanel.stopMusic();
+			GamePanel.stopSE();
+			GamePanel.playMusic(1);
 		}
 	}
 
