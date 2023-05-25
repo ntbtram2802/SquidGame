@@ -24,7 +24,7 @@ public class gameWin extends GUI_Manager  {
         g2.drawImage(bg.getImage(),x, y, 170*3, 170*3, null);
 
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 60F));
-        g2.setColor(new Color(157, 0, 0));
+        // g2.setColor(new Color(157, 0, 0));
         g2.setColor(new Color(21, 62, 95));
         if (commandNum == 0) {
             g2.drawString(">", 198, 450);
