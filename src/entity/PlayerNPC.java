@@ -4,12 +4,13 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 import main.GamePanel;
+import main.Subject_Time;
 
 public class PlayerNPC extends Entity {
 	private static String type;
 
-	public PlayerNPC(GamePanel gp) {
-		super(gp);
+	public PlayerNPC(GamePanel gp, Subject_Time subject) {
+		super(gp, subject);
 		setDefault();
 	}
 
@@ -19,7 +20,7 @@ public class PlayerNPC extends Entity {
 
 	public void getImage() {
 		try {
-			if (type.equals("nau")) {
+			if (type.equals("dark")) {
 				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up1.png"));
 				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_up2.png"));
 				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_down1.png"));
@@ -29,7 +30,7 @@ public class PlayerNPC extends Entity {
 				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right1.png"));
 				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_nau/npc_nau_right2.png"));
 			}
-			if (type.equals("trang")) {
+			if (type.equals("white")) {
 				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_up1.png"));
 				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_up2.png"));
 				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_down1.png"));
@@ -38,6 +39,26 @@ public class PlayerNPC extends Entity {
 				image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_left3.png"));
 				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right2.png"));
 				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_trang/npc_trang_right3.png"));
+			}
+			if (type.equals("green")) {
+				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_up1.png"));
+				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_up2.png"));
+				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_down1.png"));
+				image5 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_down2.png"));
+				image6 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_left1.png"));
+				image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_left2.png"));
+				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_right1.png"));
+				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_xanh/npc_girl_right2.png"));
+			}
+			if (type.equals("blue")) {
+				image1 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_up1.png"));
+				image2 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_up2.png"));
+				image4 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_down1.png"));
+				image5 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_down2.png"));
+				image6 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_left1.png"));
+				image7 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_left2.png"));
+				image8 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_right1.png"));
+				image9 = ImageIO.read(getClass().getResourceAsStream("/NPC_blue/npc_blue_right2.png"));
 			}
 			//Dead state
 			image11 = ImageIO.read(getClass().getResourceAsStream("/ghost/ghost1.png"));
@@ -60,13 +81,13 @@ public class PlayerNPC extends Entity {
 			Random random = new Random();
 			int x = random.nextInt(100) + 1; // pick up a number randomly 1-100 plus 1 bc it random from 0-99 and plus 1
 												// is 1-100
-			if (x < 50) {
+			if (x < 40) {
 				direction = "up";
 			}
-			else if (x <= 60) {
+			else if (x <= 50) {
 				direction = "down";
 			}
-			else if (x <= 80 ) {
+			else if (x <= 75) {
 				direction = "left";
 			}
 			else {
@@ -78,12 +99,11 @@ public class PlayerNPC extends Entity {
 
 	public void update() {
 		Random random = new Random();
-		gp.time_win.checkTime(this);
-		if (timeDeath == false) { // khuc boss quay len -> time song
+		if(!gp.subject.getState()) {
 			setAction();
 			if (!gp.c.checkCollision(this, gp.player)
 					&& !gp.c.checkPossibleMove(this)
-					&& !gp.c.checkCollision(this, gp.NPC)&&!gp.c.checkCollision(this, gp.fire)) {
+					&& !gp.c.checkCollision(this, gp.NPC) &&!gp.c.checkCollision(this, gp.fire)) {
 				switch (direction) {
 					case "up":
 						y -= speed;
@@ -114,14 +134,10 @@ public class PlayerNPC extends Entity {
 			if (x == 10) {
 				actionLockCounter = 0;
 				this.alive = false;
+				
 			}
 		}
 		gp.time_win.checkwin(this);
-		if(win == true) {
-			int y_win = random.nextInt(25)+5;
-			y = y-y_win;
-		}
-
 	}
 
 	public void draw(Graphics2D g2) {

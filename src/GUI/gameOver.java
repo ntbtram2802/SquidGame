@@ -24,9 +24,9 @@ public class gameOver extends GUI_Manager {
         g2.drawImage(background1.getImage(),x, y,  GamePanel.tilesize *9 , GamePanel.tilesize * 10, null);
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 65F));
         g2.setColor(new Color(21, 62, 95));
-        if (commandNum == 0) {
+        if (gp.keyH.commandNum == 0) {
             g2.drawString(">", 215, 495);
-        } else if (commandNum == 1) {
+        } else if (gp.keyH.commandNum == 1) {
             g2.drawString(">", 215, 595);
         }
     }

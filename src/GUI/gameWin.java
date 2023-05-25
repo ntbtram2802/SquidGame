@@ -26,13 +26,13 @@ public class gameWin extends GUI_Manager  {
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 60F));
         // g2.setColor(new Color(157, 0, 0));
         g2.setColor(new Color(21, 62, 95));
-        if (commandNum == 0) {
+        if (gp.keyH.commandNum == 0) {
             g2.drawString(">", 198, 450);
         } 
-        else if (commandNum == 1) {
+        else if (gp.keyH.commandNum == 1) {
             g2.drawString(">", 280, 550);
         }
-        else if(commandNum == 2) {
+        else if(gp.keyH.commandNum == 2) {
         	g2.drawString(">", 218, 650);
         }
     }

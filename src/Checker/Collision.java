@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import entity.Entity;
-import entity.Fire;
+import object.Fire;
 import entity.PlayerNPC;
 import main.GamePanel;
 

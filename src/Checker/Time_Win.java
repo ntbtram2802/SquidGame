@@ -20,15 +20,13 @@ public class Time_Win {
 		if (e.getY() > 182 && (gp.playTime) <= 0) {e.setwin(false);e.setalive(false);
 		} else if (e.getY() <= 182 &&(gp.playTime) > 0) {
 			e.setwin(true);}
-			
 	}
-
-	public void upcounter() {this.actioncounter++;}
 	public void recounter() {this.actioncounter = 0;}
 
-	public void checkTime(Entity e) {
-		if (actioncounter < 320) {e.setchecktime(false);
-		} else if (actioncounter >= 320 && actioncounter < 720) {e.setchecktime(true);
+	public void checkTime() {
+		this.actioncounter++;
+		if (actioncounter < 320) {gp.subject.setState(false);
+		} else if (actioncounter >= 320 && actioncounter < 720) {gp.subject.setState(true);
 		} else if (actioncounter == 720) {this.actioncounter = 0;}
 	}
 }

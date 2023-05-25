@@ -4,15 +4,15 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
 import main.GamePanel;
 import main.KeyHandler;
+import main.Subject_Time;
 
 public class Player extends Entity {
 	KeyHandler keyH;
 
-	public Player(GamePanel gp, KeyHandler keyH) {
-		super(gp);
+	public Player(GamePanel gp, KeyHandler keyH, Subject_Time subject) {
+		super(gp, subject);
 		this.keyH = keyH;
 		setDefault();
 		getImage();
@@ -53,8 +53,8 @@ public class Player extends Entity {
 	}
 
 	public void update() {
-		gp.time_win.checkTime(this);
-		if (timeDeath == false) {
+		if(!gp.subject.getState()) {
+
 			if (keyH.upPressed == true || keyH.downPressed == true ||
 					keyH.leftPressed == true || keyH.rightPressed == true) {
 
@@ -85,7 +85,6 @@ public class Player extends Entity {
 							&& !gp.c.checkPossibleMove(this)) {
 						x += speed;
 					}
-
 				}
 
 				else {
@@ -107,27 +106,31 @@ public class Player extends Entity {
 			if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true
 					|| keyH.rightPressed == true) {
 				this.alive = false;
+
 			}
 		}
 		gp.time_win.checkwin(this);
 		if (win==true) {
-			GamePanel.gameState = GamePanel.winState;
-			GamePanel.stopMusic();
 			GamePanel.stopSE();
-			GamePanel.playMusic(2);
+			if(gp.level ==3) {
+				GamePanel.gameState = GamePanel.endState;
+				GamePanel.playMusic(5);
+			}
+			else {
+			GamePanel.gameState = GamePanel.winState;
+			GamePanel.playMusic(2);}
 		}
-		if (alive == false) {
+		if(alive == false) {
 			GamePanel.gameState = GamePanel.loseState;
 			GamePanel.stopMusic();
 			GamePanel.stopSE();
 			GamePanel.playMusic(1);
 		}
-
 	}
 
 	public void draw(Graphics2D g2) {
 		super.draw(g2);
-		if (win == true) {
+		if (win == true && gp.level!=3) {
 			actionLockCounter++;
 			int i = 10;
 			if (actionLockCounter <= i) {g2.drawImage(image16, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}

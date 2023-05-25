@@ -4,14 +4,16 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
 import main.GamePanel;
+import main.Subject_Time;
 
 public class NPC extends Entity{
 //	public BufferedImage image,image1, image2, image3;
 //	public int worldx, worldy;
 
-	public NPC(GamePanel gp) {	
-		 super(gp);
+	public NPC(GamePanel gp, Subject_Time subject) {	
+		 super(gp, subject);
 	        setDefault();
 	        getImage();
 

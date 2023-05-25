@@ -30,9 +30,9 @@ public class PauseState extends GUI_Manager {
         //ARROW SELECT
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 85));
         g2.setColor(new Color(21, 62, 95));
-        if (commandNum == 0) {
+        if (gp.keyH.commandNum == 0) {
             g2.drawString(">",220, 430);
-        } else if (commandNum == 1) {
+        } else if (gp.keyH.commandNum == 1) {
             g2.drawString(">", 220, 680);
         }          
     }
