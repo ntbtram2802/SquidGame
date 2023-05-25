@@ -3,12 +3,9 @@ package GUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 import Map.Background;
 import main.*;
-import entity.*;
 
 public class gameOver extends GUI_Manager {
 

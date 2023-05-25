@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -10,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
+import main.KeyHandler;
 
 public class EndGame extends GUI_Manager{
 	private static int counter = 0;
@@ -41,13 +41,13 @@ public class EndGame extends GUI_Manager{
 		counter++;
 		int i = 50;
 		g2.setColor(new Color(0,0,0,120));
-		g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+		g2.fillRect(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
 		//Congratulations
 		String text;		
 		g2.setFont(algerian_80);
 		g2.setColor(new Color(255,191,28));
 		text = "CONGRATULATIONS";
-		g2.drawString(text, 12, gp.tilesize*7);
+		g2.drawString(text, 12, GamePanel.tilesize*7);
 		//image
 		if(counter <i) {image = image1;}
 		else if(counter<2*i) {image = image2;}
@@ -56,7 +56,7 @@ public class EndGame extends GUI_Manager{
 		else if(counter<5*i) {image = image5;}
 		else if(counter<6*i) {image = image6;}
 		else if(counter<7*i) {image = image7;counter= 0;}
-		g2.drawImage(image, gp.tilesize*9/2,gp.tilesize*7,gp.tilesize*6,gp.tilesize*7, null);
+		g2.drawImage(image, GamePanel.tilesize*9/2,GamePanel.tilesize*7,GamePanel.tilesize*6,GamePanel.tilesize*7, null);
 		
 		// 
 		  g2.setFont(arial_40);
@@ -67,8 +67,8 @@ public class EndGame extends GUI_Manager{
           x = GamePanel.tilesize*13/2;
           y = GamePanel.tilesize * 16;
           g2.drawString(text, x, y);
-          if (gp.keyH.commandNum == 0) {
-              g2.drawString(">", x-gp.tilesize,y);
+          if (KeyHandler.commandNum == 0) {
+              g2.drawString(">", x-GamePanel.tilesize,y);
           }
           
           //Quit
@@ -77,8 +77,8 @@ public class EndGame extends GUI_Manager{
           y = GamePanel.tilesize * 18;
           g2.drawString(text, x, y);
           //
-           if (gp.keyH.commandNum == 1) {
-        	   g2.drawString(">", x-gp.tilesize,y);
+           if (KeyHandler.commandNum == 1) {
+        	   g2.drawString(">", x-GamePanel.tilesize,y);
           }
 	}
 	

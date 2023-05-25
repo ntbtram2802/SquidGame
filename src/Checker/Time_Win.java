@@ -3,14 +3,9 @@ package Checker;
 import entity.Entity;
 import main.GamePanel;
 
-import java.util.Random;
-
-import GUI.UI;
-
 public class Time_Win {
 	private int actioncounter;
 	private GamePanel gp;
-	private UI ui;
 	
 	public Time_Win(GamePanel gp) {
 		this.gp = gp;

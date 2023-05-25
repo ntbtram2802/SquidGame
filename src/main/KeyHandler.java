@@ -62,8 +62,8 @@ public class KeyHandler implements KeyListener {
         
         if (code == KeyEvent.VK_S) {
         		commandNum++;
-            if (commandNum > 1) {
-            	commandNum = 1;
+            if (commandNum > 2) {
+            	commandNum = 2;
             }
         }
         if (code == KeyEvent.VK_ENTER) {
@@ -84,7 +84,7 @@ public class KeyHandler implements KeyListener {
                     gp.stopMusic();
                     gp.playSE(0);
                 }
-                if (commandNum == 1) {
+                if (commandNum == 2) {
                     System.exit(0);
                 }
 

@@ -3,10 +3,6 @@ package GUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.io.IOException;
-import main.KeyHandler;
-import javax.imageio.ImageIO;
-
 import Map.Background;
 import main.GamePanel;
 
