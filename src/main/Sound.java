@@ -19,6 +19,7 @@ public class Sound{
         soundUrl[2]=getClass().getResource("/sound/levelup.wav");
         soundUrl[3]=getClass().getResource("/sound/Squid Game - Way Back Then  Orchestral Cover.wav");
         soundUrl[4]=getClass().getResource("/sound/cursor.wav");
+         soundUrl[5]=getClass().getResource("/sound/Winning.wav");
     }
     public int getvolumeSlace() {return volumeSlace;}
     public void setvolumeSlace(int newvolume) { this.volumeSlace = newvolume;}

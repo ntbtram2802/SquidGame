@@ -114,7 +114,7 @@ public class Player extends Entity {
 			GamePanel.stopSE();
 			if(gp.level ==3) {
 				GamePanel.gameState = GamePanel.endState;
-				GamePanel.playMusic(4);//Hang thay nhac khuc nay nha
+				GamePanel.playMusic(5);
 			}
 			else {
 			GamePanel.gameState = GamePanel.winState;
