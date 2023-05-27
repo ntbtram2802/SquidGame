@@ -28,12 +28,8 @@ public class Boss extends Entity{
 	}
 
 	public void update() {
-		if(!gp.subject.getState()) {
-			
-			direction = "xoaylung";
-			}
-		else {direction = "chinhdien";}
-	}
+		if(!gp.subject.getState()) {direction = "xoaylung";}
+		else {direction = "chinhdien";}}
 	
 	public void draw (Graphics2D g2) {
 		BufferedImage image = null;

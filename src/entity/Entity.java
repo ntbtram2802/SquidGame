@@ -6,17 +6,17 @@ import main.GamePanel;
 import main.Subject_Time;
 
 public abstract class Entity {
-    public GamePanel gp;
-    protected int x; // Vi tri cua nhan vat tren truc x cua man hinh
-    protected int y; // Vi tri cua nhan vat tren truc y cua man hinh
-    protected int speed; // Van toc di chuyen cua nhan vat
+    protected GamePanel gp;
+    protected int x; 
+    protected int y; 
+    protected int speed; 
     protected BufferedImage image, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10,
             image11, image12, image13, image14, image15, image16, image17, image18, image19, image20;
 
-    protected String direction; // huong cua nhan vat
+    protected String direction; 
     protected int spriteCounter;
     protected int spriteNum;
-    protected int actionLockCounter; // so lan ham update duoc goi ke tu khi tro choi bat dau
+    protected int actionLockCounter; 
     protected boolean timeDeath;
     protected boolean alive;
     protected boolean win;
@@ -32,7 +32,7 @@ public abstract class Entity {
 
     public abstract void update();
 
-    public void setDefault() { // Initial nhung gia tri dau tien cho nhan vat
+    public void setDefault() { // Initial the value of variable
         x = GamePanel.tilesize *8; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
         y = GamePanel.tilesize *19; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
         speed = 1; // van toc cua nhan vat = 0.2
@@ -44,7 +44,7 @@ public abstract class Entity {
         alive = true;
         win = false;
     }
- // getter + setter cua variable direction, x, y, speed
+ // getter + setter of variable: direction, x, y, speed
     public void setDirection(String d) { this.direction = d;}
     public String getDirection() {return direction;}
     public void setX(int x) {this.x = x;}
@@ -53,14 +53,13 @@ public abstract class Entity {
     public int getY() {return y;}
     public int getSpeed() {return speed;}
     public void setSpeed(int speed) {this.speed = speed;}
-// getter + setter cua variale lien quan den gameplay
+// getter + setter of variable associate to gameplay. 
     public boolean getalive() {return alive;}
     public void setalive(boolean t) {this.alive = t;}
     public void setwin(boolean t) {this.win = t;}
     public boolean getwin() {return win;}
-    public void setchecktime(boolean t) {this.timeDeath = t;}
- 
-    public void draw(Graphics2D g2) { // update roi ve hinh anh moi update
+    public void setchecktime(boolean t) {this.timeDeath = t;} 
+    public void draw(Graphics2D g2) { 
     	 if (win == false && alive == true) {
             BufferedImage image = null;
             switch (direction) {
@@ -107,7 +106,6 @@ public abstract class Entity {
             dyingAnimation(g2);
         }
     }
-
     public void dyingAnimation(Graphics2D g2) {
         actionLockCounter++;
         int i = 5;

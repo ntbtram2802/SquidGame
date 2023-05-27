@@ -18,10 +18,9 @@ public class Player extends Entity {
 		getImage();
 	}
 	public void restartplayer() {
-		setDefault();
-		
+		setDefault();		
 	}
-
+	@Override
 	public void getImage() {
 		try {
 			//Play state
