@@ -8,7 +8,7 @@ public class Main {
 		 JFrame window = new JFrame();
 	        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// to ensure that user can close the window
 	        window.setResizable(false);
-	        window.setTitle(" SQUID GAME main");
+	        window.setTitle(" SQUID GAME ");
 	        
 	        window.setLocationRelativeTo(null);
 	        GamePanel gamePanel= new GamePanel();
