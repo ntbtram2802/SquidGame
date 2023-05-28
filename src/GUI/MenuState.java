@@ -9,18 +9,11 @@ import main.GamePanel;
 
 public class MenuState extends GUI_Manager {
 
-public class MenuState extends GUI_Manager {
-
     public MenuState(GamePanel gp) {
         super(gp);
     }
 
-        super(gp);
-    }
-
-    @Override
-    public void draw(Graphics2D g2) {
-        g2.setColor(new Color(157, 120, 100));
+    @Override        
     public void draw(Graphics2D g2) {
         g2.setColor(new Color(157, 120, 100));
         g2.fillRect(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
