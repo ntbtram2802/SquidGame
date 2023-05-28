@@ -96,7 +96,7 @@ public class Collision {
         }
         return false;
     }
-    public boolean checkCollision(Entity e1, Fire fire) {
+    public boolean pickup(Entity e1, Fire fire) {
     	if(fire !=null) {
     		  e2Box = new Rectangle(fire.getX(), fire.getY(),
     	                GamePanel.tilesize, GamePanel.tilesize+20);

@@ -12,8 +12,8 @@ public class Time_Win {
 	}
 
 	public void checkwin(Entity e) {
-		if (e.getY() > 182 && (gp.playTime) <= 0) {e.setwin(false);e.setalive(false);
-		} else if (e.getY() <= 182 &&(gp.playTime) > 0) {
+		if (e.getY() > (gp.tilesize*4)-10 && (gp.playTime) <= 0) {e.setwin(false);e.setalive(false);
+		} else if (e.getY() <= (gp.tilesize*4)-10 &&(gp.playTime) > 0) {
 			e.setwin(true);}
 	}
 	public void recounter() {this.actioncounter = 0;}
