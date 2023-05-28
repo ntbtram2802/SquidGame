@@ -103,7 +103,7 @@ public class PlayerNPC extends Entity {
 			setAction();
 			if (!gp.c.checkCollision(this, gp.player)
 					&& !gp.c.checkPossibleMove(this)
-					&& !gp.c.checkCollision(this, gp.NPC) &&!gp.c.checkCollision(this, gp.fire)) {
+					&& !gp.c.checkCollision(this, gp.NPC) &&!gp.c.pickup(this, gp.fire)) {
 				switch (direction) {
 					case "up":
 						y -= speed;

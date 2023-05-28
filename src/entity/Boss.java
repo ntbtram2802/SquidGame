@@ -30,7 +30,6 @@ public class Boss extends Entity {
 
 	public void update() {
 		if (!gp.subject.getState()) {
-
 			direction = "xoaylung";
 		} else {
 			direction = "chinhdien";

@@ -4,7 +4,7 @@ import static main.GamePanel.tilesize;
 
 import java.util.Random;
 
-import entity.NPC;
+import object.NPC;
 import entity.PlayerNPC;
 
 public class AssetSetter {
@@ -18,7 +18,7 @@ public class AssetSetter {
 
 	public void setObject() {
 		for (int i = 0; i < gp.obj.length; i++) {
-			gp.obj[i] = new NPC(gp, gp.subject);
+			gp.obj[i] = new NPC(gp);
 			gp.obj[i].setX((j) * tilesize);
 			gp.obj[i].setY((3) * tilesize);
 			if (i == 2) {
@@ -29,12 +29,9 @@ public class AssetSetter {
 		}
 		int x = 0;
 		while (x < 6) {
-			gp.obj[x].setDirection("round");
-			x++;
-			gp.obj[x].setDirection("triangle");
-			x++;
-			gp.obj[x].setDirection("square");
-			x++;
+			gp.obj[x].setType("round");x++;
+			gp.obj[x].setType("triangle");x++;
+			gp.obj[x].setType("square");x++;
 		}
 	}
 

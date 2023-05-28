@@ -1,4 +1,4 @@
-package entity;
+package object;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -8,20 +8,22 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.Subject_Time;
 
-public class NPC extends Entity{
-//	public BufferedImage image,image1, image2, image3;
-//	public int worldx, worldy;
-
-	public NPC(GamePanel gp, Subject_Time subject) {	
-		 super(gp, subject);
-	        setDefault();
-	        getImage();
+public class NPC {
+	private BufferedImage image,image1, image2, image3;
+	private int x, y;
+	private GamePanel gp;
+	private String type;
+	public NPC(GamePanel gp) {	
+		 this.gp = gp;
+	     getImage();
 
 	}
-	@Override
+	public void setX(int x) {this.x = x;}
+	public void setY(int y) {this.y = y;}
+	public void setType(String type) { this.type = type;}
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
-		switch(direction) {
+		switch(type) {
 		case "round":
 			image = image1;
 			break;
@@ -35,7 +37,6 @@ public class NPC extends Entity{
 		}
 		g2.drawImage(image, x + GamePanel.tilesize, y, GamePanel.tilesize,GamePanel.tilesize, null );
 	}
-	@Override
 	public void getImage() {
 		try {
 			image1 = ImageIO.read(getClass().getResourceAsStream("/Object_guard/npc-round.png"));
@@ -45,8 +46,5 @@ public class NPC extends Entity{
 			e.printStackTrace();
 		}
 		
-	}
-	@Override
-	public void update() {
 	}
 }

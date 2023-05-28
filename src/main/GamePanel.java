@@ -12,7 +12,8 @@ import Checker.CheckTime;
 import GUI.*;
 import Map.*;
 import entity.*;
-import object.Fire;
+import object.*;
+import object.NPC;
 
 public class GamePanel extends JPanel implements Runnable {
 	// SCREEN SETTINGS
