@@ -7,9 +7,10 @@ import java.awt.Graphics2D;
 import Map.Background;
 import main.*;
 
-public class gameOver extends GUI_Manager {
+public class GameOver extends GUI_Manager {
+    private Background gameOver;
 
-    public gameOver(GamePanel gp) {
+    public GameOver(GamePanel gp) {
         super(gp);
     }
 
@@ -17,13 +18,16 @@ public class gameOver extends GUI_Manager {
     public void draw(Graphics2D g2) {
         x = GamePanel.screenWidth / 2 - (GamePanel.tilesize * 9) / 2;
         y = GamePanel.tilesize * 5;
-        Background background1 = new Background("/gameplayMenu/gameOverMenu.png");
-        g2.drawImage(background1.getImage(),x, y,  GamePanel.tilesize *9 , GamePanel.tilesize * 10, null);
+
+        gameOver = new Background("/gameplayMenu/gameOverMenu.png");
+        g2.drawImage(gameOver.getImage(), x, y, GamePanel.tilesize * 9, GamePanel.tilesize * 10, null);
+
+        // ARROW SELECT
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 65F));
         g2.setColor(new Color(21, 62, 95));
-        if (gp.keyH.commandNum == 0) {
+        if (KeyHandler.commandNum == 0) {
             g2.drawString(">", 215, 495);
-        } else if (gp.keyH.commandNum == 1) {
+        } else if (KeyHandler.commandNum == 1) {
             g2.drawString(">", 215, 595);
         }
     }

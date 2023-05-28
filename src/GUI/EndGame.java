@@ -63,7 +63,7 @@ public class EndGame extends GUI_Manager{
 		  g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 60F));
 		  g2.setColor(new Color(80, 0, 0));
 		  // Replay
-		  text = "Replay";
+		  text = "RESUME";
           x = GamePanel.tilesize*13/2;
           y = GamePanel.tilesize * 16;
           g2.drawString(text, x, y);

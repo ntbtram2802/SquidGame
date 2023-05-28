@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import Checker.Collision;
-import Checker.Time_Win;
+import Checker.CheckTime;
 import GUI.*;
 import Map.*;
 import entity.*;
@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public static Sound music = new Sound();
 	public static Sound se = new Sound();
 	public static Sound ingame = new Sound();
-	public Time_Win time_win = new Time_Win(this);
+	public CheckTime time_win = new CheckTime(this);
 	public UI u = new UI(this);
 	public Lightting light = null;
 
@@ -48,18 +48,18 @@ public class GamePanel extends JPanel implements Runnable {
 
 	// GAME STATE
 	public static int gameState;
-	public final static int menuState = 0;
-	public final static int playState = 1;
-	public final static int winState = 3;
-	public final static int loseState = 4;
-	public final static int endState = 5;
+	public static final int menuState = 0;
+	public static final int playState = 1;
+	public static final int winState = 2;
+	public static final int loseState = 3;
+	public static final int endState = 4;
 	public static boolean pauseState = false;
 	public static boolean restart = false;
 	public static int level;
 	public MenuState menu = new MenuState(this);
 	public PauseState pause = new PauseState(this);
-	public gameOver gameOver = new gameOver(this);
-	public gameWin gameWin = new gameWin(this);
+	public GameOver gameOver = new GameOver(this);
+	public GameWin gameWin = new GameWin(this);
 	public EndGame endgame = new EndGame(this);
 
 	// Background
@@ -80,17 +80,23 @@ public class GamePanel extends JPanel implements Runnable {
 		gameState = 0;
 		level = 1;
 	}
+
 	public void restart_game() {
 		aSetter.setNPC();
 		aSetter.restartNPC();
 		player.setDefault();
-        playTime = 60.00;
+		playTime = 60.00;
 		restart = false;
 		gameState = playState;
-		if(level ==3) {fire = new Fire(this);light = new Lightting(this);}
-		else {fire = null; light = null;}
+		if (level == 3) {
+			fire = new Fire(this);
+			light = new Lightting(this);
+		} else {
+			fire = null;
+			light = null;
+		}
 		time_win.recounter();
-		
+
 	}
 
 	public void startGameThread() {
@@ -127,13 +133,14 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		if(restart == true) {
+		if (restart == true) {
 			restart_game();
 		}
 		if (gameState == playState && pauseState == false) {
 			time_win.checkTime();
-		} 
+		}
 	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
@@ -142,19 +149,32 @@ public class GamePanel extends JPanel implements Runnable {
 		} else {
 			bg.draw(g2);
 			boss.draw(g2);
-			if(pauseState == false) {u.draw(g2);}
-			for (int j = 0; j < obj.length; j++) {obj[j].draw(g2);}
-			for(PlayerNPC npc:NPC) {npc.draw(g2);}
+			if (pauseState == false) {
+				u.draw(g2);
+			}
+			for (int j = 0; j < obj.length; j++) {
+				obj[j].draw(g2);
+			}
+			for (PlayerNPC npc : NPC) {
+				npc.draw(g2);
+			}
 			player.draw(g2);
-			if(fire != null) {fire.draw(g2);}
-			if(light !=null && gameState == playState) {
+			if (fire != null) {
+				fire.draw(g2);
+			}
+			if (light != null && gameState == playState) {
 				light.draw(g2);
-				}
-			
-			if (gameState == winState) { gameWin.draw(g2);
-			} else if (gameState == loseState) {gameOver.draw(g2);
-			}else if(gameState == endState) {endgame.draw(g2);
-			} else if (pauseState == true) {pause.draw(g2);}
+			}
+
+			if (gameState == winState) {
+				gameWin.draw(g2);
+			} else if (gameState == loseState) {
+				gameOver.draw(g2);
+			} else if (gameState == endState) {
+				endgame.draw(g2);
+			} else if (pauseState == true) {
+				pause.draw(g2);
+			}
 			g2.dispose();
 		}
 	}
@@ -165,9 +185,13 @@ public class GamePanel extends JPanel implements Runnable {
 		music.loop();
 	}
 
-	public static void stopMusic() {music.stop();}
+	public static void stopMusic() {
+		music.stop();
+	}
 
-	public static void continue_music() {ingame.loop();}
+	public static void continue_music() {
+		ingame.loop();
+	}
 
 	public static void playSE(int i) {
 		se.setFile(i);

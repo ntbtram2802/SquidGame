@@ -3,11 +3,11 @@ package Checker;
 import entity.Entity;
 import main.GamePanel;
 
-public class Time_Win {
+public class CheckTime {
 	private int actioncounter;
 	private GamePanel gp;
 	
-	public Time_Win(GamePanel gp) {
+	public CheckTime(GamePanel gp) {
 		this.gp = gp;
 	}
 
