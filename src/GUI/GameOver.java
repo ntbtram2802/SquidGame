@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import GUI.GUI_Manager;
 import Map.Background;
-import main.*;
+import main.GamePanel;
+import main.KeyHandler;
 
 public class GameOver extends GUI_Manager {
-    private Background gameOver;
+	private Background gameOver;
 
     public GameOver(GamePanel gp) {
         super(gp);

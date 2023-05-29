@@ -4,11 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import GUI.GUI_Manager;
 import Map.Background;
-import main.*;
+import main.GamePanel;
 
 public class GameWin extends GUI_Manager {
-    private Background gameWin;
+	private Background gameWin;
 
     public GameWin(GamePanel gp) {
         super(gp);
