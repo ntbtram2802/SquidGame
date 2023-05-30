@@ -15,7 +15,7 @@ public class EndGame extends GUI_Manager{
 	private static int counter = 0;
 	Font algerian_80 = new Font("Algerian", Font.PLAIN, 80);
 	Font arial_40 = new Font("Arial", Font.BOLD, 40);
-	BufferedImage image, image1, image2, image3, image4, image5, image6, image7;
+	BufferedImage image, image1, image2, image3, image4, image5, image6, image7, image8;
 	public EndGame(GamePanel gp) {
 		super(gp);
 		image = image1;
@@ -30,6 +30,7 @@ public class EndGame extends GUI_Manager{
 			image5 = ImageIO.read(getClass().getResourceAsStream("/EndGame/winState-end-5.png.png"));
 			image6 = ImageIO.read(getClass().getResourceAsStream("/EndGame/winState-end-5.png.png"));
 			image7 = ImageIO.read(getClass().getResourceAsStream("/EndGame/winState-end-5.png.png"));
+			image8 = ImageIO.read(getClass().getResourceAsStream("/EndGame/replay_quit.png"));
 		} catch (IOException e) {
 				e.printStackTrace();
 		}
@@ -58,30 +59,33 @@ public class EndGame extends GUI_Manager{
 		else if(counter<7*i) {image = image7;counter= 0;}
 		g2.drawImage(image, GamePanel.tilesize*9/2,GamePanel.tilesize*7,GamePanel.tilesize*6,GamePanel.tilesize*7, null);
 		
+		g2.drawImage(image8, GamePanel.tilesize*5/2,GamePanel.tilesize*11,GamePanel.tilesize*10,GamePanel.tilesize*12, null);
 		// 
-		  g2.setFont(arial_40);
-		  g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 60F));
-		  g2.setColor(new Color(80, 0, 0));
-		  // Replay
-		  text = "RESUME";
-          x = GamePanel.tilesize*13/2;
-          y = GamePanel.tilesize * 16;
-          g2.drawString(text, x, y);
+//		  g2.setFont(arial_40);
+//		  g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 60F));
+		  g2.setColor(new Color(252, 202, 2));
+//		  // Replay
+//		  text = "RESUME";
+//          x = GamePanel.tilesize*13/2;
+//          y = GamePanel.tilesize * 16;
+//          g2.drawString(text, x, y);
           if (KeyHandler.commandNum == 0) {
-              g2.drawString(">", x-GamePanel.tilesize,y);
+              g2.drawString(">",GamePanel.tilesize*3, GamePanel.tilesize*35/2);
           }
           
           //Quit
-          text = "QUIT";
-          x =  GamePanel.tilesize*13/2;
-          y = GamePanel.tilesize * 18;
-          g2.drawString(text, x, y);
-          //
+//          text = "QUIT";
+//          x =  GamePanel.tilesize*13/2;
+//          y = GamePanel.tilesize * 18;
+//          g2.drawString(text, x, y);
+//          //
            if (KeyHandler.commandNum == 1) {
-        	   g2.drawString(">", x-GamePanel.tilesize,y);
+        	   g2.drawString(">",GamePanel.tilesize*3, GamePanel.tilesize*37/2);
           }
 	}
 	
 
-
+	
+	
+	
 }

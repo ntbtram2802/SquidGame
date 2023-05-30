@@ -159,6 +159,7 @@ public class GamePanel extends JPanel implements Runnable {
 			for (PlayerNPC npc : NPC) {
 				npc.draw(g2);
 			}
+			
 			player.draw(g2);
 			if (fire != null) {
 				fire.draw(g2);
@@ -166,7 +167,6 @@ public class GamePanel extends JPanel implements Runnable {
 			if (light != null && gameState == playState) {
 				light.draw(g2);
 			}
-
 			if (gameState == winState) {
 				gameWin.draw(g2);
 			} else if (gameState == loseState) {
