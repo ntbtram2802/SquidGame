@@ -117,24 +117,17 @@ public class PlayerNPC extends Entity {
 					case "right":
 						x += speed;
 						break;
-				}
-			}
-
+				}}
 			spriteCounter++;
 			if (spriteCounter > 12) {
-				if (spriteNum == 1) {
-					spriteNum = 2;
-				} else if (spriteNum == 2) {
-					spriteNum = 1;
-				}
-				spriteCounter = 0;
-			}
-		} else { // khuc quyet dinh song chet trong time chet
+				if (spriteNum == 1) {spriteNum = 2;
+				} else if (spriteNum == 2) {spriteNum = 1;}
+				spriteCounter = 0;}
+		} else { 
 			int x = random.nextInt(1200) + 1;
 			if (x == 10) {
 				actionLockCounter = 0;
-				this.alive = false;
-				
+				this.alive = false;				
 			}
 		}
 		gp.time_win.checkwin(this);

@@ -129,11 +129,16 @@ public class Player extends Entity {
 		if (win == true && GamePanel.level!=3) {
 			actionLockCounter++;
 			int i = 10;
-			if (actionLockCounter <= i) {g2.drawImage(image16, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
-			if (actionLockCounter > i && actionLockCounter <= i * 2) {g2.drawImage(image17, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
-			if (actionLockCounter > i * 2 && actionLockCounter <= i * 3) {g2.drawImage(image18, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
-			if (actionLockCounter > i * 3 && actionLockCounter <= i * 4) {g2.drawImage(image19, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
-			if(actionLockCounter > i*4) {g2.drawImage(image4, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+			if (actionLockCounter <= i) {
+				g2.drawImage(image16, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+			if (actionLockCounter > i && actionLockCounter <= i * 2) {
+				g2.drawImage(image17, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+			if (actionLockCounter > i * 2 && actionLockCounter <= i * 3) {
+				g2.drawImage(image18, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+			if (actionLockCounter > i * 3 && actionLockCounter <= i * 4) {
+				g2.drawImage(image19, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
+			if(actionLockCounter > i*4) {
+				g2.drawImage(image4, x, y, GamePanel.tilesize, GamePanel.tilesize, null);}
 			}
 	}
 }

@@ -17,7 +17,6 @@ public abstract class Entity {
     protected int spriteCounter;
     protected int spriteNum;
     protected int actionLockCounter; 
-    protected boolean timeDeath;
     protected boolean alive;
     protected boolean win;
     protected Subject_Time subject;
@@ -35,12 +34,11 @@ public abstract class Entity {
     public void setDefault() { // Initial nhung gia tri dau tien cho nhan vat
         x = GamePanel.tilesize * 8; // ban dau nhan vat se co vi tri 500 so voi truc x cua man hinh
         y = GamePanel.tilesize * 19; // ban dau nhan vat se co vi tri 900 so voi truc y cua man hinh
-        speed = 6; // van toc cua nhan vat = 0.2
+        speed = 1; // van toc cua nhan vat = 0.2
         actionLockCounter = 0;
         spriteCounter = 0;
         spriteNum = 1;
         direction = "up";
-        timeDeath = false;
         alive = true;
         win = false;
     }
@@ -58,7 +56,8 @@ public abstract class Entity {
     public void setalive(boolean t) {this.alive = t;}
     public void setwin(boolean t) {this.win = t;}
     public boolean getwin() {return win;}
-    public void setchecktime(boolean t) {this.timeDeath = t;} 
+
+    
     public void draw(Graphics2D g2) { 
     	 if (win == false && alive == true) {
             BufferedImage image = null;
@@ -66,35 +65,20 @@ public abstract class Entity {
                 case "stand":
                     image = image10;
                 case "up":
-                    if (spriteNum == 1) {
-                        image = image1; // up1
-                    } else if (spriteNum == 2) {
-                        image = image2; // up2
-                    }
+                    if (spriteNum == 1) {image = image1; // up1
+                    } else if (spriteNum == 2) {image = image2;} // up2
                     break;
-
                 case "down":
-                    if (spriteNum == 1) {
-                        image = image4; // down1
-                    } else if (spriteNum == 2) {
-                        image = image5;// down2
-                    }
+                    if (spriteNum == 1) {image = image4; // down1
+                    } else if (spriteNum == 2) {image = image5;}// down2
                     break;
-
                 case "left":
-                    if (spriteNum == 1) {
-                        image = image6; // left1
-                    } else if (spriteNum == 2) {
-                        image = image7; // left2
-                    }
+                    if (spriteNum == 1) {image = image6; // left1
+                    } else if (spriteNum == 2) { image = image7;} // left2                 
                     break;
-
                 case "right":
-                    if (spriteNum == 1) {
-                        image = image8;// right1
-                    } else if (spriteNum == 2) {
-                        image = image9; // right2
-                    }
+                    if (spriteNum == 1) {image = image8;// right1
+                    } else if (spriteNum == 2) { image = image9;} // right2                  
                     break;
             }
             g2.drawImage(image, x, y, GamePanel.tilesize, GamePanel.tilesize, null);
